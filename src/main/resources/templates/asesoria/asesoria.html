@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="">Asesoria</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+			</ul>
+		</div>
+	</nav>
+			<table class="table table-bordered">
+				<thead class="thead-dark">
+					<tr>
+                        <th>ID</th>
+                        <th>tipo</th>
+                        <th>costo</th>
+                        <th>descripcion</th>
+                        <th>Estado de Asesoria</th>
+                        <!--<th>Estado</th>-->
+                        <th>Acciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="asesoria : ${listaAsesoria}">
+						<td th:text="${asesoria.idAsesoria}"></td>
+						<td th:text="${asesoria.tipoAsesoria}"></td>
+						<td th:text="${asesoria.costoAsesoria}"></td>
+						<td th:text="${asesoria.descripcionAsesoria}"></td>
+						<td th:text="${asesoria.contrasenaUsuario}"></td>
+						<td th:text="${asesoria.estadoAsesoria}"></td>
+						<!--<td th:text="${artista.estadoUsuario}"></td>-->
+						<td><a th:href="@{'/asesoria/editar'+'/'+ ${asesoria.idAsesoria}}"class="btn btn-info">Editar</a> &nbsp; 
+							<a th:href="@{'/asesoria/eliminar'+ '/' + ${asesoria.idAsesoria}}"class="btn btn-danger">Eliminar</a>
+                        </td>
+					</tr>
+				</tbody>
+			</table>
+
+</body>
+</html>

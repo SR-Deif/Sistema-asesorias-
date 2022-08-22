@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <title></title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="">Asesoria</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+			</ul>
+		</div>
+	</nav>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Fecha</th>
+                <!--<th>Estado</th>-->
+                <th>Usuario</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="solicitud : ${listaSolicituds}">
+                <td th:text="${solicitud.idSolicitud}"></td>
+                <td th:text="${solicitud.fechaCreacion}"></td>
+                <!--<td th:text="${solicitud.estadoSolicitud}"></td>-->
+                <td th:text="${solicitud.usuario.tipoUsuario}"></td>
+                <td><a th:href="@{'/solicituds/editar'+'/'+ ${solicitud.idSolicitud}}"class="btn btn-info">Editar</a> &nbsp; 
+                    <a th:href="@{'/solicituds/eliminar'+ '/' + ${solicitud.idSolicitud}}"class="btn btn-danger">Eliminar</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+    
+</body>
+</html>
