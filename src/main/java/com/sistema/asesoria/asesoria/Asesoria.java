@@ -1,5 +1,6 @@
 package com.sistema.asesoria.asesoria;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +15,7 @@ public class Asesoria {
     private String tipoAsesoria;
     private Double costoAsesoria;
     private String descripcionAsesoria;
-    private Boolean estadoAsesoria;
+    //private Boolean estadoAsesoria;
     
     public Asesoria() {
     }
@@ -27,7 +28,7 @@ public class Asesoria {
         this.tipoAsesoria = tipoAsesoria;
         this.costoAsesoria = costoAsesoria;
         this.descripcionAsesoria = descripcionAsesoria;
-        this.estadoAsesoria = estadoAsesoria;
+        //this.estadoAsesoria = estadoAsesoria;
     }
 
     public Asesoria(int idAsesoria, String tipoAsesoria, Double costoAsesoria, String descripcionAsesoria,
@@ -36,7 +37,7 @@ public class Asesoria {
         this.tipoAsesoria = tipoAsesoria;
         this.costoAsesoria = costoAsesoria;
         this.descripcionAsesoria = descripcionAsesoria;
-        this.estadoAsesoria = estadoAsesoria;
+        //this.estadoAsesoria = estadoAsesoria;
     }
 
     public int getIdAsesoria() {
@@ -71,12 +72,12 @@ public class Asesoria {
         this.descripcionAsesoria = descripcionAsesoria;
     }
 
-    public Boolean getEstadoAsesoria() {
-        return estadoAsesoria;
-    }
+    //public Boolean getEstadoAsesoria() {
+    //    return estadoAsesoria;
+    //}
 
-    public void setEstadoAsesoria(Boolean estadoAsesoria) {
-        this.estadoAsesoria = estadoAsesoria;
-    }
+    //public void setEstadoAsesoria(Boolean estadoAsesoria) {
+    //    this.estadoAsesoria = estadoAsesoria;
+    //}
 
 }

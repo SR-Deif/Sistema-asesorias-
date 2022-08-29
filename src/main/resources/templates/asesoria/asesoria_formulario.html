@@ -26,7 +26,7 @@
 			<!--si esto es igual a Usuario si lo voy agregar me saldra este titulo-->
 			<h1 th:if="${asesoria.idAsesoria == null}">Registro de Asesoria</h1>
 			<!--lo contrario de registrar -->
-			<h1 th:unless="${asesoria.idAsesoria == null}">Editar Usuario</h1>
+			<h1 th:unless="${asesoria.idAsesoria == null}">Editar Asesoria</h1>
 		</div>
 		
 		<form th:action="@{/asesoria/guardar}" th:object="${asesoria}"
@@ -57,7 +57,7 @@
 						<input type="text" th:field="*{descripcionAsesoria}" class="form-control"required />
 					</div>
 				</div>
-				
+				<!--
 				<div class="form-group row">
 					<label class="col-form-label col-sm-4">Estado:
 					</label>
@@ -65,6 +65,7 @@
 						<input type="text" th:field="*{estadoAsesoria}" class="form-control"required />
 					</div>
 				</div>
+				-->
 				 		<div class="text-center p">
 					<button class="boton" type="submit">
 						<a style="--clr:#1e9bff"><span>Guardar</span></a>

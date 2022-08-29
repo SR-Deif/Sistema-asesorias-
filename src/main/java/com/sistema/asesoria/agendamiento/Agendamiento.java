@@ -1,5 +1,7 @@
 package com.sistema.asesoria.agendamiento;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,8 +19,8 @@ public class Agendamiento {
     @Id    
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idAgendamiento;
-    private String fechaAgendamiento;
-    private String fechaRevisionAgendamiento;
+    private Date fechaAgendamiento;
+    private Date fechaRevisionAgendamiento;
     
     @OneToOne //uno a uno
     @JoinColumn(name="idSolicitud") //con la columna  a unir 
@@ -44,7 +46,7 @@ public class Agendamiento {
         this.asesoria = asesoria;
     }
 
-    public Agendamiento(String fechaAgendamiento, String fechaRevisionAgendamiento, Solicitud solicitud,
+    public Agendamiento(Date fechaAgendamiento, Date fechaRevisionAgendamiento, Solicitud solicitud,
             Asesoria asesoria) {
         this.fechaAgendamiento = fechaAgendamiento;
         this.fechaRevisionAgendamiento = fechaRevisionAgendamiento;
@@ -52,7 +54,7 @@ public class Agendamiento {
         this.asesoria = asesoria;
     }
 
-    public Agendamiento(int idAgendamiento, String fechaAgendamiento, String fechaRevisionAgendamiento,
+    public Agendamiento(int idAgendamiento, Date fechaAgendamiento,Date fechaRevisionAgendamiento,
             Solicitud solicitud, Asesoria asesoria) {
         this.idAgendamiento = idAgendamiento;
         this.fechaAgendamiento = fechaAgendamiento;
@@ -69,19 +71,19 @@ public class Agendamiento {
         this.idAgendamiento = idAgendamiento;
     }
 
-    public String getFechaAgendamiento() {
+    public Date getFechaAgendamiento() {
         return fechaAgendamiento;
     }
 
-    public void setFechaAgendamiento(String fechaAgendamiento) {
+    public void setFechaAgendamiento(Date fechaAgendamiento) {
         this.fechaAgendamiento = fechaAgendamiento;
     }
 
-    public String getFechaRevisionAgendamiento() {
+    public Date getFechaRevisionAgendamiento() {
         return fechaRevisionAgendamiento;
     }
 
-    public void setFechaRevisionAgendamiento(String fechaRevisionAgendamiento) {
+    public void setFechaRevisionAgendamiento(Date fechaRevisionAgendamiento) {
         this.fechaRevisionAgendamiento = fechaRevisionAgendamiento;
     }
 
