@@ -2,6 +2,8 @@ package com.sistema.asesoria.usuario;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +25,6 @@ public class UsuarioController {
         model.addAttribute("listaUsuarios", listaUsuarios);
         return "usuario/usuarios";//retornar
       }
-
       //Agregar Usuario
       @GetMapping("/usuarios/nuevo")
       public String mostrarFormularioDeNuevoUsuario(Model model){
@@ -32,7 +33,7 @@ public class UsuarioController {
       }
       //guardar usuario
       @PostMapping("/usuarios/guardar")
-      public String guardarUsuario(Usuario usuario){
+      public String guardarUsuario(@Valid Usuario usuario){
         usuariorepository.save(usuario);
         return "redirect:/usuarios";
       }

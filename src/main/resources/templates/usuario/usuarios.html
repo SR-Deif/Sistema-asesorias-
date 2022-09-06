@@ -28,6 +28,9 @@
                         <th>Apellido</th>
                         <th>Correo</th>
                         <th>Contraseña</th>
+						<th>Telefono</th>
+						<th>Tipo de Documento</th>
+						<th>Numero del Documento</th>
                         <th>Tipo de Usuario</th>
                         <!--<th>Estado</th>-->
                         <th>Acciones</th>
@@ -40,10 +43,12 @@
 						<td th:text="${usuario.apellidoUsuario}"></td>
 						<td th:text="${usuario.correoUsuario}"></td>
 						<td th:text="${usuario.contrasenaUsuario}"></td>
+						<td th:text="${usuario.telefonoUsuario}"></td>
+						<td th:text="${usuario.tipoDocUsuario}"></td>
+						<td th:text="${usuario.numeroDocUsuario}"></td>
 						<td th:text="${usuario.tipoUsuario}"></td>
 						<!--<td th:text="${artista.estadoUsuario}"></td>-->
-						<td><a th:href="@{'/usuarios/editar'+'/'+ ${usuario.idUsuario}}"class="btn btn-info">Editar</a> &nbsp; 
-							<a th:href="@{'/usuarios/eliminar'+ '/' + ${usuario.idUsuario}}"class="btn btn-danger">Eliminar</a></td>
+						<td><a th:href="@{'/usuarios/editar'+'/'+ ${usuario.idUsuario}}"class="btn btn-info">Editar</a> &nbsp; </td>
 					</tr>
 				</tbody>
 			</table>

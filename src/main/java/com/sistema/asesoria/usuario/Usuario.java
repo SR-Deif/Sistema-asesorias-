@@ -4,8 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
 //import javax.persistence.JoinColumn;
 //import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Usuario {
@@ -13,13 +17,51 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
 
+    @NotBlank(message="El nombre de usuario no puede estar vacío")
     private String nombreUsuario;
+
+    @NotBlank(message="El apellido de usuario no puede estar vacío")
     private String apellidoUsuario;
+
+    @Email (message = "Por favor validar el correo")
     private String correoUsuario;
+
     private String contrasenaUsuario;
+
     private String tipoUsuario;
+
     private Boolean estadoUsuario;
+
+    @NotNull ()
+    @Size(max = 10, message = "Por favor solo numeros")
+    private String telefonoUsuario;
+
+
+    private String tipoDocUsuario;
+
+    @NotNull
+    @Size(max = 10)
+    private String numeroDocUsuario;
     
+
+    public String getTelefonoUsuario() {
+        return telefonoUsuario;
+    }
+    public void setTelefonoUsuario(String telefonoUsuario) {
+        this.telefonoUsuario = telefonoUsuario;
+    }
+    public String getTipoDocUsuario() {
+        return tipoDocUsuario;
+    }
+    public void setTipoDocUsuario(String tipoDocUsuario) {
+        this.tipoDocUsuario = tipoDocUsuario;
+    }
+    public String getNumeroDocUsuario() {
+        return numeroDocUsuario;
+    }
+    public void setNumeroDocUsuario(String numeroDocUsuario) {
+        this.numeroDocUsuario = numeroDocUsuario;
+    }
     public Usuario(String tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
@@ -91,5 +133,32 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
         this.estadoUsuario = estadoUsuario;
     }
+    public Usuario(String nombreUsuario, String apellidoUsuario, String correoUsuario, String contrasenaUsuario,
+    String tipoUsuario, Boolean estadoUsuario, String telefonoUsuario, String tipoDocUsuario,
+    String numeroDocUsuario) {
+this.nombreUsuario = nombreUsuario;
+this.apellidoUsuario = apellidoUsuario;
+this.correoUsuario = correoUsuario;
+this.contrasenaUsuario = contrasenaUsuario;
+this.tipoUsuario = tipoUsuario;
+this.estadoUsuario = estadoUsuario;
+this.telefonoUsuario = telefonoUsuario;
+this.tipoDocUsuario = tipoDocUsuario;
+this.numeroDocUsuario = numeroDocUsuario;
+}
+public Usuario(int idUsuario, String nombreUsuario, String apellidoUsuario, String correoUsuario,
+    String contrasenaUsuario, String tipoUsuario, Boolean estadoUsuario, String telefonoUsuario,
+    String tipoDocUsuario, String numeroDocUsuario) {
+this.idUsuario = idUsuario;
+this.nombreUsuario = nombreUsuario;
+this.apellidoUsuario = apellidoUsuario;
+this.correoUsuario = correoUsuario;
+this.contrasenaUsuario = contrasenaUsuario;
+this.tipoUsuario = tipoUsuario;
+this.estadoUsuario = estadoUsuario;
+this.telefonoUsuario = telefonoUsuario;
+this.tipoDocUsuario = tipoDocUsuario;
+this.numeroDocUsuario = numeroDocUsuario;
+}
     
 }
