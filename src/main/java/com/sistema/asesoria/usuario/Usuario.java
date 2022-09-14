@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 //import javax.persistence.JoinColumn;
 //import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
@@ -17,10 +19,12 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
 
-    @NotBlank(message="El nombre de usuario no puede estar vacío")
+    @NotNull(message = "Debes especificar el nombre")
+    @Size(min = 1, max = 50, message = "El nombre debe medir entre 1 y 50")
     private String nombreUsuario;
 
-    @NotBlank(message="El apellido de usuario no puede estar vacío")
+    @NotNull(message = "Debes especificar el nombre")
+    @Size(min = 1, max = 50, message = "El nombre debe medir entre 1 y 50")
     private String apellidoUsuario;
 
     @Email (message = "Por favor validar el correo")
@@ -32,22 +36,22 @@ public class Usuario {
 
     private Boolean estadoUsuario;
 
-    @NotNull ()
-    @Size(max = 10, message = "Por favor solo numeros")
-    private String telefonoUsuario;
+    @NotNull(message = "Debes especificar el Telefono")
+    @Size(min = 1, max = 10, message = "El código debe medir entre 1 y 10")
+    private String  telefonoUsuario;
 
 
     private String tipoDocUsuario;
 
-    @NotNull
-    @Size(max = 10)
-    private String numeroDocUsuario;
+    @NotNull(message = "Debes especificar el Documento")
+    @Size(min = 1, max = 10, message = "El código debe medir entre 1 y 10")
+    private String  numeroDocUsuario;
     
 
-    public String getTelefonoUsuario() {
+    public String  getTelefonoUsuario() {
         return telefonoUsuario;
     }
-    public void setTelefonoUsuario(String telefonoUsuario) {
+    public void setTelefonoUsuario(String  telefonoUsuario) {
         this.telefonoUsuario = telefonoUsuario;
     }
     public String getTipoDocUsuario() {
@@ -56,10 +60,10 @@ public class Usuario {
     public void setTipoDocUsuario(String tipoDocUsuario) {
         this.tipoDocUsuario = tipoDocUsuario;
     }
-    public String getNumeroDocUsuario() {
+    public String  getNumeroDocUsuario() {
         return numeroDocUsuario;
     }
-    public void setNumeroDocUsuario(String numeroDocUsuario) {
+    public void setNumeroDocUsuario(String  numeroDocUsuario) {
         this.numeroDocUsuario = numeroDocUsuario;
     }
     public Usuario(String tipoUsuario) {
@@ -134,8 +138,8 @@ public class Usuario {
         this.estadoUsuario = estadoUsuario;
     }
     public Usuario(String nombreUsuario, String apellidoUsuario, String correoUsuario, String contrasenaUsuario,
-    String tipoUsuario, Boolean estadoUsuario, String telefonoUsuario, String tipoDocUsuario,
-    String numeroDocUsuario) {
+    String tipoUsuario, Boolean estadoUsuario, String  telefonoUsuario, String tipoDocUsuario,
+    String  numeroDocUsuario) {
 this.nombreUsuario = nombreUsuario;
 this.apellidoUsuario = apellidoUsuario;
 this.correoUsuario = correoUsuario;
@@ -147,8 +151,8 @@ this.tipoDocUsuario = tipoDocUsuario;
 this.numeroDocUsuario = numeroDocUsuario;
 }
 public Usuario(int idUsuario, String nombreUsuario, String apellidoUsuario, String correoUsuario,
-    String contrasenaUsuario, String tipoUsuario, Boolean estadoUsuario, String telefonoUsuario,
-    String tipoDocUsuario, String numeroDocUsuario) {
+    String contrasenaUsuario, String tipoUsuario, Boolean estadoUsuario, String  telefonoUsuario,
+    String tipoDocUsuario, String  numeroDocUsuario) {
 this.idUsuario = idUsuario;
 this.nombreUsuario = nombreUsuario;
 this.apellidoUsuario = apellidoUsuario;

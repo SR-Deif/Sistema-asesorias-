@@ -37,7 +37,8 @@
 					</label>
 					<div class="col-sm-8">
 						<input type="text" th:field="*{nombreUsuario}" class="form-control"
-							required />
+						th:classappend="${#fields.hasErrors('nombreUsuario')} ? 'is-invalid' : ''" required />
+							<div th:errors="*{nombreUsuario}"></div>
 					</div>
 				</div>
 				<div class="form-group row">
@@ -45,7 +46,8 @@
 					</label>
 					<div class="col-sm-8">
 						<input type="text" th:field="*{apellidoUsuario}" class="form-control"
-							required />
+						th:classappend="${#fields.hasErrors('apellidoUsuario')} ? 'is-invalid' : ''" required />
+							<div th:errors="*{apellidoUsuario}"></div>
 					</div>
 				</div>
 
@@ -70,7 +72,8 @@
 					</label>
 					<div class="col-sm-8">
 						<input type="number" th:field="*{telefonoUsuario}" class="form-control"
-							required />
+						th:classappend="${#fields.hasErrors('telefonoUsuario')} ? 'is-invalid' : ''" required />
+							<div th:errors="*{telefonoUsuario}"></div>
 					</div>
 				</div>
 				<div class="form-group row">

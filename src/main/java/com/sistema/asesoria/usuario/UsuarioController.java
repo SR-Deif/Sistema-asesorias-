@@ -8,8 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+
+import org.springframework.validation.BindingResult;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class UsuarioController {
@@ -50,5 +55,18 @@ public class UsuarioController {
         usuariorepository.deleteById(idUsuario);
         return "redirect:/usuarios";
       }
-}	
+
+      @PostMapping("/usuarios/nuevo")
+      public String mostrarFormularioDeNuevoUsuario(@ModelAttribute @Valid Usuario usuario, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
+          if (bindingResult.hasErrors()) {
+              return "usuario/usuario_formulario";
+          }
+          usuariorepository.save(usuario);
+          redirectAttrs
+                  .addFlashAttribute("mensaje", "Agregado correctamente")
+                  .addFlashAttribute("clase", "success");
+          return "redirect:/usuarios";
+      }
+  }
+
 
