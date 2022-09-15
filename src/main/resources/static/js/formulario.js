@@ -2,47 +2,51 @@ const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
 
 const expresiones = {
-	nom_Cliente: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-	ape_Cliente: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-	correo_Cliente: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-	num_Cliente: /^\d{7,10}$/, // 7 a 14 numeros.
+	nomCliente:/^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+	apeCliente:/^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
 	direccion:/^[a-zA-ZÀ-ÿ0-9_.+-\s+#]{1,100}$/, // Letras, numeros, guion y guion_bajo
-    detalle:/^[a-zA-ZÀ-ÿ0-9_.+-\s+#]{1,10}$/ // Letras, numeros, guion y guion_bajo
-
+	detalle:/^[a-zA-ZÀ-ÿ0-9_.+-\s+#]{1,100}$/, // Letras, numeros, guion y guion_bajo
+	correoCliente:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+	numCliente:/^\d{7,10}$/ // 7 a 14 numeros.
 	// descripcion: /^[a-zA-ZÀ-ÿ\s]{1,100}$/
-};
+}
 
 const campos = {
-	nom_Cliente: false,
-	ape_Cliente: false,
-    direccion: false,
-    detalle: false,
-	correo_Cliente: false,
-	num_Cliente: false,
+	nomCliente: false,
+	apeCliente: false,
+	direccion: false,
+	detalle: false,
+	correoCliente: false,
+	numCliente: false
 	// descripcion: false
 }
 
 const validarFormuario = (e)  =>{
-	// console.log('se ejecuto');
+	console.log('se ejecuto');
 	 switch (e.target.name){
 		case "nomCliente":
-			validarCampo(expresiones.nom_Cliente, e.target, 'nomCliente');
-			// console.log('funciona')
+			validarCampo(expresiones.nomCliente, e.target, 'nomCliente');
+			console.log('funciona')
 		break;
 		case "apeCliente":
-			validarCampo(expresiones.ape_Cliente, e.target, 'apeCliente');
+			validarCampo(expresiones.apeCliente, e.target, 'apeCliente');
+			console.log('funciona2')
 		break;
 		case "direccion":
 			validarCampo(expresiones.direccion, e.target, 'direccion');
+			console.log('funciona3')
 		break;
 		case "detalle":
 			validarCampo(expresiones.detalle, e.target, 'detalle');
+			console.log('funciona4')
 		break;
 		case "correoCliente":
-			validarCampo(expresiones.correo_Cliente, e.target, 'correoCliente');
+			validarCampo(expresiones.correoCliente, e.target, 'correoCliente');
+			console.log('funciona5')
 		break;
 		case "numCliente":
-			validarCampo(expresiones.num_Cliente, e.target, 'numCliente');
+			validarCampo(expresiones.numCliente, e.target, 'numCliente');
+			console.log('funciona6')
 		break;
 		// case "descripcion":
 		// 	validarCampo(expresiones.descripcion, e.target, 'descripcion');
@@ -83,7 +87,7 @@ formulario.addEventListener('submit', (e) => {
 	const terminos = document.getElementById('terminos');
 
 	//validar que todos los campos sean verdaderos
-	if(campos.nom_Cliente && campos.ape_Cliente && campos.num_Cliente  && campos.correo_Cliente && campos.direccion && campos.detalle && terminos){
+	if(campos.nomCliente && campos.apeCliente && campos.direccion && campos.detalle && campos.numDoc && campos.correoCliente  &&  terminos){
 		formulario.reset();
 
 		document.getElementById('formulario-mensaje-correcto').classList.add('formulario-mensaje-correcto-activo');
@@ -99,4 +103,3 @@ formulario.addEventListener('submit', (e) => {
 	}
 });
 
- 

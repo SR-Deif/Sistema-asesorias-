@@ -28,7 +28,7 @@ public class Solicitud {
     private Usuario usuario;
 
     @ManyToOne//muchos a uno
-    @JoinColumn(name = "idCliente")//con la columna que se va a unir
+    @JoinColumn(name = "id_Cliente")//con la columna que se va a unir
     private Cliente cliente;
 
     //vacio

@@ -64,6 +64,12 @@
 						</select>
                     </div>
 				</div>
+				<select th:field="*{cliente}">
+					<option value="">SELECCIONAR Cliente</option>
+					<th:block th:each="listaCliente : ${listaCliente}">
+					<option th:text="${listaCliente.nom_Cliente}" th:value="${listaCliente.id_Cliente}"></option>
+					</th:block>
+				  </select>
 				 		<div class="text-center p">
 					<button class="boton" type="submit">
 						<a style="--clr:#1e9bff" onclick="return confirm('Deseas guardar estos datos!');"><span>Guardar</span><i></i></a>
