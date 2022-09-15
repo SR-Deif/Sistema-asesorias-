@@ -13,45 +13,41 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ClienteController {
     
     @Autowired//traemos los repositorios
-    private ClienteRepository clienterepository;
+    private ClienteRepository agro;
     //public String es porque me retorna a un archivo html
 
     //Lista
     @GetMapping("/clientes")//redireccionar
-    public String listarClientes(Model model){
-        List<Cliente> listaClientes = clienterepository.findAll();//mostrar todo lista
-        model.addAttribute("listaClientes", listaClientes);
+    public String listarClientes(Model m){
+        List<Cliente> listaClientes = agro.findAll();//mostrar todo lista
+        m.addAttribute("listaClientes", listaClientes);
         return "cliente/clientes";//retornar
       }
 
     //Agregar Cliente
     @GetMapping("/clientes/nuevo")
-    public String mostrarFormularioDeNuevoCliente(Model model){
-      model.addAttribute("cliente", new Cliente());
+    public String mostrarFormularioDeNuevoCliente(Model m){
+      m.addAttribute("cliente", new Cliente());
       return "cliente/cliente_formulario";
     }   
     //guardar Cliente
     @PostMapping("/clientes/guardar")
     public String guardarCliente(Cliente cliente){
-      clienterepository.save(cliente);
+      agro.save(cliente);
       return "redirect:/clientes";
     }
     //editar Cliente
-    @GetMapping("/clientes/editar/{idCliente}")
-    public String mostrarFormularioModificarCliente(@PathVariable("idCliente")Integer idCliente,Model modelo){
-      Cliente cliente =  clienterepository.findById(idCliente).get();
+    @GetMapping("/clientes/editar/{id_Cliente}")
+    public String mostrarFormularioModificarCliente(@PathVariable("id_Cliente")Integer id_Cliente,Model modelo){
+      Cliente cliente =  agro.findById(id_Cliente).get();
       modelo.addAttribute("cliente", cliente);
       return "cliente/cliente_formulario";
     }
     //Eliminar usuario
-    @GetMapping("/clientes/eliminar/{idCliente}")
-    public String eliminarCliente(@PathVariable("idCliente")Integer idCliente,Model modelo){
-      clienterepository.deleteById(idCliente);
+    @GetMapping("/clientes/eliminar/{id_Cliente}")
+    public String eliminarCliente(@PathVariable("id_Cliente")Integer id_Cliente,Model modelo){
+      agro.deleteById(id_Cliente);
       return "redirect:/clientes";
       }
-    
-
-    
-
     
 }
