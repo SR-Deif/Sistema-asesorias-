@@ -34,6 +34,7 @@ public class UsuarioController {
       @GetMapping("/usuarios/nuevo")
       public String mostrarFormularioDeNuevoUsuario(Model model){
         model.addAttribute("usuario", new Usuario());
+
         return "usuario/usuario_formulario";
       }
       //guardar usuario
