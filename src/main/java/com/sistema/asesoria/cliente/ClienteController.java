@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class ClienteController {
@@ -51,5 +53,10 @@ public class ClienteController {
       agro.deleteById(id_Cliente);
       return "redirect:/clientes";
       }
-    
+// [    
+//     @GetMapping(value="path")
+//     public SomeData getMethodName(@RequestParam String param) {
+//         return new SomeData();
+//     }
+//       ]
 }
