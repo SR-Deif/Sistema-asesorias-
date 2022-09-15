@@ -1,23 +1,16 @@
 package com.sistema.asesoria.usuario;
 
-import java.util.Collection;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.persistence.JoinColumn;
-
 
 @Entity
 @Table(name ="usuario", uniqueConstraints = @UniqueConstraint(columnNames = "correoUsuario"))
@@ -30,8 +23,8 @@ public class Usuario {
     @Size(min = 1, max = 50, message = "El nombre debe medir entre 1 y 50")
     private String nombreUsuario;
 
-    @NotNull(message = "Debes especificar el nombre")
-    @Size(min = 1, max = 50, message = "El nombre debe medir entre 1 y 50")
+    @NotNull(message = "Debes especificar el apellido")
+    @Size(min = 1, max = 50, message = "El apellido debe medir entre 1 y 50")
     private String apellidoUsuario;
 
     @Email (message = "Por favor validar el correo")
