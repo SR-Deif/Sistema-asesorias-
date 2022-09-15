@@ -32,7 +32,8 @@
                 <th>ID</th>
                 <th>Fecha</th>
                 <!--<th>Estado</th>-->
-                <th>Usuario</th>
+                <th>Usuario Correo</th>
+                <th>Cliente Correo</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -41,7 +42,9 @@
                 <td th:text="${solicitud.idSolicitud}"></td>
                 <td th:text="${solicitud.fechaCreacion}"></td>
                 <!--<td th:text="${solicitud.estadoSolicitud}"></td>-->
-                <td th:text="${solicitud.usuario.correoUsuario}"></td>
+                
+                    <td th:text="${solicitud.usuario.correoUsuario}"></td>
+                    <td th:text="${solicitud.cliente.correo_Cliente}"></td>
                 <td><a th:href="@{'/solicituds/editar'+'/'+ ${solicitud.idSolicitud}}"class="btn btn-info">Editar</a> &nbsp; 
                     <a th:href="@{'/solicituds/eliminar'+ '/' + ${solicitud.idSolicitud}}"class="btn btn-danger">Rechazar</a></td>
             </tr>

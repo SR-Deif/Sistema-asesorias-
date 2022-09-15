@@ -33,6 +33,22 @@ public class Cliente {
     @Column(length = 50)
     private String num_Cliente;
 
+    public Cliente(String correo_Cliente) {
+        this.correo_Cliente = correo_Cliente;
+    }
+
+
+    public Cliente(String nom_Cliente, String ape_Cliente, String direccion, String detalle_Direccion,
+            String correo_Cliente, String num_Cliente) {
+        this.nom_Cliente = nom_Cliente;
+        this.ape_Cliente = ape_Cliente;
+        this.direccion = direccion;
+        this.detalle_Direccion = detalle_Direccion;
+        this.correo_Cliente = correo_Cliente;
+        this.num_Cliente = num_Cliente;
+    }
+
+
     public Cliente() {
     }
 

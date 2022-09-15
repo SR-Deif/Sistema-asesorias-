@@ -38,7 +38,7 @@ public class Solicitud {
     //relacion usuario
     public Solicitud(Usuario usuario) {
         this.usuario = usuario;
-    }    
+    }  
 
     //id
     public Solicitud(Integer idSolicitud) {

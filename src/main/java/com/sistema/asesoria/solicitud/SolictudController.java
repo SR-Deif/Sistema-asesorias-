@@ -23,7 +23,7 @@ public class SolictudController {
     private SolicitudRepository solicitudrepository;
     @Autowired
     private UsuarioRepository usuariorepository;
-    @Autowired 
+    @Autowired
     private ClienteRepository clienteRepository;
 
     //lista
@@ -39,19 +39,19 @@ public class SolictudController {
     public String mostrarFormularioDeNuevoSolicitud(Model model){
         List<Usuario>listaUsuarios =usuariorepository.findAll();//poder alistar todas los usuarios
         //aqui le pasamos una nueva instancia de solicitud para asi poder asignar a los campos en el html
-        List<Cliente>listaCliente = clienteRepository.findAll();
+         List<Cliente>listaClientes = clienteRepository.findAll();
 
         model.addAttribute("solicitud", new Solicitud());
         model.addAttribute("listaUsuarios", listaUsuarios);//aqui agregamos la lista
-        model.addAttribute("listaCliente", listaCliente);
+        model.addAttribute("listaClientes", listaClientes);
         return "solicitud/solicitud_formulario";
     }
 
     //guardar
     @PostMapping("/solicituds/guardar")
-    public String guardarSolicitud(@Valid Solicitud solicitud){
+    public String guardarSolicitud( Solicitud solicitud){
         solicitudrepository.save(solicitud);
-        return "redirect:/";
+        return "redirect:/solicituds";
     }
 
     //editar
