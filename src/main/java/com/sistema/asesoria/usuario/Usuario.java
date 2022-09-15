@@ -53,12 +53,7 @@ public class Usuario {
     private String  numeroDocUsuario;
     
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-        name = "usuarios_roles",
-        joinColumns = @JoinColumn(name = "usuario_id",referencedColumnName = "id"),
-        inverseJoinColumns = @JoinColumn(name = "rol_id",referencedColumnName = "idUsuario"))
-    private Collection<Rol> tipoUsuario;
+    private String tipoUsuario;
     
 
     public String  getTelefonoUsuario() {
@@ -109,10 +104,10 @@ public class Usuario {
     public void setContrasenaUsuario(String contrasenaUsuario) {
         this.contrasenaUsuario = contrasenaUsuario;
     }
-    public Collection<Rol> getTipoUsuario() {
+    public String getTipoUsuario() {
         return tipoUsuario;
     }
-    public void setTipoUsuario(Collection<Rol> tipoUsuario) {
+    public void setTipoUsuario(String tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
     public Boolean getEstadoUsuario() {
@@ -130,7 +125,7 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
     public Usuario(String nombreUsuario, String apellidoUsuario, String correoUsuario, String contrasenaUsuario,
-            Collection<Rol> tipoUsuario, Boolean estadoUsuario) {
+            String tipoUsuario, Boolean estadoUsuario) {
                 super();
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
@@ -140,7 +135,7 @@ public class Usuario {
         this.estadoUsuario = estadoUsuario;
     }
     public Usuario(int idUsuario, String nombreUsuario, String apellidoUsuario, String correoUsuario,
-            String contrasenaUsuario, Collection<Rol> tipoUsuario, Boolean estadoUsuario) {
+            String contrasenaUsuario, String tipoUsuario, Boolean estadoUsuario) {
                 super();
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
@@ -151,7 +146,7 @@ public class Usuario {
         this.estadoUsuario = estadoUsuario;
     }
     public Usuario(String nombreUsuario, String apellidoUsuario, String correoUsuario, String contrasenaUsuario,
-    Collection<Rol> tipoUsuario, Boolean estadoUsuario, String  telefonoUsuario, String tipoDocUsuario,
+    String tipoUsuario, Boolean estadoUsuario, String  telefonoUsuario, String tipoDocUsuario,
     String  numeroDocUsuario) {
         super();
 this.nombreUsuario = nombreUsuario;
@@ -165,7 +160,7 @@ this.tipoDocUsuario = tipoDocUsuario;
 this.numeroDocUsuario = numeroDocUsuario;
 }
 public Usuario(int idUsuario, String nombreUsuario, String apellidoUsuario, String correoUsuario,
-    String contrasenaUsuario, Collection<Rol> tipoUsuario, Boolean estadoUsuario, String  telefonoUsuario,
+    String contrasenaUsuario, String tipoUsuario, Boolean estadoUsuario, String  telefonoUsuario,
     String tipoDocUsuario, String  numeroDocUsuario) {
         super();
 this.idUsuario = idUsuario;
@@ -180,14 +175,9 @@ this.tipoDocUsuario = tipoDocUsuario;
 this.numeroDocUsuario = numeroDocUsuario;
 }
 
-public Usuario(Collection<Rol> tipoUsuario) {
+public Usuario(String tipoUsuario) {
     super();
     this.tipoUsuario = tipoUsuario;
 }
-public Usuario(String nombreUsuario2, String apellidoUsuario2, String correoUsuario2, String contrasenaUsuario2,
-        Boolean estadoUsuario2, String numeroDocUsuario2, String tipoDocUsuario2, List<Rol> asList) {
-}
-
-
   
 }
