@@ -39,7 +39,7 @@ public class UsuarioController {
       }
       //guardar usuario
       @PostMapping("/usuarios/guardar")
-      public String guardarUsuario(@Validated Usuario usuario){
+      public String guardarUsuario(@Valid Usuario usuario){
         usuariorepository.save(usuario);
         return "redirect:/usuarios";
       }

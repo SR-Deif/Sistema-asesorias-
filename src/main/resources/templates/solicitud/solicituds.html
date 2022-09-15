@@ -39,9 +39,9 @@
                 <td th:text="${solicitud.idSolicitud}"></td>
                 <td th:text="${solicitud.fechaCreacion}"></td>
                 <!--<td th:text="${solicitud.estadoSolicitud}"></td>-->
-                <td th:text="${solicitud.usuario.tipoUsuario}"></td>
+                <td th:text="${solicitud.usuario.correoUsuario}"></td>
                 <td><a th:href="@{'/solicituds/editar'+'/'+ ${solicitud.idSolicitud}}"class="btn btn-info">Editar</a> &nbsp; 
-                    <a th:href="@{'/solicituds/eliminar'+ '/' + ${solicitud.idSolicitud}}"class="btn btn-danger">Eliminar</a></td>
+                    <!--<a th:href="@{'/solicituds/eliminar'+ '/' + ${solicitud.idSolicitud}}"class="btn btn-danger">Eliminar</a>--></td>
             </tr>
         </tbody>
     </table>
