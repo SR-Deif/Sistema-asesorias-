@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -39,7 +38,7 @@ public class UsuarioController {
       }
       //guardar usuario
       @PostMapping("/usuarios/guardar")
-      public String guardarUsuario(@Validated Usuario usuario){
+      public String guardarUsuario(@Valid Usuario usuario){
         usuariorepository.save(usuario);
         return "redirect:/usuarios";
       }

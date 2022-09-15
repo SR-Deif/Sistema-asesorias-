@@ -34,7 +34,7 @@ public class Usuario {
 
     private Boolean estadoUsuario;
 
-    @NotNull(message = "Debes especificar el Telefono")
+    @NotNull
     @Size(min = 1, max = 10, message = "El código debe medir entre 1 y 10")
     private String  telefonoUsuario;
 

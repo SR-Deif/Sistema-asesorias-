@@ -37,8 +37,8 @@
 					<label class="col-form-label col-sm-4">Fecha Creacion :
 					</label>
 					<div class="col-sm-8">
-						<input type="date" th:field="*{fechaCreacion}" class="form-control"
-							required />
+							<input hidden class="form-control" type="text" th:field="*{fechaCreacion}" id="fechaSubCampana" placeholder="" >
+							<input disabled class="form-control" type="text"  id="fecha">
 					</div>
                 </div>
 				<!--<div class="form-group row">
@@ -49,8 +49,6 @@
 							required />
 					</div>
 				</div>-->
-
-
                 <!--Usuario-->
                 <div class="form-group row">
 					<label class="col-form-label col-sm-4">Usuario : </label>
@@ -74,10 +72,33 @@
 					<button class="boton" type="submit">
 						<a style="--clr:#1e9bff" onclick="return confirm('Deseas guardar estos datos!');"><span>Guardar</span><i></i></a>
 					</button>
+					<button type="button" value="reset" onclick="limpiar();" class="btn btn-primary">Limpiar</button>
+
 				</div>
 			</div>
 		</form>
 	</div>
-				
+			<script>
+				setFecha();
+				setFechaa();
+
+function setFecha(){
+  var input = document.getElementById("fechaSubCampana");
+    var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+    var fecha = new Date();
+    input.value = (fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
+    var esto = input.value = (fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
+}function setFechaa(){
+  var input = document.getElementById("fecha");
+    var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+    var fecha = new Date();
+    input.value = (fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
+    var esto = input.value = (fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
+}
+function limpiar(){
+  document.getElementById("form").reset();
+  setFecha();
+}
+			</script>	
 </body>
 </html>
