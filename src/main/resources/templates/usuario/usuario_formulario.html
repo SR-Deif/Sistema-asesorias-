@@ -2,8 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<title></title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<title>Usuario</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -22,14 +23,14 @@
 
 	<div class="container text-center">
 		<div>
-			<!--si esto es igual a Usuario si lo voy agregar me saldra este titulo-->
+			<!--si esto es igual a solicitud si lo voy agregar me saldra este titulo-->
 			<h1 th:if="${usuario.idUsuario == null}">Registro de Usuario</h1>
 			<!--lo contrario de registrar -->
 			<h1 th:unless="${usuario.idUsuario == null}">Editar Usuario</h1>
 		</div>
 		
 		<form th:action="@{/usuarios/guardar}" th:object="${usuario}"
-			method="post" style="max-width: 600px; margin: 0 auto;">
+			method="post" style="max-width: 600px; margin: 0 auto;" class="needs-validation" novalidate>
 			<input type="hidden" th:field="*{idUsuario}" th:value="${usuario.idUsuario}" />
 			<div class="m-3">
 				<div class="form-group row">
@@ -38,7 +39,13 @@
 					<div class="col-sm-8">
 						<input type="text" th:field="*{nombreUsuario}" class="form-control"
 						th:classappend="${#fields.hasErrors('nombreUsuario')} ? 'is-invalid' : ''" required />
-							<div th:errors="*{nombreUsuario}"></div>
+						<div class="valid-feedback">
+							Todo Bien!
+						  </div>
+						  <div class="invalid-feedback">
+							Este Campo es Obligatorio!
+						  </div>
+					
 					</div>
 				</div>
 				<div class="form-group row">
@@ -47,7 +54,12 @@
 					<div class="col-sm-8">
 						<input type="text" th:field="*{apellidoUsuario}" class="form-control"
 						th:classappend="${#fields.hasErrors('apellidoUsuario')} ? 'is-invalid' : ''" required />
-							<div th:errors="*{apellidoUsuario}"></div>
+						<div class="valid-feedback">
+							Todo Bien!
+						  </div>
+						  <div class="invalid-feedback">
+							Este Campo es Obligatorio!
+						  </div>
 					</div>
 				</div>
 
@@ -55,8 +67,15 @@
 					<label class="col-form-label col-sm-4">Correo :
 					</label>
 					<div class="col-sm-8">
-						<input type="email" id="correo" th:field="*{correoUsuario}" placeholder="Ejemplo@dominio.com" class="form-control"
+						<input type="email" onkeyup="check()" id="email" th:field="*{correoUsuario}" placeholder="Ejemplo@dominio.com" class="form-control"
 							required />
+						<div class="icons">
+							<span class="icon1 fas fa-exclamation"></span>
+							<span class="icon2 fas fa-check"></span>
+						</div>
+						<div class="texto-error">
+							Introduca un correo valido!
+						</div>
 					</div>
 				</div>
 				<div class="form-group row">
@@ -65,6 +84,12 @@
 					<div class="col-sm-8">
 						<input type="password" th:field="*{contrasenaUsuario}" class="form-control"
 							required />
+							<div class="valid-feedback">
+							Todo Bien!
+						  </div>
+						  <div class="invalid-feedback">
+							Este Campo es Obligatorio!
+						  </div>
 					</div>
 				</div>
 				<div class="form-group row">
@@ -73,15 +98,27 @@
 					<div class="col-sm-8">
 						<input type="number" th:field="*{telefonoUsuario}" class="form-control"
 						th:classappend="${#fields.hasErrors('telefonoUsuario')} ? 'is-invalid' : ''" required />
-							<div th:errors="*{telefonoUsuario}"></div>
+						<div class="valid-feedback">
+							Todo Bien!
+						  </div>
+						  <div class="invalid-feedback">
+							Este Campo es Obligatorio!
+						  </div>
 					</div>
 				</div>
+
 				<div class="form-group row">
 					<label class="col-form-label col-sm-4">Tipo de Documento :
 					</label>
 					<div class="col-sm-8">
-						<input type="text" th:field="*{tipoDocUsuario}" class="form-control"
-							required />
+							<select name="select" th:field="*{tipoDocUsuario}" class="form-control" required aria-label="select example">
+  								<option value="" selected>--Elegir tipo de Docuemnto--</option>
+  								<option value="C.C">C.C</option>
+  								<option value="C.E">C.E</option>
+								</select>
+								<div class="invalid-feedback">Elegir el Tipo de Documento</div>
+							</div>
+						  
 					</div>
 				</div>
 				<div class="form-group row">
@@ -90,30 +127,28 @@
 					<div class="col-sm-8">
 						<input type="number" th:field="*{numeroDocUsuario}" class="form-control"
 							required />
+							<div class="valid-feedback">
+							Todo Bien!
+						  </div>
+						  <div class="invalid-feedback">
+							Este Campo es Obligatorio!
+						  </div>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-form-label col-sm-4">Tipo Usuario :
 					</label>
 					<div class="col-sm-8">
-							<select name="select"  class="form-control" required>
-  								<option  selected>--Elegir tipo de Usuario--</option>
-  								<option   >Value 2</option>
-  								<option  >Value 3</option>
+							<select name="select" th:field="*{tipoUsuario}" class="form-control" required aria-label="select example">
+  								<option value="" selected>--Elegir tipo de Usuario--</option>
+  								<option value="Administrador">Administrador</option>
+  								<option value="Ingeniero">Ingeniero</option>
 								</select>
+								<div class="invalid-feedback">Elegir el Tipo de Usuario</div>
+							</div>
+						  
 					</div>
 				</div>
-				<!--<div class="form-group row">
-					<label class="col-form-label col-sm-4">Usuario : </label>
-					<div class="col-sm-8">
-                        <select th:field="*{usuario}" class="form-control" required>
-								
-								<option th:text="${tipoUsuario}" th:value="${idUsuario}"></option>
-								
-							</th:block>
-						</select>
-                    </div>
-				</div>-->
 				<!--<div class="form-group row">
 					<label class="col-form-label col-sm-4">Estado :
 					</label>
@@ -130,5 +165,62 @@
 			</div>
 		</form>
 	</div>
+
+	<script>
+		// Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+
+	const email =document.querySelector("#email");
+	const icon1 =document.querySelector(".icon1");
+	const icon2 =document.querySelector(".icon2");
+	const error =document.querySelector(".text-error");
+	const btn =document.querySelector("button");
+
+	let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+	function check(){
+		if(email.value.match(regExp)){
+			email.style.boderColor="#27ae60";
+			email.style.background="#eafaf1";
+			icon1.style.display="none";
+			icon2.style.display="block";
+			error.style.display="none";
+			btn.style.display="block";
+		}else{
+			email.style.boderColor="#e74c3c";
+			email.style.background="#fceae9";
+			icon1.style.display="block";
+			icon2.style.display="none";
+			btn.style.display="none";
+			error.style.display="block";
+		}
+
+		if(email.value==""){
+			email.style.boderColor="#lightgrey";
+			email.style.background="#fff";
+			icon1.style.display="none";
+			icon2.style.display="none";
+			btn.style.display="none";
+			error.style.display="none";
+		}
+	}
+
+	</script>
 </body>
 </html>

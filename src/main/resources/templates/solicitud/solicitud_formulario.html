@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
-    <title>Document</title>
+    <title>Solicitud</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -58,7 +58,7 @@
                         <select th:field="*{usuario}" class="form-control" required>
 							<th:block th:each="usuario : ${listaUsuarios}">
 								<!--recorre toda la lista de la usuario que le coloque en el controlador-->
-								<option th:text="${usuario.tipoUsuario}" th:value="${usuario.idUsuario}"></option>
+								<option th:text="${usuario.correoUsuario}" th:value="${usuario.idUsuario}"></option>
 								<!--el texto va ser el nombre pero con el id me guarda el objeto es lo mas importante-->
 							</th:block>
 						</select>
