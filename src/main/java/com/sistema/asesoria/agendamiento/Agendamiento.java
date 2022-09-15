@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Future;
 
 import com.sistema.asesoria.asesoria.Asesoria;
 import com.sistema.asesoria.solicitud.Solicitud;
@@ -19,7 +20,9 @@ public class Agendamiento {
     @Id    
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idAgendamiento;
+    @Future(message ="Debes elegir una fecha a Agendar ")
     private Date fechaAgendamiento;
+    @Future(message ="Debes elegir una fecha para Realizar la Asesoria")
     private Date fechaRevisionAgendamiento;
     
     @OneToOne //uno a uno

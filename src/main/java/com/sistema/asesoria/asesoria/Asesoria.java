@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Asesoria {
@@ -12,7 +15,11 @@ public class Asesoria {
     private int idAsesoria;
     //parametros
     private String tipoAsesoria;
+    @NotNull( message = "El precio es obligatorio")
+    @Size(min =10, max =1000, message ="El precio minimo es 10  y el precio maximo es 1000")
     private Double costoAsesoria;
+    @NotEmpty(message ="Debes describir la Asesoria")
+    @Size(min = 20, max = 200, message = "La descripcion minimo es  20 y  maxima 200")
     private String descripcionAsesoria;
     //private Boolean estadoAsesoria;
     
