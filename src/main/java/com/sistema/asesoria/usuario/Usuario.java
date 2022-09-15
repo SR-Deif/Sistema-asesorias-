@@ -1,19 +1,19 @@
 package com.sistema.asesoria.usuario;
 
 import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-//import javax.persistence.JoinColumn;
-//import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
+@Table(name ="usuario", uniqueConstraints = @UniqueConstraint(columnNames = "correoUsuario"))
 public class Usuario {
     @Id    
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,16 +23,14 @@ public class Usuario {
     @Size(min = 1, max = 50, message = "El nombre debe medir entre 1 y 50")
     private String nombreUsuario;
 
-    @NotNull(message = "Debes especificar el nombre")
-    @Size(min = 1, max = 50, message = "El nombre debe medir entre 1 y 50")
+    @NotNull(message = "Debes especificar el apellido")
+    @Size(min = 1, max = 50, message = "El apellido debe medir entre 1 y 50")
     private String apellidoUsuario;
 
     @Email (message = "Por favor validar el correo")
     private String correoUsuario;
 
     private String contrasenaUsuario;
-
-    private String tipoUsuario;
 
     private Boolean estadoUsuario;
 
@@ -46,6 +44,9 @@ public class Usuario {
     @NotNull(message = "Debes especificar el Documento")
     @Size(min = 1, max = 10, message = "El código debe medir entre 1 y 10")
     private String  numeroDocUsuario;
+    
+
+    private String tipoUsuario;
     
 
     public String  getTelefonoUsuario() {
@@ -65,9 +66,6 @@ public class Usuario {
     }
     public void setNumeroDocUsuario(String  numeroDocUsuario) {
         this.numeroDocUsuario = numeroDocUsuario;
-    }
-    public Usuario(String tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
     }
     public int getIdUsuario() {
         return idUsuario;
@@ -116,10 +114,12 @@ public class Usuario {
     public Usuario() {
     }
     public Usuario(int idUsuario) {
+        super();
         this.idUsuario = idUsuario;
     }
     public Usuario(String nombreUsuario, String apellidoUsuario, String correoUsuario, String contrasenaUsuario,
             String tipoUsuario, Boolean estadoUsuario) {
+                super();
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
         this.correoUsuario = correoUsuario;
@@ -129,6 +129,7 @@ public class Usuario {
     }
     public Usuario(int idUsuario, String nombreUsuario, String apellidoUsuario, String correoUsuario,
             String contrasenaUsuario, String tipoUsuario, Boolean estadoUsuario) {
+                super();
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
@@ -140,6 +141,7 @@ public class Usuario {
     public Usuario(String nombreUsuario, String apellidoUsuario, String correoUsuario, String contrasenaUsuario,
     String tipoUsuario, Boolean estadoUsuario, String  telefonoUsuario, String tipoDocUsuario,
     String  numeroDocUsuario) {
+        super();
 this.nombreUsuario = nombreUsuario;
 this.apellidoUsuario = apellidoUsuario;
 this.correoUsuario = correoUsuario;
@@ -153,6 +155,7 @@ this.numeroDocUsuario = numeroDocUsuario;
 public Usuario(int idUsuario, String nombreUsuario, String apellidoUsuario, String correoUsuario,
     String contrasenaUsuario, String tipoUsuario, Boolean estadoUsuario, String  telefonoUsuario,
     String tipoDocUsuario, String  numeroDocUsuario) {
+        super();
 this.idUsuario = idUsuario;
 this.nombreUsuario = nombreUsuario;
 this.apellidoUsuario = apellidoUsuario;
@@ -164,5 +167,10 @@ this.telefonoUsuario = telefonoUsuario;
 this.tipoDocUsuario = tipoDocUsuario;
 this.numeroDocUsuario = numeroDocUsuario;
 }
-    
+
+public Usuario(String tipoUsuario) {
+    super();
+    this.tipoUsuario = tipoUsuario;
+}
+  
 }

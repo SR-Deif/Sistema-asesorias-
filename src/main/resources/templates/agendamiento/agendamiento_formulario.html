@@ -39,7 +39,7 @@
                 <label class="col-form-label col-sm-4">Fecha a Agendar:
                 </label>
                 <div class="col-sm-8">
-                    <input type="date" th:field="*{fechaAgendamiento}" class="form-control"required />
+                    <input type="date"  value="2022-08-30" min="2022-09-20" th:field="*{fechaAgendamiento}" class="form-control"required />
                 </div>
             </div>
 
@@ -48,13 +48,13 @@
 				<label class="col-form-label col-sm-4">Fecha Revisión
 				</label>
 				<div class="col-sm-8">
-					<input type="date" th:field="*{fechaRevisionAgendamiento}" class="form-control"required />
+					<input type="date" value="2022-08-30" min="2022-09-20" th:field="*{fechaRevisionAgendamiento}" class="form-control"required />
 				</div>
 			</div>
 
 				 		<div class="text-center p">
 					<button class="boton" type="submit">
-						<a style="--clr:#1e9bff"><span>Guardar</span></a>
+						<a style="--clr:#1e9bff" onclick="return confirm('Deseas guardar estos datos!');"><span>Guardar</span></a>
 					</button>
 				</div>
 			</div>
