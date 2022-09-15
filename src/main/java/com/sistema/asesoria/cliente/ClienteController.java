@@ -2,6 +2,8 @@ package com.sistema.asesoria.cliente;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,12 +29,12 @@ public class ClienteController {
     //Agregar Cliente
     @GetMapping("/clientes/nuevo")
     public String mostrarFormularioDeNuevoCliente(Model m){
-      m.addAttribute("cliente", new Cliente());
+      m.addAttribute("clientes", new Cliente());
       return "cliente/cliente_formulario";
     }   
     //guardar Cliente
     @PostMapping("/clientes/guardar")
-    public String guardarCliente(Cliente cliente){
+    public String guardarCliente(@Valid Cliente cliente){
       agro.save(cliente);
       return "redirect:/clientes";
     }
@@ -40,7 +42,7 @@ public class ClienteController {
     @GetMapping("/clientes/editar/{id_Cliente}")
     public String mostrarFormularioModificarCliente(@PathVariable("id_Cliente")Integer id_Cliente,Model modelo){
       Cliente cliente =  agro.findById(id_Cliente).get();
-      modelo.addAttribute("cliente", cliente);
+      modelo.addAttribute("clientes", cliente);
       return "cliente/cliente_formulario";
     }
     //Eliminar usuario

@@ -6,7 +6,7 @@
 	<script src="https://kit.fontawesome.com/1116b9e412.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
-	<link  rel="stylesheet" href="/src/main/resources/static/css/estilos.css"/>
+	<link  rel="stylesheet" th:href="@{/css/estilos.css}"/>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -26,12 +26,12 @@
 	<!--Fomulario Cliente-->
     <div id="Asesoria">
         <h1>Solicitar Asesoria</h1>
-     <form  th:action="@{/clientes/guardar}" th:objects="${clientes}" method="post" class="formulario" id="formulario">
+     <form  th:action="@{/clientes/guardar}" th:object="${clientes}" method="post" class="formulario" id="formulario">
          <!--Nombre-->
          <div class="formulario-grupo"  id="nomCliente">
              <label for="nomCliente" class="formulario-label">Nombre</label>
              <div class="formulario-input-grupo">
-                 <input th:field="*{nomCliente}" type="text" class="formulario-input" id="nomCliente" name="nomCliente" placeholder="Ej: Martín" >
+                 <input type="text" class="formulario-input" id="nomCliente" name="nomCliente" placeholder="Ej: Martín" th:field="*{nom_Cliente}">
                  <i class="formulario-validacion-estado fa-regular fa-circle-xmark"></i>
              </div>
              <p class="formulario-input-error">El nombre tiene que ser de 4 a 10 letras, no puede contener números ni caracteres especiales.</p>
@@ -109,7 +109,7 @@
         </form>
     </div>	
 	
-	<script src="/src/main/resources/static/js/formulario.js"></script>
+	<script src="/js/formulario.js">    </script>
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
  
 </body>
