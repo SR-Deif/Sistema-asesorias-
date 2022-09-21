@@ -52,6 +52,20 @@
 				</div>
 			</div>
 
+			<div class="form-group row">
+				<label class="col-form-label col-sm-4">Descripción: </label>
+				<div class="col-sm-8">
+					<select th:field="*{solicitud}" class="form-control" required>
+						<th:block th:each="solicitud : ${listaSolicituds}">
+							<!-- recorre toda la lista de la usuario que le coloque en el controlador -->
+							<option th:text="${solicitud.descripcion}" th:value="${solicitud.idSolicitud}"></option>
+							<!-- el texto va ser el nombre pero con el id me guarda el objeto es lo mas importante -->
+						</th:block>
+					</select>
+				</div>
+			</div> 
+
+
 				 		<div class="text-center p">
 					<button class="boton" type="submit">
 						<a style="--clr:#1e9bff" onclick="return confirm('Deseas guardar estos datos!');"><span>Guardar</span></a>

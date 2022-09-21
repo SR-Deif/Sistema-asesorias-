@@ -1,6 +1,5 @@
 package com.sistema.asesoria.agendamiento;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,32 +10,26 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.lang.NonNull;
 
-import com.sistema.asesoria.asesoria.Asesoria;
 import com.sistema.asesoria.solicitud.Solicitud;
-
 
 @Entity
 public class Agendamiento {
 
-    @Id    
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idAgendamiento;
-    @NotEmpty(message ="Debes elegir una fecha a Agendar ")
+    @NotEmpty(message = "Debes elegir una fecha a Agendar ")
     private String fechaAgendamiento;
-    @NotEmpty(message ="Debes elegir una fecha para Realizar la Asesoria")
+    @NotEmpty(message = "Debes elegir una fecha para Realizar la Asesoria")
     private String fechaRevisionAgendamiento;
     @NonNull
-    private Boolean estado=false;
-    
-    @OneToOne //uno a uno
-    @JoinColumn(name="idSolicitud") //con la columna  a unir 
+    private Boolean estado = false;
+
+    @OneToOne // uno a uno
+    @JoinColumn(name = "idSolicitud") // con la columna a unir
     private Solicitud solicitud;
 
-    @OneToOne
-    @JoinColumn(name="idAsesoria")//con la columna  a unir
-    private Asesoria asesoria;
-
-    //vacio
+    // vacio
     public Agendamiento() {
     }
 
@@ -48,29 +41,15 @@ public class Agendamiento {
         this.solicitud = solicitud;
     }
 
-    public Agendamiento(Asesoria asesoria) {
-        this.asesoria = asesoria;
-    }
-
-    public Agendamiento(String fechaAgendamiento, String fechaRevisionAgendamiento, Solicitud solicitud,
-            Asesoria asesoria) {
-        this.fechaAgendamiento = fechaAgendamiento;
-        this.fechaRevisionAgendamiento = fechaRevisionAgendamiento;
-        this.solicitud = solicitud;
-        this.asesoria = asesoria;
-    }
-    
-
     public Agendamiento(int idAgendamiento,
             @NotEmpty(message = "Debes elegir una fecha a Agendar ") String fechaAgendamiento,
             @NotEmpty(message = "Debes elegir una fecha para Realizar la Asesoria") String fechaRevisionAgendamiento,
-            Boolean estado, Solicitud solicitud, Asesoria asesoria) {
+            Boolean estado, Solicitud solicitud) {
         this.idAgendamiento = idAgendamiento;
         this.fechaAgendamiento = fechaAgendamiento;
         this.fechaRevisionAgendamiento = fechaRevisionAgendamiento;
         this.estado = estado;
         this.solicitud = solicitud;
-        this.asesoria = asesoria;
     }
 
     public int getIdAgendamiento() {
@@ -105,14 +84,6 @@ public class Agendamiento {
         this.solicitud = solicitud;
     }
 
-    public Asesoria getAsesoria() {
-        return asesoria;
-    }
-
-    public void setAsesoria(Asesoria asesoria) {
-        this.asesoria = asesoria;
-    }
-
     public Boolean getEstado() {
         return estado;
     }
@@ -120,7 +91,5 @@ public class Agendamiento {
     public void setEstado(Boolean estado) {
         this.estado = estado;
     }
-
-    
 
 }

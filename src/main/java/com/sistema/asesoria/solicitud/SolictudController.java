@@ -38,13 +38,11 @@ public class SolictudController {
   // formulario agregar
   @GetMapping("/solicituds/nuevo")
   public String mostrarFormularioDeNuevoSolicitud(Model model) {
-    List<Usuario> listaUsuarios = usuariorepository.findAll();// poder alistar todas los usuarios
     // aqui le pasamos una nueva instancia de solicitud para asi poder asignar a los
     // campos en el html
     List<Cliente> listaClientes = clienteRepository.findAll();
 
     model.addAttribute("solicitud", new Solicitud());
-    model.addAttribute("listaUsuarios", listaUsuarios);// aqui agregamos la lista
     model.addAttribute("listaClientes", listaClientes);
     return "solicitud/solicitud_formulario";
   }
@@ -61,14 +59,14 @@ public class SolictudController {
   public String mostrarFormularioModeficarSolicitud(@PathVariable("idSolicitud") Integer idSolicitud, Model model) {
     Solicitud solicitud = solicitudrepository.findById(idSolicitud).get();
     model.addAttribute("solicitud", solicitud);
-    // usuario
-    List<Usuario> listaUsuarios = usuariorepository.findAll();
-    model.addAttribute("listaUsuarios", listaUsuarios);
+    // cliente
+    List<Cliente> listaClientes = clienteRepository.findAll();
+    model.addAttribute("listaClientes", listaClientes);
     return "solicitud/solicitud_formulario";
   }
 
   // eliminar
-  @GetMapping("/soolicituds/eliminar/{idSolicitud}")
+  @GetMapping("/solicituds/eliminar/{idSolicitud}")
   public String eliminarSolicitud(@PathVariable("idSolicitud") Integer idSolicitud, Model model) {
     solicitudrepository.deleteById(idSolicitud);
     return "redirect:/solicituds";

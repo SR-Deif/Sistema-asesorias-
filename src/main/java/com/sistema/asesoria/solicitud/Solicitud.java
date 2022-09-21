@@ -32,17 +32,32 @@ public class Solicitud {
 
     private Boolean estado;
 
+    private String descripcion;
+
+    private String tipoSolicitud;
+
     //vacio
     public Solicitud() {
     }
 
-    public Solicitud(Integer idSolicitud, String fechaCreacion, Usuario usuario, Cliente cliente, Boolean estado) {
+
+
+
+
+    public Solicitud(Integer idSolicitud, String fechaCreacion, Usuario usuario, Cliente cliente, Boolean estado,
+            String descripcion, String tipoSolicitud) {
         this.idSolicitud = idSolicitud;
         this.fechaCreacion = fechaCreacion;
         this.usuario = usuario;
         this.cliente = cliente;
         this.estado = estado;
+        this.descripcion = descripcion;
+        this.tipoSolicitud = tipoSolicitud;
     }
+
+
+
+
 
     //relacion usuario
     public Solicitud(Usuario usuario) {
@@ -105,6 +120,30 @@ public class Solicitud {
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+
+
+
+
+    public String getTipoSolicitud() {
+        return tipoSolicitud;
+    }
+
+
+
+
+
+    public void setTipoSolicitud(String tipoSolicitud) {
+        this.tipoSolicitud = tipoSolicitud;
     }
     
 }

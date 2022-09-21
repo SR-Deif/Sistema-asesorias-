@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.sistema.asesoria.asesoria.Asesoria;
-import com.sistema.asesoria.asesoria.AsesoriaRepository;
+import com.sistema.asesoria.solicitud.Solicitud;
+import com.sistema.asesoria.solicitud.SolicitudRepository;
 
 @Controller
 public class AgendamientoController {
@@ -22,7 +22,7 @@ public class AgendamientoController {
   private AgendamientoRepository agendamientorepository;
   // public String es porque me retorna a un archivo html
   @Autowired
-  private AsesoriaRepository asesoriarepository;
+  private SolicitudRepository solicitudrepository;
 
   // Lista
   @GetMapping("/agendamiento") // redireccionar
@@ -35,11 +35,11 @@ public class AgendamientoController {
   // Agregar agendamiento
   @GetMapping("/agendamiento/nuevo")
   public String mostrarFormularioDeNuevaAgendamiento(Model model) {
-    List<Asesoria> listaAsesoria = asesoriarepository.findAll();// poder alistar todas los agendamientos
+    List<Solicitud> listaSolicitud = solicitudrepository.findAll();// poder alistar todas los agendamientos
     // aqui le pasamos una nueva instancia de solicitud para asi poder asignar a los
     // campos en el html
     model.addAttribute("agendamiento", new Agendamiento());
-    model.addAttribute("listaAsesoria", listaAsesoria);// aqui agregamos la lista
+    model.addAttribute("listaSolicituds", listaSolicitud);// aqui agregamos la lista
     return "agendamiento/agendamiento_formulario";
   }
 
@@ -56,6 +56,8 @@ public class AgendamientoController {
       Model modelo) {
     Agendamiento agendamiento = agendamientorepository.findById(idAgendamiento).get();
     modelo.addAttribute("agendamiento", agendamiento);
+    List<Solicitud> listaSolicituds = solicitudrepository.findAll();
+    modelo.addAttribute("listaSolicituds", listaSolicituds);
     return "agendamiento/agendamiento_formulario";
   }
 

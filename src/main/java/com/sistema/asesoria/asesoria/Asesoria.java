@@ -4,9 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.sistema.asesoria.agendamiento.Agendamiento;
 
 @Entity
 public class Asesoria {
@@ -21,32 +25,57 @@ public class Asesoria {
     private String costoAsesoria;
     // @Size(min = 20, max = 200, message = "La descripcion minimo es 20 y maxima
     // 200")
-    private String descripcionAsesoria;
-    private Boolean estado=false;
 
+    private String descripcionAsesoria;
+
+    private Boolean estado=false;
+    
+    
+    @OneToOne
+    @JoinColumn(name="idAgendamiento")//con la columna  a unir
+    private Agendamiento agendamiento;
+
+    
     public Asesoria() {
     }
 
-    public Asesoria(int idAsesoria) {
-        this.idAsesoria = idAsesoria;
-    }
-
-    public Asesoria(String tipoAsesoria, String costoAsesoria, String descripcionAsesoria, Boolean estadoAsesoria) {
-        this.tipoAsesoria = tipoAsesoria;
-        this.costoAsesoria = costoAsesoria;
-        this.descripcionAsesoria = descripcionAsesoria;
-        // this.estadoAsesoria = estadoAsesoria;
-    }
 
     public Asesoria(int idAsesoria, String tipoAsesoria,
-            @NotNull(message = "El precio es obligatorio") String costoAsesoria,
-           String descripcionAsesoria, Boolean estado) {
+            @NotNull(message = "El precio es obligatorio") String costoAsesoria, String descripcionAsesoria,
+            Boolean estado) {
         this.idAsesoria = idAsesoria;
         this.tipoAsesoria = tipoAsesoria;
         this.costoAsesoria = costoAsesoria;
         this.descripcionAsesoria = descripcionAsesoria;
         this.estado = estado;
     }
+
+
+
+
+    public Asesoria(Agendamiento agendamiento) {
+        this.agendamiento = agendamiento;
+    }
+
+
+    
+
+    public Asesoria(int idAsesoria, String tipoAsesoria,
+            @NotNull(message = "El precio es obligatorio") String costoAsesoria, String descripcionAsesoria,
+            Boolean estado, Agendamiento agendamiento) {
+        this.idAsesoria = idAsesoria;
+        this.tipoAsesoria = tipoAsesoria;
+        this.costoAsesoria = costoAsesoria;
+        this.descripcionAsesoria = descripcionAsesoria;
+        this.estado = estado;
+        this.agendamiento = agendamiento;
+    }
+
+
+    public Asesoria(int idAsesoria) {
+        this.idAsesoria = idAsesoria;
+    }
+
 
     public int getIdAsesoria() {
         return idAsesoria;
@@ -72,13 +101,6 @@ public class Asesoria {
         this.costoAsesoria = costoAsesoria;
     }
 
-    public String getDescripcionAsesoria() {
-        return descripcionAsesoria;
-    }
-
-    public void setDescripcionAsesoria(String descripcionAsesoria) {
-        this.descripcionAsesoria = descripcionAsesoria;
-    }
 
     public Boolean getEstado() {
         return estado;
@@ -88,6 +110,22 @@ public class Asesoria {
         this.estado = estado;
     }
 
-    
+    public String getDescripcionAsesoria() {
+        return descripcionAsesoria;
+    }
+
+    public void setDescripcionAsesoria(String descripcionAsesoria) {
+        this.descripcionAsesoria = descripcionAsesoria;
+    }
+
+
+    public Agendamiento getAgendamiento() {
+        return agendamiento;
+    }
+
+
+    public void setAgendamiento(Agendamiento agendamiento) {
+        this.agendamiento = agendamiento;
+    }
 
 }

@@ -33,7 +33,8 @@
                 <tr>
                     <th>ID</th>
                     <th>Fecha</th>
-                    <th>Usuario Correo</th>
+                    <th>Descripcion</th>
+                    <th>Tipo de Solicitud</th>
                     <th>Cliente Correo</th>
                     <th>Estado</th>
                     <th>Acciones</th>
@@ -43,7 +44,8 @@
                 <tr th:each="solicitud : ${listaSolicituds}">
                     <td th:text="${solicitud.idSolicitud}"></td>
                     <td th:text="${solicitud.fechaCreacion}"></td>
-                    <td th:text="${solicitud.usuario.correoUsuario}"></td>
+                    <td th:text="${solicitud.descripcion}"></td>
+                    <td th:text="${solicitud.tipoSolicitud}"></td>
                     <td th:text="${solicitud.cliente.correo_Cliente}"></td>
                     <td>
                         <span th:if="${solicitud.estado==true}">Activo</span>

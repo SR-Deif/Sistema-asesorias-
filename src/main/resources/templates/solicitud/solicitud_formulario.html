@@ -40,28 +40,49 @@
 							<input hidden class="form-control" type="text" th:field="*{fechaCreacion}" id="fechaSubCampana" placeholder="" >
 							<input disabled class="form-control" type="text"  id="fecha">
 					</div>
-                </div>
-				<!--<div class="form-group row">
-					<label class="col-form-label col-sm-4">Estado :
-					</label>
-					<div class="col-sm-8">
-						<input type="text" th:field="*{estadoSolicitud}" class="form-control"
-							required />
-					</div>
-				</div>-->
-                <!--Usuario-->
+
+					<div class="m-3">
+						<div class="form-group row">
+							<label class="col-form-label col-sm-4">Descripcion :
+							</label>
+							<div class="col-sm-8">
+								<div class="col-sm-8">
+									<input type="text" th:field="*{descripcion}" class="form-control"
+								required/>
+									<div class="valid-feedback">
+										Todo Bien!
+									  </div>
+									  <div class="invalid-feedback">
+										Este Campo es Obligatorio!
+									  </div>
+								</div>
+							</div>
+							</div>
+
+							<label class="col-form-label col-sm-4">Tipo Solicitud :
+							</label>
+							<div class="col-sm-8">
+								<select name="select" th:field="*{tipoSolicitud}" class="form-control" required aria-label="select example">
+									<option value="" selected>--Elegir tipo de Solicitud--</option>
+									<option value="virtual">Virtual</option>
+									<option value="presencial">Presencial</option>
+								  </select>
+								  <div class="invalid-feedback">Elegir el Tipo de Asesoria</div>
+							</div>
+						</div>
+                <!--Usuario
                 <div class="form-group row">
 					<label class="col-form-label col-sm-4">Usuario : </label>
 					<div class="col-sm-8">
                         <select th:field="*{usuario}" class="form-control" required>
 							<th:block th:each="usuario : ${listaUsuarios}">
-								<!--recorre toda la lista de la usuario que le coloque en el controlador-->
+								
 								<option th:text="${usuario.correoUsuario}" th:value="${usuario.idUsuario}"></option>
-								<!--el texto va ser el nombre pero con el id me guarda el objeto es lo mas importante-->
+								
 							</th:block>
 						</select>
                     </div>
-				</div>
+				</div>-->
                 <div class="form-group row">
 					<label class="col-form-label col-sm-4">Cliente : </label>
 					<div class="col-sm-8">
