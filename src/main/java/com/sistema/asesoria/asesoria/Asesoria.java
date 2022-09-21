@@ -10,19 +10,20 @@ import javax.validation.constraints.Size;
 
 @Entity
 public class Asesoria {
-    @Id    
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idAsesoria;
-    //parametros
+    // parametros
     private String tipoAsesoria;
-    @NotNull( message = "El precio es obligatorio")
-    @Size(min =10, max =1000, message ="El precio minimo es 10  y el precio maximo es 1000")
-    private Double costoAsesoria;
-    @NotEmpty(message ="Debes describir la Asesoria")
-    @Size(min = 20, max = 200, message = "La descripcion minimo es  20 y  maxima 200")
+    @NotNull(message = "El precio es obligatorio")
+    // @Size(min =10, max =1000, message ="El precio minimo es 10 y el precio maximo
+    // es 1000")
+    private String costoAsesoria;
+    // @Size(min = 20, max = 200, message = "La descripcion minimo es 20 y maxima
+    // 200")
     private String descripcionAsesoria;
-    //private Boolean estadoAsesoria;
-    
+    private Boolean estado=false;
+
     public Asesoria() {
     }
 
@@ -30,20 +31,21 @@ public class Asesoria {
         this.idAsesoria = idAsesoria;
     }
 
-    public Asesoria(String tipoAsesoria, Double costoAsesoria, String descripcionAsesoria, Boolean estadoAsesoria) {
+    public Asesoria(String tipoAsesoria, String costoAsesoria, String descripcionAsesoria, Boolean estadoAsesoria) {
         this.tipoAsesoria = tipoAsesoria;
         this.costoAsesoria = costoAsesoria;
         this.descripcionAsesoria = descripcionAsesoria;
-        //this.estadoAsesoria = estadoAsesoria;
+        // this.estadoAsesoria = estadoAsesoria;
     }
 
-    public Asesoria(int idAsesoria, String tipoAsesoria, Double costoAsesoria, String descripcionAsesoria,
-            Boolean estadoAsesoria) {
+    public Asesoria(int idAsesoria, String tipoAsesoria,
+            @NotNull(message = "El precio es obligatorio") String costoAsesoria,
+           String descripcionAsesoria, Boolean estado) {
         this.idAsesoria = idAsesoria;
         this.tipoAsesoria = tipoAsesoria;
         this.costoAsesoria = costoAsesoria;
         this.descripcionAsesoria = descripcionAsesoria;
-        //this.estadoAsesoria = estadoAsesoria;
+        this.estado = estado;
     }
 
     public int getIdAsesoria() {
@@ -62,11 +64,11 @@ public class Asesoria {
         this.tipoAsesoria = tipoAsesoria;
     }
 
-    public Double getCostoAsesoria() {
+    public String getCostoAsesoria() {
         return costoAsesoria;
     }
 
-    public void setCostoAsesoria(Double costoAsesoria) {
+    public void setCostoAsesoria(String costoAsesoria) {
         this.costoAsesoria = costoAsesoria;
     }
 
@@ -78,12 +80,14 @@ public class Asesoria {
         this.descripcionAsesoria = descripcionAsesoria;
     }
 
-    //public Boolean getEstadoAsesoria() {
-    //    return estadoAsesoria;
-    //}
+    public Boolean getEstado() {
+        return estado;
+    }
 
-    //public void setEstadoAsesoria(Boolean estadoAsesoria) {
-    //    this.estadoAsesoria = estadoAsesoria;
-    //}
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
+    
 
 }

@@ -34,9 +34,11 @@
                 <th>Detalle Direc</th>
                 <th>Correo Cliente</th>
                 <th>N° Tel Cliente</th>
-                <!-- <th>Estado</th> -->
-                <th colspan="2">Acciones</th>
-
+                <th>Tipo de Documento</th>
+                <th>Documento</th>
+                <th>Estado</th>
+                <th >Acciones</th>
+                
             </tr>
             <tr th:each="clientes:${listaClientes}">
                 <td th:text="${clientes.id_Cliente}"></td>
@@ -46,6 +48,12 @@
                 <td th:text="${clientes.detalle_Direccion}"></td>
                 <td th:text="${clientes.correo_Cliente}"></td>
                 <td th:text="${clientes.num_Cliente}"></td>
+                <td th:text="${clientes.tipoDocumentoCliente}"></td>
+                <td th:text="${clientes.numeroDocumento}"></td>
+                <td>
+                    <span th:if="${clientes.estado==true}">Activo</span>
+                    <span th:if="${clientes.estado==false}">Inactivo</span>
+                </td>
                 <!-- <td th:text="#"></td> -->
 
                 <!-- <td th:if="${c.estadoCliente == true}">
@@ -57,6 +65,9 @@
 
                 <td>
                     <a th:href="@{'/clientes/editar'+'/'+${clientes.id_Cliente}}" >Modificar</a>
+                    <a th:if="${clientes.estado==true}" th:href="@{'/clientes/estado'+ '/' + ${clientes.id_Cliente}}"class="btn btn-danger">Inactivar</a>
+                    <a th:if="${clientes.estado==false}" th:href="@{'/clientes/estado'+ '/' + ${clientes.id_Cliente}}"class="btn btn-info">Activar</a>
+
 
                 </td>
             </tr>

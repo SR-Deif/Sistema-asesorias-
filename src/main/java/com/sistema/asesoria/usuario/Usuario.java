@@ -31,15 +31,13 @@ public class Usuario {
     private String correoUsuario;
 
     private String contrasenaUsuario;
-
-    private Boolean estadoUsuario;
-
     @NotNull
     @Size(min = 1, max = 10, message = "El código debe medir entre 1 y 10")
     private String  telefonoUsuario;
 
 
     private String tipoDocUsuario;
+    
 
     @NotNull(message = "Debes especificar el Documento")
     @Size(min = 1, max = 10, message = "El código debe medir entre 1 y 10")
@@ -47,6 +45,8 @@ public class Usuario {
     
 
     private String tipoUsuario;
+
+    private Boolean estado=true;
     
 
     public String  getTelefonoUsuario() {
@@ -103,13 +103,13 @@ public class Usuario {
     public void setTipoUsuario(String tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
-    public Boolean getEstadoUsuario() {
-        return estadoUsuario;
-    }
-    public void setEstadoUsuario(Boolean estadoUsuario) {
-        this.estadoUsuario = estadoUsuario;
-    }
 
+    public Boolean getEstado() {
+        return estado;
+    }
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
     //constructor
     public Usuario() {
     }
@@ -117,60 +117,29 @@ public class Usuario {
         super();
         this.idUsuario = idUsuario;
     }
-    public Usuario(String nombreUsuario, String apellidoUsuario, String correoUsuario, String contrasenaUsuario,
-            String tipoUsuario, Boolean estadoUsuario) {
-                super();
-        this.nombreUsuario = nombreUsuario;
-        this.apellidoUsuario = apellidoUsuario;
-        this.correoUsuario = correoUsuario;
-        this.contrasenaUsuario = contrasenaUsuario;
-        this.tipoUsuario = tipoUsuario;
-        this.estadoUsuario = estadoUsuario;
-    }
-    public Usuario(int idUsuario, String nombreUsuario, String apellidoUsuario, String correoUsuario,
-            String contrasenaUsuario, String tipoUsuario, Boolean estadoUsuario) {
-                super();
-        this.idUsuario = idUsuario;
-        this.nombreUsuario = nombreUsuario;
-        this.apellidoUsuario = apellidoUsuario;
-        this.correoUsuario = correoUsuario;
-        this.contrasenaUsuario = contrasenaUsuario;
-        this.tipoUsuario = tipoUsuario;
-        this.estadoUsuario = estadoUsuario;
-    }
-    public Usuario(String nombreUsuario, String apellidoUsuario, String correoUsuario, String contrasenaUsuario,
-    String tipoUsuario, Boolean estadoUsuario, String  telefonoUsuario, String tipoDocUsuario,
-    String  numeroDocUsuario) {
-        super();
-this.nombreUsuario = nombreUsuario;
-this.apellidoUsuario = apellidoUsuario;
-this.correoUsuario = correoUsuario;
-this.contrasenaUsuario = contrasenaUsuario;
-this.tipoUsuario = tipoUsuario;
-this.estadoUsuario = estadoUsuario;
-this.telefonoUsuario = telefonoUsuario;
-this.tipoDocUsuario = tipoDocUsuario;
-this.numeroDocUsuario = numeroDocUsuario;
-}
-public Usuario(int idUsuario, String nombreUsuario, String apellidoUsuario, String correoUsuario,
-    String contrasenaUsuario, String tipoUsuario, Boolean estadoUsuario, String  telefonoUsuario,
-    String tipoDocUsuario, String  numeroDocUsuario) {
-        super();
-this.idUsuario = idUsuario;
-this.nombreUsuario = nombreUsuario;
-this.apellidoUsuario = apellidoUsuario;
-this.correoUsuario = correoUsuario;
-this.contrasenaUsuario = contrasenaUsuario;
-this.tipoUsuario = tipoUsuario;
-this.estadoUsuario = estadoUsuario;
-this.telefonoUsuario = telefonoUsuario;
-this.tipoDocUsuario = tipoDocUsuario;
-this.numeroDocUsuario = numeroDocUsuario;
-}
 
 public Usuario(String tipoUsuario) {
     super();
     this.tipoUsuario = tipoUsuario;
+}
+public Usuario(int idUsuario,
+        @NotNull(message = "Debes especificar el nombre") @Size(min = 1, max = 50, message = "El nombre debe medir entre 1 y 50") String nombreUsuario,
+        @NotNull(message = "Debes especificar el apellido") @Size(min = 1, max = 50, message = "El apellido debe medir entre 1 y 50") String apellidoUsuario,
+        @Email(message = "Por favor validar el correo") String correoUsuario, String contrasenaUsuario,
+        @NotNull @Size(min = 1, max = 10, message = "El código debe medir entre 1 y 10") String telefonoUsuario,
+        String tipoDocUsuario,
+        @NotNull(message = "Debes especificar el Documento") @Size(min = 1, max = 10, message = "El código debe medir entre 1 y 10") String numeroDocUsuario,
+        String tipoUsuario, Boolean estado) {
+    this.idUsuario = idUsuario;
+    this.nombreUsuario = nombreUsuario;
+    this.apellidoUsuario = apellidoUsuario;
+    this.correoUsuario = correoUsuario;
+    this.contrasenaUsuario = contrasenaUsuario;
+    this.telefonoUsuario = telefonoUsuario;
+    this.tipoDocUsuario = tipoDocUsuario;
+    this.numeroDocUsuario = numeroDocUsuario;
+    this.tipoUsuario = tipoUsuario;
+    this.estado = estado;
 }
   
 }

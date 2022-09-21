@@ -1,6 +1,7 @@
 package com.sistema.asesoria.usuario;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -68,6 +69,19 @@ public class UsuarioController {
                   .addFlashAttribute("clase", "success");
           return "redirect:/usuarios";
       }
+
+        // Cambiar estado
+  @GetMapping("/usuarios/estado/{idUsuario}")
+  public String estadoAgendamiento(@PathVariable("idUsuario") Integer idUsuario, Model modelo) {
+    Optional<Usuario> usuario = usuariorepository.findById(idUsuario);
+    if (usuario.get().getEstado() == true) {
+      usuario.get().setEstado(false);
+    } else {
+      usuario.get().setEstado(true);
+    }
+    usuariorepository.save(usuario.get());
+    return "redirect:/usuarios";
+  }
   }
 
 

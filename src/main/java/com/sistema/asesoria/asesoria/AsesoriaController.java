@@ -1,6 +1,7 @@
 package com.sistema.asesoria.asesoria;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -68,4 +69,18 @@ public class AsesoriaController {
                   .addFlashAttribute("clase", "success");
           return "redirect:/asesoria";
      }
+
+       // Cambiar estado
+      @GetMapping("/asesoria/estado/{idAsesoria}")
+      public String estadoasesoria(@PathVariable("idAsesoria") Integer idAsesoria, Model modelo) {
+        Optional<Asesoria> asesoria = asesoriarepository.findById(idAsesoria);
+        if (asesoria.get().getEstado() == false) {
+          asesoria.get().setEstado(true);
+        } else {
+          asesoria.get().setEstado(false);
+        }
+        asesoriarepository.save(asesoria.get());
+        return "redirect:/asesoria";
+      }
+
  }

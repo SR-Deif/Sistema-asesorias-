@@ -20,7 +20,6 @@ public class Solicitud {
     private Integer idSolicitud;
 
     private String fechaCreacion;
-    private Boolean estadoSolicitud;
 
 
     @ManyToOne//muchos a uno
@@ -31,8 +30,18 @@ public class Solicitud {
     @JoinColumn(name = "id_Cliente")//con la columna que se va a unir
     private Cliente cliente;
 
+    private Boolean estado;
+
     //vacio
     public Solicitud() {
+    }
+
+    public Solicitud(Integer idSolicitud, String fechaCreacion, Usuario usuario, Cliente cliente, Boolean estado) {
+        this.idSolicitud = idSolicitud;
+        this.fechaCreacion = fechaCreacion;
+        this.usuario = usuario;
+        this.cliente = cliente;
+        this.estado = estado;
     }
 
     //relacion usuario
@@ -50,22 +59,7 @@ public class Solicitud {
         this.cliente = cliente;
     }
 
-    //sin id
-    public Solicitud(String fechaCreacion, Boolean estadoSolicitud, Usuario usuario) {
-        this.fechaCreacion = fechaCreacion;
-        this.estadoSolicitud = estadoSolicitud;
-        this.usuario = usuario;
-    }
 
-    //todos
-    public Solicitud(Integer idSolicitud, String fechaCreacion, Boolean estadoSolicitud, Usuario usuario,
-            Cliente cliente) {
-        this.idSolicitud = idSolicitud;
-        this.fechaCreacion = fechaCreacion;
-        this.estadoSolicitud = estadoSolicitud;
-        this.usuario = usuario;
-        this.cliente = cliente;
-    }
 
     //metodos accesores
     public Integer getIdSolicitud() {
@@ -88,16 +82,6 @@ public class Solicitud {
     }
 
 
-    public Boolean getEstadoSolicitud() {
-        return estadoSolicitud;
-    }
-
-
-    public void setEstadoSolicitud(Boolean estadoSolicitud) {
-        this.estadoSolicitud = estadoSolicitud;
-    }
-
-
     public Usuario getUsuario() {
         return usuario;
     }
@@ -113,6 +97,14 @@ public class Solicitud {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
     
 }

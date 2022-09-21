@@ -88,6 +88,31 @@
              <p class="formulario-input-error">El telefono solo puede contener números y el maximo son 10 dígitos.</p>
          </div>
  
+
+                  <!--Número de Tipo Documento-->
+                  <div class="formulario-grupo" id="numCliente">
+                    <label for="numCliente" class="formulario-label" >Tipo Documento</label>
+                    <div class="formulario-input-grupo">
+                        <select name="select" th:field="*{tipoDocumentoCliente}" class="form-control" required aria-label="select example">
+                            <option value="" selected>--Elegir tipo de Docuemnto--</option>
+                            <option value="C.C">C.C</option>
+                            <option value="C.E">C.E</option>
+                          </select>
+                    </div>
+                    <p class="formulario-input-error"></p>
+                </div>
+
+                         <!--Número Documento-->
+         <div class="formulario-grupo" id="numCliente">
+            <label for="numCliente" class="formulario-label" >Documento</label>
+            <div class="formulario-input-grupo">
+                <input type="number" th:field="*{numeroDocumento}" class="form-control"
+							required maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+							<div class="valid-feedback">
+            </div>
+            <p class="formulario-input-error">El telefono solo puede contener números y el maximo son 10 dígitos.</p>
+        </div>
+
         <!--Terminos y Condiciones-->
         <div clas="formulario-grupo" id="grupo-terminos">
             <label class="formulario-label">

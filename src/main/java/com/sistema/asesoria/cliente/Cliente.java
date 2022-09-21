@@ -9,9 +9,9 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="cliente", uniqueConstraints = @UniqueConstraint(columnNames = "correo_Cliente"))
+@Table(name = "cliente", uniqueConstraints = @UniqueConstraint(columnNames = "correo_Cliente"))
 public class Cliente {
-    @Id    
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_Cliente;
 
@@ -23,7 +23,7 @@ public class Cliente {
 
     @Column(length = 50)
     private String direccion;
-    
+
     @Column(length = 50)
     private String detalle_Direccion;
 
@@ -33,10 +33,15 @@ public class Cliente {
     @Column(length = 50)
     private String num_Cliente;
 
+    private String tipoDocumentoCliente;
+
+    private String numeroDocumento;
+
+    private Boolean estado=false;
+
     public Cliente(String correo_Cliente) {
         this.correo_Cliente = correo_Cliente;
     }
-
 
     public Cliente(String nom_Cliente, String ape_Cliente, String direccion, String detalle_Direccion,
             String correo_Cliente, String num_Cliente) {
@@ -48,10 +53,8 @@ public class Cliente {
         this.num_Cliente = num_Cliente;
     }
 
-
     public Cliente() {
     }
-
 
     public Cliente(int id_Cliente, String nom_Cliente, String ape_Cliente, String direccion, String detalle_Direccion,
             String correo_Cliente, String num_Cliente) {
@@ -62,6 +65,34 @@ public class Cliente {
         this.detalle_Direccion = detalle_Direccion;
         this.correo_Cliente = correo_Cliente;
         this.num_Cliente = num_Cliente;
+    }
+
+    public Cliente(int id_Cliente, String nom_Cliente, String ape_Cliente, String direccion, String detalle_Direccion,
+            String correo_Cliente, String num_Cliente, String tipoDocumentoCliente, String numeroDocumento) {
+        this.id_Cliente = id_Cliente;
+        this.nom_Cliente = nom_Cliente;
+        this.ape_Cliente = ape_Cliente;
+        this.direccion = direccion;
+        this.detalle_Direccion = detalle_Direccion;
+        this.correo_Cliente = correo_Cliente;
+        this.num_Cliente = num_Cliente;
+        this.tipoDocumentoCliente = tipoDocumentoCliente;
+        this.numeroDocumento = numeroDocumento;
+    }
+
+    public Cliente(int id_Cliente, String nom_Cliente, String ape_Cliente, String direccion, String detalle_Direccion,
+            String correo_Cliente, String num_Cliente, String tipoDocumentoCliente, String numeroDocumento,
+            Boolean estado) {
+        this.id_Cliente = id_Cliente;
+        this.nom_Cliente = nom_Cliente;
+        this.ape_Cliente = ape_Cliente;
+        this.direccion = direccion;
+        this.detalle_Direccion = detalle_Direccion;
+        this.correo_Cliente = correo_Cliente;
+        this.num_Cliente = num_Cliente;
+        this.tipoDocumentoCliente = tipoDocumentoCliente;
+        this.numeroDocumento = numeroDocumento;
+        this.estado = estado;
     }
 
     public int getId_Cliente() {
@@ -120,6 +151,28 @@ public class Cliente {
         this.num_Cliente = num_Cliente;
     }
 
-    
-   
+    public String getTipoDocumentoCliente() {
+        return tipoDocumentoCliente;
+    }
+
+    public void setTipoDocumentoCliente(String tipoDocumentoCliente) {
+        this.tipoDocumentoCliente = tipoDocumentoCliente;
+    }
+
+    public String getNumeroDocumento() {
+        return numeroDocumento;
+    }
+
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
 }
