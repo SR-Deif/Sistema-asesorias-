@@ -1,5 +1,6 @@
 package com.sistema.asesoria.agendamiento;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +26,7 @@ public class Agendamiento {
     @NonNull
     private Boolean estado = false;
 
-    @OneToOne // uno a uno
+    @OneToOne(cascade = {CascadeType.ALL}) // uno a uno
     @JoinColumn(name = "idSolicitud") // con la columna a unir
     private Solicitud solicitud;
 

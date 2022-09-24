@@ -31,9 +31,6 @@ public class Asesoria {
     private Boolean estado=false;
     
     
-    @OneToOne
-    @JoinColumn(name="idAgendamiento")//con la columna  a unir
-    private Agendamiento agendamiento;
 
     
     public Asesoria() {
@@ -53,23 +50,9 @@ public class Asesoria {
 
 
 
-    public Asesoria(Agendamiento agendamiento) {
-        this.agendamiento = agendamiento;
-    }
-
 
     
 
-    public Asesoria(int idAsesoria, String tipoAsesoria,
-            @NotNull(message = "El precio es obligatorio") String costoAsesoria, String descripcionAsesoria,
-            Boolean estado, Agendamiento agendamiento) {
-        this.idAsesoria = idAsesoria;
-        this.tipoAsesoria = tipoAsesoria;
-        this.costoAsesoria = costoAsesoria;
-        this.descripcionAsesoria = descripcionAsesoria;
-        this.estado = estado;
-        this.agendamiento = agendamiento;
-    }
 
 
     public Asesoria(int idAsesoria) {
@@ -119,13 +102,5 @@ public class Asesoria {
     }
 
 
-    public Agendamiento getAgendamiento() {
-        return agendamiento;
-    }
-
-
-    public void setAgendamiento(Agendamiento agendamiento) {
-        this.agendamiento = agendamiento;
-    }
 
 }
