@@ -1,5 +1,6 @@
 package com.sistema.asesoria.asesoria;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +30,6 @@ public class Asesoria {
     private String descripcionAsesoria;
 
     private Boolean estado=false;
-    
     
 
     
