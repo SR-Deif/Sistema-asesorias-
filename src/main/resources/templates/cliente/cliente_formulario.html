@@ -28,6 +28,7 @@
         <h1>Solicitar Asesoria</h1>
      <form  th:action="@{/clientes/guardar}" th:object="${clientes}" method="post" class="formulario" id="formulario">
          <!--Nombre-->
+         <input hidden type="text" id="id_Cliente"  th:field="*{id_Cliente}" />
          <div class="formulario-grupo"  id="nomCliente">
              <label for="nomCliente" class="formulario-label">Nombre</label>
              <div class="formulario-input-grupo">

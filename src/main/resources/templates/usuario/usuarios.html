@@ -56,8 +56,8 @@
 						</td>
 						<!--<td th:text="${artista.estadoUsuario}"></td>-->
 						<td><a th:href="@{'/usuarios/editar'+'/'+ ${usuario.idUsuario}}"class="btn btn-info">Editar</a> &nbsp; 
-							<a th:if="${usuario.estado==true}" th:href="@{'/usuario/estado'+ '/' + ${usuario.idUsuario}}"class="btn btn-danger">Inactivar</a>
-							<a th:if="${usuario.estado==false}" th:href="@{'/usuario/estado'+ '/' + ${usuario.idUsuario}}"class="btn btn-info">Activar</a>
+							<a th:if="${usuario.estado==true}" th:href="@{'/usuarios/estado'+ '/' + ${usuario.idUsuario}}"class="btn btn-danger">Inactivar</a>
+							<a th:if="${usuario.estado==false}" th:href="@{'/usuarios/estado'+ '/' + ${usuario.idUsuario}}"class="btn btn-info">Activar</a>
 
 						</td>
 					</tr>

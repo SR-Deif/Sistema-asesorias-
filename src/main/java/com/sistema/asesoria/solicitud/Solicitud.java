@@ -39,9 +39,6 @@ public class Solicitud {
 
     private String tipoSolicitud;
 
-    @OneToOne(cascade = {CascadeType.ALL}) // uno a uno
-    @JoinColumn(name = "idAgendamiento") // con la columna a unir
-    private Agendamiento agendamiento;
 
     //vacio
     public Solicitud() {

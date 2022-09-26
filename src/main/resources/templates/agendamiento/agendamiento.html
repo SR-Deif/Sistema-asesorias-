@@ -36,7 +36,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="agendamiento : ${listaAgendamiento}">
+				<tr th:if="${listaAgendamiento.size()>0}" th:each="agendamiento : ${listaAgendamiento}">
 					<td th:text="${agendamiento.idAgendamiento}"></td>
 					<td th:text="${agendamiento.fechaAgendamiento}"></td>
 					<td th:text="${agendamiento.fechaRevisionAgendamiento}"></td>

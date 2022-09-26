@@ -28,8 +28,8 @@ public class Agendamiento {
     private Boolean estado = false;
 
     @OneToOne(cascade = {CascadeType.ALL}) // uno a uno
-    @JoinColumn(name = "idAsesoria") // con la columna a unir
-    private Asesoria asesoria;
+    @JoinColumn(name = "idSolicitud") // con la columna a unir
+    private Solicitud solicitud;
 
     // vacio
     public Agendamiento() {
@@ -41,15 +41,18 @@ public class Agendamiento {
 
 
 
+    
+
+
     public Agendamiento(int idAgendamiento,
             @NotEmpty(message = "Debes elegir una fecha a Agendar ") String fechaAgendamiento,
             @NotEmpty(message = "Debes elegir una fecha para Realizar la Asesoria") String fechaRevisionAgendamiento,
-            Boolean estado) {
+            Boolean estado, Solicitud solicitud) {
         this.idAgendamiento = idAgendamiento;
         this.fechaAgendamiento = fechaAgendamiento;
         this.fechaRevisionAgendamiento = fechaRevisionAgendamiento;
         this.estado = estado;
-        
+        this.solicitud = solicitud;
     }
 
     public int getIdAgendamiento() {
@@ -82,6 +85,14 @@ public class Agendamiento {
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+
+    public Solicitud getSolicitud() {
+        return solicitud;
+    }
+
+    public void setSolicitud(Solicitud solicitud) {
+        this.solicitud = solicitud;
     }
 
 }

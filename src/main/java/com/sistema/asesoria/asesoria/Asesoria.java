@@ -18,8 +18,7 @@ public class Asesoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idAsesoria;
-    // parametros
-    private String tipoAsesoria;
+    
     @NotNull(message = "El precio es obligatorio")
     // @Size(min =10, max =1000, message ="El precio minimo es 10 y el precio maximo
     // es 1000")
@@ -30,34 +29,28 @@ public class Asesoria {
     private String descripcionAsesoria;
 
     private Boolean estado=false;
-    
-
-    
+    @OneToOne(cascade = {CascadeType.ALL}) // uno a uno
+    @JoinColumn(name = "idAgendamiento") // con la columna a unir
+    private Agendamiento agendamiento;
     public Asesoria() {
     }
 
 
-    public Asesoria(int idAsesoria, String tipoAsesoria,
-            @NotNull(message = "El precio es obligatorio") String costoAsesoria, String descripcionAsesoria,
-            Boolean estado) {
-        this.idAsesoria = idAsesoria;
-        this.tipoAsesoria = tipoAsesoria;
-        this.costoAsesoria = costoAsesoria;
-        this.descripcionAsesoria = descripcionAsesoria;
-        this.estado = estado;
-    }
-
-
-
-
-
     
-
-
 
     public Asesoria(int idAsesoria) {
         this.idAsesoria = idAsesoria;
     }
+
+public Asesoria(int idAsesoria, @NotNull(message = "El precio es obligatorio") String costoAsesoria,
+            String descripcionAsesoria, Boolean estado, Agendamiento agendamiento) {
+        this.idAsesoria = idAsesoria;
+        this.costoAsesoria = costoAsesoria;
+        this.descripcionAsesoria = descripcionAsesoria;
+        this.estado = estado;
+        this.agendamiento = agendamiento;
+    }
+
 
 
     public int getIdAsesoria() {
@@ -68,13 +61,6 @@ public class Asesoria {
         this.idAsesoria = idAsesoria;
     }
 
-    public String getTipoAsesoria() {
-        return tipoAsesoria;
-    }
-
-    public void setTipoAsesoria(String tipoAsesoria) {
-        this.tipoAsesoria = tipoAsesoria;
-    }
 
     public String getCostoAsesoria() {
         return costoAsesoria;
@@ -99,6 +85,20 @@ public class Asesoria {
 
     public void setDescripcionAsesoria(String descripcionAsesoria) {
         this.descripcionAsesoria = descripcionAsesoria;
+    }
+
+
+
+
+    public Agendamiento getAgendamiento() {
+        return agendamiento;
+    }
+
+
+
+
+    public void setAgendamiento(Agendamiento agendamiento) {
+        this.agendamiento = agendamiento;
     }
 
 
