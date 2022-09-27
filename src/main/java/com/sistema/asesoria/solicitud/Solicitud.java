@@ -24,7 +24,6 @@ public class Solicitud {
 
     private String fechaCreacion;
 
-
     @ManyToOne//muchos a uno
     @JoinColumn(name = "idUsuario")//con la columna que se va a unir
     private Usuario usuario;
@@ -33,7 +32,7 @@ public class Solicitud {
     @JoinColumn(name = "id_Cliente")//con la columna que se va a unir
     private Cliente cliente;
 
-    private Boolean estado;
+    private Boolean estado=false;
 
     private String descripcion;
 
@@ -43,10 +42,6 @@ public class Solicitud {
     //vacio
     public Solicitud() {
     }
-
-
-
-
 
     public Solicitud(Integer idSolicitud, String fechaCreacion, Usuario usuario, Cliente cliente, Boolean estado,
             String descripcion, String tipoSolicitud) {
@@ -58,10 +53,6 @@ public class Solicitud {
         this.descripcion = descripcion;
         this.tipoSolicitud = tipoSolicitud;
     }
-
-
-
-
 
     //relacion usuario
     public Solicitud(Usuario usuario) {
@@ -77,8 +68,6 @@ public class Solicitud {
     public Solicitud(Cliente cliente) {
         this.cliente = cliente;
     }
-
-
 
     //metodos accesores
     public Integer getIdSolicitud() {

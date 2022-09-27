@@ -40,10 +40,11 @@ public class SolictudController {
   public String mostrarFormularioDeNuevoSolicitud(Model model) {
     // aqui le pasamos una nueva instancia de solicitud para asi poder asignar a los
     // campos en el html
+    List<Usuario> listaUsuarios = usuariorepository.findAll();
     List<Cliente> listaClientes = clienteRepository.findAll();
-
     model.addAttribute("solicitud", new Solicitud());
     model.addAttribute("listaClientes", listaClientes);
+    model.addAttribute("listaUsuarios", listaUsuarios);
     return "solicitud/solicitud_formulario";
   }
 
@@ -62,6 +63,10 @@ public class SolictudController {
     // cliente
     List<Cliente> listaClientes = clienteRepository.findAll();
     model.addAttribute("listaClientes", listaClientes);
+    //usuario
+    List<Usuario> listaUsuarios = usuariorepository.findAll();
+    model.addAttribute("listaClientes", listaUsuarios);
+
     return "solicitud/solicitud_formulario";
   }
 
@@ -73,7 +78,7 @@ public class SolictudController {
   }
 
   // Cambiar estado
-  @GetMapping("/solicituds/estado/{idSolicitud}")
+  @GetMapping("/solicitud/estado/{idSolicitud}")
   public String estadoSolicitud(@PathVariable("idSolicitud") Integer idSolicitud, Model modelo) {
     Optional<Solicitud> solicitud = solicitudrepository.findById(idSolicitud);
     if (solicitud.get().getEstado() == false) {

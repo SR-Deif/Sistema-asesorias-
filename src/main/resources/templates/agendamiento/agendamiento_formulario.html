@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +8,6 @@
 		integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 	<title>Agendamiento</title>
 </head>
-
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="">Asesoria</a>
@@ -55,19 +53,18 @@
 				</div>
 			</div>
 
-			<div class="form-group row">
+			<!--<div class="form-group row">
 				<label class="col-form-label col-sm-4">Descripción: </label>
 				<div class="col-sm-8">
 					<select th:field="*{asesoria}" class="form-control" required>
 						<th:block th:each="solicitud : ${listaSoulicituds}">
-							<!-- recorre toda la lista de la usuario que le coloque en el controlador -->
-							<option th:text="${solicitud.descripcion}" th:value="${solicitud.idSolicitud}"></option>
+							recorre toda la lista de la usuario que le coloque en el controlador 
+							<option th:text="${solicitud.descripcion}" th:value="${solicitud.idSolicitud}"></option>-->
 							<!-- el texto va ser el nombre pero con el id me guarda el objeto es lo mas importante -->
 						</th:block>
 					</select>
 				</div>
 			</div>
-
 
 			<div class="text-center p">
 				<button class="boton" type="submit">

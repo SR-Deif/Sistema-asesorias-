@@ -18,7 +18,7 @@ public class Asesoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idAsesoria;
-    
+
     @NotNull(message = "El precio es obligatorio")
     // @Size(min =10, max =1000, message ="El precio minimo es 10 y el precio maximo
     // es 1000")
@@ -28,21 +28,19 @@ public class Asesoria {
 
     private String descripcionAsesoria;
 
-    private Boolean estado=false;
-    @OneToOne(cascade = {CascadeType.ALL}) // uno a uno
+    private Boolean estado = false;
+    @OneToOne(cascade = { CascadeType.ALL }) // uno a uno
     @JoinColumn(name = "idAgendamiento") // con la columna a unir
     private Agendamiento agendamiento;
+
     public Asesoria() {
     }
-
-
-    
 
     public Asesoria(int idAsesoria) {
         this.idAsesoria = idAsesoria;
     }
 
-public Asesoria(int idAsesoria, @NotNull(message = "El precio es obligatorio") String costoAsesoria,
+    public Asesoria(int idAsesoria, @NotNull(message = "El precio es obligatorio") String costoAsesoria,
             String descripcionAsesoria, Boolean estado, Agendamiento agendamiento) {
         this.idAsesoria = idAsesoria;
         this.costoAsesoria = costoAsesoria;
@@ -50,8 +48,6 @@ public Asesoria(int idAsesoria, @NotNull(message = "El precio es obligatorio") S
         this.estado = estado;
         this.agendamiento = agendamiento;
     }
-
-
 
     public int getIdAsesoria() {
         return idAsesoria;
@@ -61,7 +57,6 @@ public Asesoria(int idAsesoria, @NotNull(message = "El precio es obligatorio") S
         this.idAsesoria = idAsesoria;
     }
 
-
     public String getCostoAsesoria() {
         return costoAsesoria;
     }
@@ -69,7 +64,6 @@ public Asesoria(int idAsesoria, @NotNull(message = "El precio es obligatorio") S
     public void setCostoAsesoria(String costoAsesoria) {
         this.costoAsesoria = costoAsesoria;
     }
-
 
     public Boolean getEstado() {
         return estado;
@@ -87,20 +81,12 @@ public Asesoria(int idAsesoria, @NotNull(message = "El precio es obligatorio") S
         this.descripcionAsesoria = descripcionAsesoria;
     }
 
-
-
-
     public Agendamiento getAgendamiento() {
         return agendamiento;
     }
 
-
-
-
     public void setAgendamiento(Agendamiento agendamiento) {
         this.agendamiento = agendamiento;
     }
-
-
 
 }
