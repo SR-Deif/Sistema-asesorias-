@@ -1,17 +1,17 @@
 package com.sistema.asesoria.solicitud;
 
 
-import javax.persistence.CascadeType;
+// import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+// import javax.persistence.OneToOne;
 
 import com.sistema.asesoria.usuario.Usuario;//importamos el modelo
-import com.sistema.asesoria.agendamiento.Agendamiento;
+// import com.sistema.asesoria.agendamiento.Agendamiento;
 import com.sistema.asesoria.cliente.Cliente;//importamos el modelo
 
 

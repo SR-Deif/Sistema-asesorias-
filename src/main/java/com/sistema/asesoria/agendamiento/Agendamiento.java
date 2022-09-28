@@ -11,7 +11,7 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.lang.NonNull;
 
-import com.sistema.asesoria.asesoria.Asesoria;
+// import com.sistema.asesoria.asesoria.Asesoria;
 import com.sistema.asesoria.solicitud.Solicitud;
 
 @Entity
