@@ -36,6 +36,7 @@
                     <th>Descripcion</th>
                     <th>Tipo de Solicitud</th>
                     <th>Cliente Correo</th>
+                    <th>Usuario Nombre</th>
                     <th>Estado</th>
                     <th>Acciones</th>
                 </tr>
@@ -47,6 +48,7 @@
                     <td th:text="${solicitud.descripcion}"></td>
                     <td th:text="${solicitud.tipoSolicitud}"></td>
                     <td th:text="${solicitud.cliente.correo_Cliente}"></td>
+                    <td th:text="${solicitud.usuario.nombreUsuario}"></td>
                     <td>
                         <span th:if="${solicitud.estado==true}">Activo</span>
                         <span th:if="${solicitud.estado==false}">Inactivo</span>

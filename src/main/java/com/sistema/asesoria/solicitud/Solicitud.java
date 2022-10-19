@@ -1,17 +1,17 @@
 package com.sistema.asesoria.solicitud;
 
 
-import javax.persistence.CascadeType;
+// import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+// import javax.persistence.OneToOne;
 
 import com.sistema.asesoria.usuario.Usuario;//importamos el modelo
-import com.sistema.asesoria.agendamiento.Agendamiento;
+// import com.sistema.asesoria.agendamiento.Agendamiento;
 import com.sistema.asesoria.cliente.Cliente;//importamos el modelo
 
 
@@ -24,7 +24,6 @@ public class Solicitud {
 
     private String fechaCreacion;
 
-
     @ManyToOne//muchos a uno
     @JoinColumn(name = "idUsuario")//con la columna que se va a unir
     private Usuario usuario;
@@ -33,23 +32,16 @@ public class Solicitud {
     @JoinColumn(name = "id_Cliente")//con la columna que se va a unir
     private Cliente cliente;
 
-    private Boolean estado;
+    private Boolean estado=false;
 
     private String descripcion;
 
     private String tipoSolicitud;
 
-    @OneToOne(cascade = {CascadeType.ALL}) // uno a uno
-    @JoinColumn(name = "idAgendamiento") // con la columna a unir
-    private Agendamiento agendamiento;
 
     //vacio
     public Solicitud() {
     }
-
-
-
-
 
     public Solicitud(Integer idSolicitud, String fechaCreacion, Usuario usuario, Cliente cliente, Boolean estado,
             String descripcion, String tipoSolicitud) {
@@ -61,10 +53,6 @@ public class Solicitud {
         this.descripcion = descripcion;
         this.tipoSolicitud = tipoSolicitud;
     }
-
-
-
-
 
     //relacion usuario
     public Solicitud(Usuario usuario) {
@@ -80,8 +68,6 @@ public class Solicitud {
     public Solicitud(Cliente cliente) {
         this.cliente = cliente;
     }
-
-
 
     //metodos accesores
     public Integer getIdSolicitud() {

@@ -26,7 +26,6 @@
 				<thead class="thead-dark">
 					<tr>
                         <th>ID</th>
-                        <th>tipo</th>
                         <th>costo</th>
                         <th>descripcion</th>
                         <th>Estado</th>
@@ -37,7 +36,6 @@
 				<tbody>
 					<tr th:each="asesoria : ${listaAsesoria}">
 						<td th:text="${asesoria.idAsesoria}"></td>
-						<td th:text="${asesoria.tipoAsesoria}"></td>
 						<td th:text="${asesoria.costoAsesoria}"></td>
 						<td th:text="${asesoria.descripcionAsesoria}"></td>
 						
