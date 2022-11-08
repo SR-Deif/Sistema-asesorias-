@@ -56,18 +56,32 @@
              <p class="formulario-input-error">El apellido tiene que ser de 4 a 10 letras, no puede contener números ni caracteres especiales.</p>
          </div>
 
-         <!--Dirección-->
-         <div class="formulario-grupo"  id="direccion">
-            <label for="direccion" class="formulario-label">Dirección</label>
-            <div class="formulario-input-grupo">
-                <input type="text" class="formulario-input" id="direccion" name="direccion" placeholder="Ej: Cra 145 #142C-51" th:field="*{direccion}">
-                <i class="formulario-validacion-estado fa-regular fa-circle-xmark"></i>
-            </div>
-            <p class="formulario-input-error">La dirección no puede contener caracteres especiales</p>
+
+        <!--Tipo Documento-->
+        <div class="formulario-grupo" id="numCliente">
+        <label for="numCliente" class="formulario-label" >Tipo Documento</label>
+        <div class="formulario-input-grupo">
+            <select name="select" th:field="*{tipoDocumentoCliente}" class="form-control" required aria-label="select example">
+                <option value="" selected>--Elegir tipo de Docuemnto--</option>
+                <option value="C.C">C.C</option>
+                <option value="C.E">C.E</option>
+                </select>
         </div>
-
-
+        <p class="formulario-input-error"></p>
+    </div>
         
+                         <!--Número Documento-->
+                         <div class="formulario-grupo" id="numCliente">
+                            <label for="numCliente" class="formulario-label" >Documento</label>
+                            <div class="formulario-input-grupo">
+                                <input type="number" th:field="*{numeroDocumento}" class="form-control"
+                                            required maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                                            <div class="valid-feedback">
+                            </div>
+                            <p class="formulario-input-error">El telefono solo puede contener números y el maximo son 10 dígitos.</p>
+                        </div>
+                
+                        
          <!--Correo-->
          <div class="formulario-grupo" id="correoCliente">
              <label for="correoCliente" class="formulario-label" >E-mail</label>
@@ -88,31 +102,44 @@
              <p class="formulario-input-error">El telefono solo puede contener números y el maximo son 10 dígitos.</p>
          </div>
  
-
-                  <!--Número de Tipo Documento-->
-                  <div class="formulario-grupo" id="numCliente">
-                    <label for="numCliente" class="formulario-label" >Tipo Documento</label>
-                    <div class="formulario-input-grupo">
-                        <select name="select" th:field="*{tipoDocumentoCliente}" class="form-control" required aria-label="select example">
-                            <option value="" selected>--Elegir tipo de Docuemnto--</option>
-                            <option value="C.C">C.C</option>
-                            <option value="C.E">C.E</option>
-                          </select>
-                    </div>
-                    <p class="formulario-input-error"></p>
-                </div>
-
-                         <!--Número Documento-->
-         <div class="formulario-grupo" id="numCliente">
-            <label for="numCliente" class="formulario-label" >Documento</label>
+         <!--Dirección-->
+         <div class="formulario-grupo"  id="direccion">
+            <label for="direccion" class="formulario-label">Dirección</label>
             <div class="formulario-input-grupo">
-                <input type="number" th:field="*{numeroDocumento}" class="form-control"
-							required maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
-							<div class="valid-feedback">
+                <input type="text" class="formulario-input" id="direccion" name="direccion" placeholder="Ej: Cra 145 #142C-51" th:field="*{direccion}">
+                <i class="formulario-validacion-estado fa-regular fa-circle-xmark"></i>
             </div>
-            <p class="formulario-input-error">El telefono solo puede contener números y el maximo son 10 dígitos.</p>
+            <p class="formulario-input-error">La dirección no puede contener caracteres especiales</p>
         </div>
 
+                 <!--Fecha a Agendar-->
+                 <div class="formulario-grupo"  id="fechaAgendar">
+                    <label for="fechaAgendar" class="formulario-label">Fecha a Agendar</label>
+                    <div class="formulario-input-grupo">
+                        <input type="date" class="formulario-input" id="fechaAgendar" name="fechaAgendar"  th:field="*{fecha_Agendar}">
+                        <i class="formulario-validacion-estado fa-regular fa-circle-xmark"></i>
+                    </div>
+                    <p class="formulario-input-error">El apellido tiene que ser de 4 a 10 letras, no puede contener números ni caracteres especiales.</p>
+                </div>
+       
+        <!--Tipo Asesoría-->
+        <div class="formulario-grupo" id="tipoAsesoria">
+            <label for="tipoAsesoria" class="formulario-label" >Tipo de Asesoria</label>
+            <div class="formulario-input-grupo">
+                <select name="select" th:field="*{#}" class="form-control" required aria-label="select example">
+                    <option value="" selected>--Elegir tipo--</option>
+                    <option value="presencial">presencial</option>
+                    <option value="virtual">virtual</option>
+                    </select>
+            </div>
+            <p class="formulario-input-error"></p>
+        </div>
+           
+		  	<!--Descripción-->
+              <div class="form-group mt-3 clase">
+                <textarea class="form-control nuevo" name="message" rows="5" placeholder="Descripción " required></textarea>
+              </div>
+    
         <!--Terminos y Condiciones-->
         <div clas="formulario-grupo" id="grupo-terminos">
             <label class="formulario-label">
