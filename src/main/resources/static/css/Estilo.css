@@ -1,0 +1,51 @@
+/***********************************
+Formulario Asesoria
+************************************/
+#Asesoria{
+    background: #ffffff;
+    box-shadow: 0 0 24px 0 rgb(0 0 0 / 12%);
+    width: 70%;
+    height: 680px;
+    display: grid;
+    justify-items: center;
+    margin: auto;
+    border-radius: 10px;
+  } 
+  
+  #Asesoria > h1{
+    font-size: 40px;
+    margin: auto;
+    color: #227B14;
+  }
+  
+  .nuevo{
+    margin:auto;
+    width: 90%;
+  }
+  
+  .clase > input, .opciones{
+    margin-top: 10px;
+    padding: 10px;
+  }
+  
+  .opciones{
+    width: 47.3%;
+    margin-left: 40px;
+    color: #444444;
+  }
+  
+  .boton{
+      background: #227B14;
+      border: 0;
+      padding: 10px 30px;
+      color: #fff;
+      transition: 0.4s;
+      border-radius: 50px;
+      margin-left: 45%;
+  }
+  
+  .elegir{
+    padding: 2px;
+    border: 2px solid #cec9c9;
+    border-radius: 5px;
+  }

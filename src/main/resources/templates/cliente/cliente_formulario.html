@@ -7,7 +7,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
-	<link  rel="stylesheet" th:href="@{/css/estilos.css}"/>
+	<link  rel="stylesheet" href="/src/main/resources/static/css/estilos.css"/>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -66,17 +66,6 @@
             <p class="formulario-input-error">La dirección no puede contener caracteres especiales</p>
         </div>
 
-         <!--Detalle Dirección-->
-         <div class="formulario-grupo"  id="detalle">
-            <label for="detalle" class="formulario-label">Detalle Dirección</label>
-            <div class="formulario-input-grupo">
-                <input type="text" class="formulario-input" id="detalle" name="detalle" placeholder="Ej: Lote 8 casa 31" th:field="*{detalle_Direccion}">
-                <i class="formulario-validacion-estado fa-regular fa-circle-xmark"></i>
-            </div>
-            <p class="formulario-input-error">La dirección no puede contener caracteres especiales</p>
-        </div>
-
-        
          <!--Correo-->
          <div class="formulario-grupo" id="correoCliente">
              <label for="correoCliente" class="formulario-label" >E-mail</label>
