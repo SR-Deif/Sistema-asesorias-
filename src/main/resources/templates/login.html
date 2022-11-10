@@ -19,6 +19,8 @@
         <script src="https://kit.fontawesome.com/392a27d13c.js" crossorigin="anonymous"></script>
 		<!-- STYLE CSS -->
 		<link rel="stylesheet" th:href="@{/css/login.css}">
+		<link rel='shortcut icon' type='image/x-icon' th:href='@{/img/logo.png}' />
+		<link rel="stylesheet" th:href="@{/css/custom.css}">
 		
 	</head>
 
@@ -30,6 +32,8 @@
 				</div>
 				<form th:action="@{/login}" method="post">
 
+					<img class="logito" th:src="@{img/logo.png}" alt="">
+					<h3>Iniciar Sesión</h3>
 					<div th:if=${param.error}>
 						<div class="alert alert-danger">Correo o contraseña
 							inválidos</div>
@@ -39,10 +43,6 @@
 						<div class="alert alert-info">Ha cerrado sesión exitosamente
 						</div>
 					</div>
-
-					<img class="logito" th:src="@{img/logo.png}" alt="">
-					<h3>Iniciar Sesión</h3>
-					
 					<div class="form-wrapper">
 						<input id="username"  name="username" class="form-control" autofocus="autofocus" placeholder="Digite su Correo" required  >
 						<i class="fa-sharp fa-solid fa-user"></i>

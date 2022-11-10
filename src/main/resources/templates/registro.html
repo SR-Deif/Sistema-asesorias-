@@ -16,14 +16,12 @@
 
 	<!-- STYLE CSS -->
 	<link rel="stylesheet" th:href="@{/css/stylee.css}">
+	<link rel='shortcut icon' type='image/x-icon' th:href='@{/img/logo.png}' />
+	<link rel="stylesheet" th:href="@{/css/custom.css}">
 
 </head>
 
 <body th:src=" @{'/fonts/poppins/Poppins-Regular.ttf'}" >
-	<div th:if=${param.exito}>
-		<div class="alert alert-info">Se ha registrado exitosamente a
-			la aplicación</div>
-	</div>
 
 	<div class="wrapper" style="background-image: url('img/a.jpg');">
 		<div class="inner">
@@ -33,6 +31,10 @@
 			<form th:action="@{/registro}" method="post" th:object="${usuario}">
 				<img th:src="@{img/logo.png}" class="logo" alt="">
 				<h3>Registrarse</h3>
+				<div th:if=${param.exito}>
+					<div class="alert alert-info">Se ha registrado exitosamente a
+						la aplicación</div>
+				</div>
 				<div class="form-group">
 					<input type="text" id="nombre" th:field="*{nombre}" placeholder="Nombre" class="fom"
 						autofocus="autofocus" required>
