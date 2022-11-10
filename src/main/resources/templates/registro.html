@@ -15,7 +15,7 @@
 	<script src="https://kit.fontawesome.com/392a27d13c.js" crossorigin="anonymous"></script>
 
 	<!-- STYLE CSS -->
-	<link rel="stylesheet" th:href="@{/css/stylee.css}">
+	<link rel="stylesheet" th:href="@{/css/style-registro.css}">
 	<link rel='shortcut icon' type='image/x-icon' th:href='@{/img/logo.png}' />
 	<link rel="stylesheet" th:href="@{/css/custom.css}">
 
@@ -23,10 +23,10 @@
 
 <body th:src=" @{'/fonts/poppins/Poppins-Regular.ttf'}" >
 
-	<div class="wrapper" style="background-image: url('img/a.jpg');">
+	<div class="wrapper" style="background-image: url('img/Login/a.jpg');">
 		<div class="inner">
 			<div class="image-holder">
-				<img th:src="@{img/j.jpg}" alt="">
+				<img th:src="@{img/Login/j.jpg}" alt="">
 			</div>
 			<form th:action="@{/registro}" method="post" th:object="${usuario}">
 				<img th:src="@{img/logo.png}" class="logo" alt="">
