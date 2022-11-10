@@ -9,7 +9,7 @@ public class AppController {
 
 	@GetMapping("")
 	public String verPaginaDeInicio() {
-		return "formularioprincipal";
+		return "index";
 	}
 	
 }
