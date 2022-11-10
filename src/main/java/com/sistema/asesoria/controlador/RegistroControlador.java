@@ -13,9 +13,14 @@ public class RegistroControlador {
 	@Autowired
 	private UsuarioServicio servicio;
 	
+	@GetMapping("/index")
+	public String inicio() {
+		return "login";
+	}
+
 	@GetMapping("/login")
 	public String iniciarSesion() {
-		return "login";
+		return "index";
 	}
 	
 	@GetMapping("/")
