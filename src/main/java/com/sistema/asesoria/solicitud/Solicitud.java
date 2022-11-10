@@ -25,7 +25,7 @@ public class Solicitud {
     private String fechaCreacion;
 
     @ManyToOne//muchos a uno
-    @JoinColumn(name = "idUsuario")//con la columna que se va a unir
+    @JoinColumn(name = "id")//con la columna que se va a unir
     private Usuario usuario;
 
     @ManyToOne//muchos a uno

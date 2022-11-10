@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sistema.asesoria.repositorio.UsuarioRepositorio;
+
 @Controller
 public class UsuarioController {
 
     @Autowired//traemos los repositorios
-    private UsuarioRepository usuariorepository;
+    private UsuarioRepositorio usuariorepository;
       //public String es porque me retorna a un archivo html
 
       //Lista
@@ -45,16 +47,16 @@ public class UsuarioController {
         return "redirect:/usuarios";
       }
       //editar usuario
-      @GetMapping("/usuarios/editar/{idUsuario}")
-      public String mostrarFormularioModificarUsuario(@PathVariable("idUsuario")Integer idUsuario,Model modelo){
-        Usuario usuario = usuariorepository.findById(idUsuario).get();
+      @GetMapping("/usuarios/editar/{id}")
+      public String mostrarFormularioModificarUsuario(@PathVariable("id")Long id,Model modelo){
+        Usuario usuario = usuariorepository.findById(id).get();
         modelo.addAttribute("usuario", usuario);
         return "usuario/usuario_formulario";
       }
       //Eliminar usuario
-      @GetMapping("/usuarios/eliminar/{idUsuario}")
-      public String eliminarUsuario(@PathVariable("idUsuario")Integer idUsuario,Model modelo){
-        usuariorepository.deleteById(idUsuario);
+      @GetMapping("/usuarios/eliminar/{id}")
+      public String eliminarUsuario(@PathVariable("id")Long id,Model modelo){
+        usuariorepository.deleteById(id);
         return "redirect:/usuarios";
       }
 
@@ -71,9 +73,9 @@ public class UsuarioController {
       }
 
         // Cambiar estado
-  @GetMapping("/usuarios/estado/{idUsuario}")
-  public String estadoAgendamiento(@PathVariable("idUsuario") Integer idUsuario, Model modelo) {
-    Optional<Usuario> usuario = usuariorepository.findById(idUsuario);
+  @GetMapping("/usuarios/estado/{id}")
+  public String estadoAgendamiento(@PathVariable("id") Long id, Model modelo) {
+    Optional<Usuario> usuario = usuariorepository.findById(id);
     if (usuario.get().getEstado() == true) {
       usuario.get().setEstado(false);
     } else {

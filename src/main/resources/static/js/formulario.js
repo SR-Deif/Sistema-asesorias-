@@ -102,4 +102,3 @@ formulario.addEventListener('submit', (e) => {
 		document.getElementById('formulario-mensaje').classList.add('formulario-mensaje-activo');
 	}
 });
-

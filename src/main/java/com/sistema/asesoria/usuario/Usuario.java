@@ -1,162 +1,178 @@
 package com.sistema.asesoria.usuario;
 
-import javax.persistence.Entity;
+import java.util.Collection;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "usuario", uniqueConstraints = @UniqueConstraint(columnNames = "correoUsuario"))
+@Table(name = "usuarios", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class Usuario {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idUsuario;
 
-    @NotNull(message = "Debes especificar el nombre")
-    @Size(min = 1, max = 50, message = "El nombre debe medir entre 1 y 50")
-    private String nombreUsuario;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @NotNull(message = "Debes especificar el apellido")
-    @Size(min = 1, max = 50, message = "El apellido debe medir entre 1 y 50")
-    private String apellidoUsuario;
+	@Column(name = "nombre")
+	private String nombre;
 
-    @Email(message = "Por favor validar el correo")
-    private String correoUsuario;
+	@Column(name = "apellido")
+	private String apellido;
 
-    private String contrasenaUsuario;
-    @NotNull
-    @Size(min = 1, max = 10, message = "El código debe medir entre 1 y 10")
-    private String telefonoUsuario;
+	private String email;
 
-    private String tipoDocUsuario;
+	private String password;
 
-    @NotNull(message = "Debes especificar el Documento")
-    @Size(min = 1, max = 10, message = "El código debe medir entre 1 y 10")
-    private String numeroDocUsuario;
+	private String telefonoUsuario;
+
+	private String tipoDocUsuario; 
+
+	private String numeroDocUsuario;
 
     private String tipoUsuario;
 
     private Boolean estado = true;
+    
+	
+	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@JoinTable(
+			name = "usuarios_roles",
+			joinColumns = @JoinColumn(name = "usuario_id",referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "rol_id",referencedColumnName = "id")
+			)
+	private Collection<Rol> roles;
 
-    public String getTelefonoUsuario() {
-        return telefonoUsuario;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setTelefonoUsuario(String telefonoUsuario) {
-        this.telefonoUsuario = telefonoUsuario;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getTipoDocUsuario() {
-        return tipoDocUsuario;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public void setTipoDocUsuario(String tipoDocUsuario) {
-        this.tipoDocUsuario = tipoDocUsuario;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public String getNumeroDocUsuario() {
-        return numeroDocUsuario;
-    }
+	public String getApellido() {
+		return apellido;
+	}
 
-    public void setNumeroDocUsuario(String numeroDocUsuario) {
-        this.numeroDocUsuario = numeroDocUsuario;
-    }
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
 
-    public int getIdUsuario() {
-        return idUsuario;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public String getApellidoUsuario() {
-        return apellidoUsuario;
-    }
+	public Collection<Rol> getRoles() {
+		return roles;
+	}
 
-    public void setApellidoUsuario(String apellidoUsuario) {
-        this.apellidoUsuario = apellidoUsuario;
-    }
+	public void setRoles(Collection<Rol> roles) {
+		this.roles = roles;
+	}
 
-    public String getCorreoUsuario() {
-        return correoUsuario;
-    }
+	public Usuario(Long id, String nombre, String apellido, String email, String password, String telefonoUsuario,
+			String tipoDocUsuario, String numeroDocUsuario, String tipoUsuario, Boolean estado, Collection<Rol> roles) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.email = email;
+		this.password = password;
+		this.telefonoUsuario = telefonoUsuario;
+		this.tipoDocUsuario = tipoDocUsuario;
+		this.numeroDocUsuario = numeroDocUsuario;
+		this.tipoUsuario = tipoUsuario;
+		this.estado = estado;
+		this.roles = roles;
+	}
 
-    public void setCorreoUsuario(String correoUsuario) {
-        this.correoUsuario = correoUsuario;
-    }
+	public Usuario(String nombre, String apellido, String email, String password, String telefonoUsuario,
+			String tipoDocUsuario, String numeroDocUsuario, String tipoUsuario, Boolean estado, Collection<Rol> roles) {
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.email = email;
+		this.password = password;
+		this.telefonoUsuario = telefonoUsuario;
+		this.tipoDocUsuario = tipoDocUsuario;
+		this.numeroDocUsuario = numeroDocUsuario;
+		this.tipoUsuario = tipoUsuario;
+		this.estado = estado;
+		this.roles = roles;
+	}
 
-    public String getContrasenaUsuario() {
-        return contrasenaUsuario;
-    }
+	public Usuario() {
+		
+	}
 
-    public void setContrasenaUsuario(String contrasenaUsuario) {
-        this.contrasenaUsuario = contrasenaUsuario;
-    }
+	public String getTelefonoUsuario() {
+		return telefonoUsuario;
+	}
 
-    public String getTipoUsuario() {
-        return tipoUsuario;
-    }
+	public void setTelefonoUsuario(String telefonoUsuario) {
+		this.telefonoUsuario = telefonoUsuario;
+	}
 
-    public void setTipoUsuario(String tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
-    }
+	public String getNumeroDocUsuario() {
+		return numeroDocUsuario;
+	}
 
-    public Boolean getEstado() {
-        return estado;
-    }
+	public void setNumeroDocUsuario(String numeroDocUsuario) {
+		this.numeroDocUsuario = numeroDocUsuario;
+	}
 
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
-    }
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
 
-    // constructor
-    public Usuario() {
-    }
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
 
-    public Usuario(int idUsuario) {
-        super();
-        this.idUsuario = idUsuario;
-    }
+	public Boolean getEstado() {
+		return estado;
+	}
 
-    public Usuario(String tipoUsuario) {
-        super();
-        this.tipoUsuario = tipoUsuario;
-    }
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
 
-    public Usuario(int idUsuario,
-            @NotNull(message = "Debes especificar el nombre") @Size(min = 1, max = 50, message = "El nombre debe medir entre 1 y 50") String nombreUsuario,
-            @NotNull(message = "Debes especificar el apellido") @Size(min = 1, max = 50, message = "El apellido debe medir entre 1 y 50") String apellidoUsuario,
-            @Email(message = "Por favor validar el correo") String correoUsuario, String contrasenaUsuario,
-            @NotNull @Size(min = 1, max = 10, message = "El código debe medir entre 1 y 10") String telefonoUsuario,
-            String tipoDocUsuario,
-            @NotNull(message = "Debes especificar el Documento") @Size(min = 1, max = 10, message = "El código debe medir entre 1 y 10") String numeroDocUsuario,
-            String tipoUsuario, Boolean estado) {
-        this.idUsuario = idUsuario;
-        this.nombreUsuario = nombreUsuario;
-        this.apellidoUsuario = apellidoUsuario;
-        this.correoUsuario = correoUsuario;
-        this.contrasenaUsuario = contrasenaUsuario;
-        this.telefonoUsuario = telefonoUsuario;
-        this.tipoDocUsuario = tipoDocUsuario;
-        this.numeroDocUsuario = numeroDocUsuario;
-        this.tipoUsuario = tipoUsuario;
-        this.estado = estado;
-    }
+	public String getTipoDocUsuario() {
+		return tipoDocUsuario;
+	}
 
+	public void setTipoDocUsuario(String tipoDocUsuario) {
+		this.tipoDocUsuario = tipoDocUsuario;
+	}
+
+	
 }
