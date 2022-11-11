@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 
 <!-- datatables.html  21 Nov 2019 03:55:21 GMT -->
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Tablas</title>
-
-
+  <title>Tabla Cliente</title>
   <!-- General CSS Files -->
   <link rel="stylesheet" th:href="@{/css/app.min.css}">
   <link rel="stylesheet" th:href="@{/bundles/datatables/datatables.min.css}">
@@ -29,7 +28,7 @@
         <div class="form-inline mr-auto">
           <ul class="navbar-nav mr-3">
             <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg
-									collapse-btn"> <i data-feather="align-justify"></i></a></li>
+                  collapse-btn"> <i data-feather="align-justify"></i></a></li>
             <li><a href="#" class="nav-link nav-link-lg fullscreen-btn">
                 <i data-feather="maximize"></i>
               </a></li>
@@ -46,254 +45,144 @@
           </ul>
         </div>
         <ul class="navbar-nav navbar-right">
-          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-              class="nav-link nav-link-lg message-toggle"><i data-feather="mail"></i>
-              <span class="badge headerBadge1"> </span> </a>
-            <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
-              <div class="dropdown-header">
-                Messages
-                <div class="float-right">
-                  <a href="#">Mark All As Read</a>
-                </div>
-              </div>
-              <div class="dropdown-list-content dropdown-list-message">
-                <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar
-											text-white"> <img alt="image" th:src="@{/img/users/user-1.png}" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">John
-                      Deo</span>
-                    <span class="time messege-text">Please check your mail !!</span>
-                    <span class="time">2 Min Ago</span>
-                  </span>
-                  </a>
-              </div>
-              <div class="dropdown-footer text-center">
-                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
-              </div>
-            </div>
-          </li>
-          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-              class="nav-link notification-toggle nav-link-lg"><i data-feather="bell" class="bell"></i>
-            </a>
-            <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
-              <div class="dropdown-header">
-                Notifications
-                <div class="float-right">
-                  <a href="#">Mark All As Read</a>
-                </div>
-              </div>
-              <div class="dropdown-list-content dropdown-list-icons">
-                <a href="#" class="dropdown-item dropdown-item-unread"> <span
-                    class="dropdown-item-icon bg-primary text-white"> <i class="fas
-												fa-code"></i>
-                  </span> <span class="dropdown-item-desc"> Template update is
-                    available now! <span class="time">2 Min
-                      Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-info text-white"> <i class="far
-												fa-user"></i>
-                  </span> <span class="dropdown-item-desc"> <b>You</b> and <b>Dedik
-                      Sugiharto</b> are now friends <span class="time">10 Hours
-                      Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-success text-white"> <i
-                      class="fas
-												fa-check"></i>
-                  </span> <span class="dropdown-item-desc"> <b>Kusnaedi</b> has
-                    moved task <b>Fix bug header</b> to <b>Done</b> <span class="time">12
-                      Hours
-                      Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-danger text-white"> <i
-                      class="fas fa-exclamation-triangle"></i>
-                  </span> <span class="dropdown-item-desc"> Low disk space. Let's
-                    clean it! <span class="time">17 Hours Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-info text-white"> <i class="fas
-												fa-bell"></i>
-                  </span> <span class="dropdown-item-desc"> Welcome to Otika
-                    template! <span class="time">Yesterday</span>
-                  </span>
-                </a>
-              </div>
-              <div class="dropdown-footer text-center">
-                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
-              </div>
-            </div>
-          </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown"
               class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" th:src="@{/img/user.png}"
                 class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
-              <div class="dropdown-title">Hello Sarah Smith</div>
-              <a href="profile.html" class="dropdown-item has-icon"> <i class="far
-										fa-user"></i> Profile
-              </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
-                Activities
-              </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
-                Settings
-              </a>
+              <div class="dropdown-title"><span sec:authentication="principal.username"></span></div>
               <div class="dropdown-divider"></div>
-              <a th:href="@{/login}" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
-                Logout
+              <a th:href="@{/logout}" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
+                Cerrar Sesión
               </a>
             </div>
           </li>
         </ul>
       </nav>
+
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a th:href="@{dasboard}"> <img alt="image" th:src="@{/img/logo.png}" class="header-logo" /> <span
+            <a th:href="@{/dasboard}"> <img alt="image" th:src="@{/img/logo.png}" class="header-logo" /> <span
                 class="logo-name">AgroFuturo</span>
             </a>
           </div>
           <ul class="sidebar-menu">
             <li class="dropdown active">
-              <a th:href="@{dasboard}" class="nav-link"><i data-feather="monitor"></i><span>Inicio</span></a>
+              <a th:href="@{/dasboard}" class="nav-link"><i data-feather="monitor"></i><span>Inicio</span></a>
             </li>
 
-<<<<<<< HEAD
-            <tr>
-                <th>Id Cliente</th>
-                <th>Nombre Cliente</th>
-                <th>Apellido Cliente</th>
-                <th>Dirección</th>
-                <th>Correo Cliente</th>
-                <th>N° Tel Cliente</th>
-                <th>Tipo de Documento</th>
-                <th>Documento</th>
-                <th>Estado</th>
-                <th >Acciones</th>
-                
-            </tr>
-            <tr th:each="clientes:${listaClientes}">
-                <td th:text="${clientes.id_Cliente}"></td>
-                <td th:text="${clientes.nom_Cliente}"></td>
-                <td th:text="${clientes.ape_Cliente}"></td>
-                <td th:text="${clientes.direccion}"></td>
-                <td th:text="${clientes.correo_Cliente}"></td>
-                <td th:text="${clientes.num_Cliente}"></td>
-                <td th:text="${clientes.tipoDocumentoCliente}"></td>
-                <td th:text="${clientes.numeroDocumento}"></td>
-                <td>
-                    <span th:if="${clientes.estado==true}">Activo</span>
-                    <span th:if="${clientes.estado==false}">Inactivo</span>
-                </td>
-                <!-- <td th:text="#"></td> -->
-=======
             <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Acciones</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" th:href="@{/calendar}">Calendario</a></li>
-                <li><a th:href="@{/gmaps-advanced-route}">Mapa</a></li>
+                <li><a class="nav-link" th:href="@{/dasboard_pages/calendar}">Calendario</a></li>
+                <li><a th:href="@{/dasboard_pages/gmaps-advanced-route}">Mapa</a></li>
               </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="layout"></i><span>Formularios</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" th:href="@{/dasboard/forms-usuario}">Agendamiento</a></li>
-                <li><a class="nav-link" th:href="@{/dasboard/forms-usuario}">Asesoria</a></li>
-                <li><a class="nav-link" th:href="@{/dasboard/forms-usuario}">Cliente</a></li>
-                <li><a class="nav-link" th:href="@{/dasboard/forms-usuario}">Empleado</a></li>
-                <li><a class="nav-link" th:href="@{/dasboard/forms-usuario}">Solicitud</a></li>
+                <li><a class="nav-link" th:href="@{/agendamiento/nuevo}">Agendamiento</a></li>
+                <li><a class="nav-link" th:href="@{/asesoria/nuevo}">Asesoria</a></li>
+                <li><a class="nav-link" th:href="@{/clientes/nuevo}">Cliente</a></li>
+                <li><a class="nav-link" th:href="@{/usuarios/nuevo}">Empleado</a></li>
+                <li><a class="nav-link" th:href="@{/solicituds/nuevo}">Solicitud</a></li>
               </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Tablas</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" th:href="@{/dasboard/datatables}">Principal</a></li>
-                <li><a class="nav-link" th:href="@{/dasboard/datatables-agendamiento}">Agendamiento</a></li>
-                <li><a class="nav-link" th:href="@{/dasboard/datatables-asesoria}">Asesoria</a></li>
-                <li><a class="nav-link" th:href="@{/dasboard/datatables-cliente}">Cliente</a></li>
-                <li><a class="nav-link" th:href="@{/dasboard/datatables-usuario}">Empleado</a></li>
-                <li><a class="nav-link" th:href="@{/dasboard/datatables-solicitud}">Solicitud</a></li>
+                <li><a class="nav-link" href="datatables.html">Principal</a></li>
+                <li><a class="nav-link" th:href="@{/agendamiento}">Agendamiento</a></li>
+                <li><a class="nav-link" th:href="@{/asesoria}">Asesoria</a></li>
+                <li><a class="nav-link" th:href="@{/clientes}">Cliente</a></li>
+                <li><a class="nav-link" th:href="@{/usuarios}">Empleado</a></li>
+                <li><a class="nav-link" th:href="@{/solicituds}">Solicitud</a></li>
               </ul>
             </li>
           </ul>
         </aside>
       </div>
->>>>>>> 598792cac7bbfb2119f13a26f358c753c175408e
 
-      <!--Main Content -->
-      <div class="main-content">
-        <section class="section">
-          <div class="section-body">
-            <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Lista de Cliente</h4>
-                  </div>
-                  <div class="card-body">
-                    <div class="table-responsive">
-                      <table class="table table-striped" id="table-1">
-                        <thead>
-                          <tr>
-                            <th>Id</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Dirección</th>
-                            <th>Correo</th>
-                            <th>Teléfono</th>
-                            <th>Tipo Documento</th>
-                            <th>No. Documento</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr th:each="clientes:${listaClientes}">
-                            <td th:text="${clientes.id_Cliente}"></td>
-                            <td th:text="${clientes.nom_Cliente}"></td>
-                            <td th:text="${clientes.ape_Cliente}"></td>
-                            <td th:text="${clientes.direccion}"></td>
-                            <td th:text="${clientes.correo_Cliente}"></td>
-                            <td th:text="${clientes.num_Cliente}"></td>
-                            <td th:text="${clientes.tipoDocumentoCliente}"></td>
-                            <td th:text="${clientes.numeroDocumento}"></td>
-                            <td>
-                                <span th:if="${clientes.estado==true}" class="badge badge-success badge-shadow">Activo</span>
-                                <span th:if="${clientes.estado==false}" class="badge badge-success badge-shadow">Inactivo</span>
-                            </td>
-                                          <!-- <div class="badge badge-success badge-shadow">Inactivo</div> -->
+    <!--Main Content -->
+    <div class="main-content">
+      <section class="section">
+        <div class="section-body">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Lista de Cliente</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-striped" id="table-1">
+                      <thead>
+                        <tr>
+                          <th>Id</th>
+                          <th>Nombre</th>
+                          <th>Apellido</th>
+                          <th>Dirección</th>
+                          <th>Detalle Dirección</th>
+                          <th>Correo</th>
+                          <th>Teléfono</th>
+                          <th>Tipo Documento</th>
+                          <th>No. Documento</th>
+                          <th>Estado</th>
+                          <th>Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th>1</th>
+                          <th>Jorge</th>
+                          <th>Lopéz</th>
+                          <th>calle 63 #54-04</th>
+                          <th>Alameda3</th>
+                          <th>jorge23@gmail.com</th>
+                          <th>3102857182</th>
+                          <th>C.C</th>
+                          <th>21117736</th>
 
-                            <td>
-                              <a th:href="@{'/clientes/editar'+'/'+${clientes.id_Cliente}}"  class="btn btn-primary">Editar</a><br>
-                              <a th:if="${clientes.estado==true}" th:href="@{'/clientes/estado'+ '/' + ${clientes.id_Cliente}}"class="btn btn-danger">Inactivar</a>
-                              <a th:if="${clientes.estado==false}" th:href="@{'/clientes/estado'+ '/' + ${clientes.id_Cliente}}"class="btn btn-info">Activar</a>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+                          <td>
+                            <div class="badge badge-success badge-shadow">Activo</div><br>
+                            <div class="badge badge-success badge-shadow">Inactivo</div>
+                          </td>
+
+                          <td>
+                            <a href="#" class="btn btn-primary">Editar</a><br>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
         <div class="settingSidebar">
           <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
           </a>
           <div class="settingSidebar-body ps-container ps-theme-default">
             <div class=" fade show active">
-              <div class="setting-panel-header">Setting Panel
+              <div class="setting-panel-header">Ajustes
               </div>
               <div class="p-15 border-bottom">
-                <h6 class="font-medium m-b-10">Select Layout</h6>
+                <h6 class="font-medium m-b-10">Tema</h6>
                 <div class="selectgroup layout-color w-50">
                   <label class="selectgroup-item">
                     <input type="radio" name="value" value="1" class="selectgroup-input-radio select-layout" checked>
-                    <span class="selectgroup-button">Light</span>
+                    <span class="selectgroup-button">Claro </span>
                   </label>
                   <label class="selectgroup-item">
                     <input type="radio" name="value" value="2" class="selectgroup-input-radio select-layout">
-                    <span class="selectgroup-button">Dark</span>
+                    <span class="selectgroup-button">Oscuro</span>
                   </label>
                 </div>
               </div>
               <div class="p-15 border-bottom">
-                <h6 class="font-medium m-b-10">Sidebar Color</h6>
+                <h6 class="font-medium m-b-10">Tema Barra Lateral</h6>
                 <div class="selectgroup selectgroup-pills sidebar-color">
                   <label class="selectgroup-item">
                     <input type="radio" name="icon-input" value="1" class="selectgroup-input select-sidebar">
@@ -308,7 +197,7 @@
                 </div>
               </div>
               <div class="p-15 border-bottom">
-                <h6 class="font-medium m-b-10">Color Theme</h6>
+                <h6 class="font-medium m-b-10">Tema Color</h6>
                 <div class="theme-setting-options">
                   <ul class="choose-theme list-unstyled mb-0">
                     <li title="white" class="active">
@@ -335,29 +224,9 @@
                   </ul>
                 </div>
               </div>
-              <div class="p-15 border-bottom">
-                <div class="theme-setting-options">
-                  <label class="m-b-0">
-                    <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input"
-                      id="mini_sidebar_setting">
-                    <span class="custom-switch-indicator"></span>
-                    <span class="control-label p-l-10">Mini Sidebar</span>
-                  </label>
-                </div>
-              </div>
-              <div class="p-15 border-bottom">
-                <div class="theme-setting-options">
-                  <label class="m-b-0">
-                    <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input"
-                      id="sticky_header_setting">
-                    <span class="custom-switch-indicator"></span>
-                    <span class="control-label p-l-10">Sticky Header</span>
-                  </label>
-                </div>
-              </div>
               <div class="mt-4 mb-4 p-3 align-center rt-sidebar-last-ele">
                 <a href="#" class="btn btn-icon icon-left btn-primary btn-restore-theme">
-                  <i class="fas fa-undo"></i> Restore Default
+                  <i class="fas fa-undo"></i> Restaurar
                 </a>
               </div>
             </div>
@@ -385,16 +254,6 @@
   <script th:src="@{/js/scripts.js}"></script>
   <!-- Custom JS File -->
   <script th:src="@{/js/custom.js}"></script>
-
-  <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
-  <script>
-  $(document).ready(function () {
-  $('#example').DataTable();
-  });
-</script> -->
-
 </body>
 
 

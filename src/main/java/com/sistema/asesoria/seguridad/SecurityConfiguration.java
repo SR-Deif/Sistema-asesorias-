@@ -52,6 +52,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 				"/fonts/**",
 				"/index",
 				"/bundles/**",
+				"/scss/**",
+				"/vendor/**",
 				
 				"/img/**").permitAll()
 		.anyRequest().authenticated()

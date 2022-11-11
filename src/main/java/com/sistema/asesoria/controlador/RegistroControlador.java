@@ -26,6 +26,6 @@ public class RegistroControlador {
 	@GetMapping("/")
 	public String verPaginaDeInicio(Model modelo) {
 		modelo.addAttribute("listaUsuarios", servicio.listarUsuarios());
-		return "usuario/usuarios";
+		return "dasboard";
 	}
 }
