@@ -50,7 +50,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 				"/js/**",
 
 				"/fonts/**",
-
+				"/index",
 				"/bundles/**",
 				
 				"/img/**").permitAll()

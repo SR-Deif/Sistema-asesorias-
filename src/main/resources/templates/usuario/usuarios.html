@@ -58,7 +58,7 @@
 								class="d-sm-none d-lg-inline-block"></span></a>
 						<div class="dropdown-menu dropdown-menu-right pullDown">
 							<div class="dropdown-title"><span sec:authentication="principal.username"></span></div>
-							<a href="profile.html" class="dropdown-item has-icon"> 
+							<a href="#" class="dropdown-item has-icon"> 
 							<a th:href="@{/logout}" class="dropdown-item has-icon text-danger"> <i
 									class="fas fa-sign-out-alt"></i>
 									Cerrar sesión
@@ -107,7 +107,7 @@
 								<li><a class="nav-link" href="datatables.html">Principal</a></li>
 								<li><a class="nav-link" href="datatables.html">Agendamiento</a></li>
 								<li><a class="nav-link" href="datatables.html">Asesoria</a></li>
-								<li><a class="nav-link" href="datatables.html">Cliente</a></li>
+								<li><a class="nav-link" th:href="@{/cliente/clientes}">Cliente</a></li>
 								<li><a class="nav-link" href="datatables.html">Empleado</a></li>
 								<li><a class="nav-link" href="datatables.html">Solicitud</a></li>
 							</ul>
