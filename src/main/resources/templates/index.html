@@ -8,7 +8,7 @@
   <!--FontAwesome Icons-->
   <script src="https://kit.fontawesome.com/6131ecdde6.js" crossorigin=anonymous></script>
   <!-- Favicons -->
-  <!-- <link href="assets/img/favicon.png" rel="icon"> -->
+ <link th:href="@{/img/logo.png}" rel="icon"> 
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -47,10 +47,10 @@
         <nav id="navbar" class="navbar">
           <ul>
             <li><a class="nav-link scrollto"th:href="@{/login}">Inicio</a></li>
-            <li><a class="nav-link scrollto " href="#acercade">Acerca de</a></li>
-            <li><a class="nav-link scrollto" href="#about">Asesorías</a></li>
-            <li><a class="nav-link scrollto" href="#product">Productos</a></li>
-            <li><a class="nav-link scrollto" href="#services">Contactenos</a></li>
+            <li><a class="nav-link scrollto " href="#hero">Acerca de</a></li>
+            <li><a class="nav-link scrollto" href="#Asesoria">Asesorías</a></li>
+            <li><a class="nav-link scrollto" href="#productoss">Productos</a></li>
+            <li><a class="nav-link scrollto" href="#contact">Contactenos</a></li>
             <li><a class="getstarted scrollto" th:href="@{/index}">Iniciar Sesión</a></li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
@@ -72,9 +72,6 @@
   </section><!-- End Hero -->
 
   <main id="main">
-
-
-
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
       <div class="container">
@@ -171,14 +168,14 @@
     <br>
     <br>
 
-    <div class="welcome">
+    <div class="welcome" id="productoss">
       <div class="container">
         <h3 class="agileits_w3layouts_head"><span>Productos</span></h3>
         <p class="agile_para">Algunos productos que encontraras en nuestra tienda:</p>
       </div>
       <!---728x90--->
 
-      <div class="mis-stage w3_agileits_welcome_grids">
+      <div class="mis-stage w3_agileits_welcome_grids" name="product">
         <!-- The element to select and apply miSlider to - the class is optional -->
         <ol class="mis-slider">
           <li class="mis-slide">
