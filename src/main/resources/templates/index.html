@@ -100,98 +100,61 @@
     <!--Asesorias-formulario-->
     <div id="Asesoria">
       <h1>Solicitar Asesoría</h1>
-      <form th:action="@{/clientes/guardar}" th:object="${clientes}" method="post" class="php-email-form mt-4">
-         <!--Id Cliente-->
-          <input hidden type="text" id="id_Cliente"  th:field="*{id_Cliente}" />
-          
-          
-          <div class="row">
-            <!--Nombre-->
+      <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+        <div class="row">
           <div class="col-md-6 form-group clase">
-            <input th:field="*{nom_Cliente}" type="text" name="name" class="form-control nuevo" id="name" placeholder="¿Cuál es tu nombre?"
+            <input type="text" name="name" class="form-control nuevo" id="name" placeholder="¿Cuál es tu nombre?"
               required>
           </div>
-            <!--Apellido-->
           <div class="col-md-6 form-group  clase">
-            <input th:field="*{ape_Cliente}" type="text" name="last name" class="form-control nuevo" id="last name"
-              placeholder="¿Cuál es tu apellido?" required >
+            <input type="text" name="last name" class="form-control nuevo" id="last name"
+              placeholder="¿Cuál es tu apellido?" required>
           </div>
-
-              <!--Documento-->
           <div class="col-md-6 form-group opciones">
             <label>
               Tipo de Documento
             </label>
-            <select th:field="*{tipoDocumentoCliente}" class="elegir" required aria-label="select example">
-              <option>Tipo</option>
+            <select class="elegir">
               <option value="c.c">C.C</option>
               <option value="c.e">C.E</option>
               <option value="otro">Otro</option>
             </select>
           </div>
-
-            <!--Número de Documento-->
           <div class="col-md-6 form-group clase">
-            <input th:field="*{numeroDocumento}" type="number" name="numDoc" class="form-control nuevo" id="numDoc" placeholder="N° Documento"
-            required maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-          </div>
-
-            <!--Correo-->
-          <div class="col-md-6 form-group mt-3 mt-md-0">
-            <input th:field="*{correo_Cliente}" type="email" class="form-control nuevo" name="email" id="email" placeholder="Agrega tu correo"
+            <input type="number" name="numDoc" class="form-control nuevo" id="numDoc" placeholder="N° Documento"
               required>
           </div>
-
-            <!--Telefono-->
+          <div class="col-md-6 form-group mt-3 mt-md-0">
+            <input type="email" class="form-control nuevo" name="email" id="email" placeholder="Agrega tu correo"
+              required>
+          </div>
           <div class="col-md-6 form-group clase">
-            <input th:field="*{num_Cliente}" type="number" name="tel" class="form-control nuevo" id="tel" placeholder="N° Telefonico" required>
+            <input type="number" name="tel" class="form-control nuevo" id="tel" placeholder="N° Telefonico" required>
           </div>
 
-              <!--Dirección-->
           <div class="col-md-6 form-group clase">
-            <input th:field="*{direccion}" type="text" class="form-control nuevo" name="subject" id="Dirección" placeholder="Dirección" required>
+            <input type="text" class="form-control nuevo" name="subject" id="subject" placeholder="Dirección" required>
           </div>
-      </form>
-
-
-      <!---------------------------
-          Solicitud Formulario
-      ------------------------------>
-      <form th:action="@{/solicituds/guardar}" th:object="${solicitud}" method="post" class="php-email-form mt-4">
-              
-          <!--Fecha creación-->
-          <input hidden class="form-control" type="text" th:field="*{fechaCreacion}"  id="fechaSubCampana"/>
-
-          <!--Tipo de Asesoria-->
+          <div class="col-md-6 form-group clase">
+            <input type="date" class="form-control nuevo" name="subject" id="subject" placeholder="Fecha a Agendar"
+              required>
+          </div>
           <div class="col-md-6 form-group opciones">
             <label>
               Tipo de Asesoria
             </label>
-            <select th:field="*{tipoSolicitud}" class="elegir">
-              <option>Tipo</option>
-              <option value="presencial">Presencial</option>
-              <option value="vitual">Virtual</option>
+            <select class="elegir">
+              <option value="c.c">Presencial</option>
+              <option value="c.e">Virtual</option>
+              <option value="otro">Telefonica</option>
             </select>
           </div>
 
-              <!--Descripción-->
           <div class="form-group mt-3 clase">
-            <textarea th:field="*{descripcion}" class="form-control nuevo" name="message" rows="5" placeholder="Descripción " required></textarea>
+            <textarea class="form-control nuevo" name="message" rows="5" placeholder="Descripción " required></textarea>
           </div>
         </div>
         <br>
-      </form>
-
-      <!---------------------------
-          Agendamiento Formulario
-      ----------------------------->
-       <form th:action="@{/agendamiento/guardar}" th:object="${agendamiento}" method="post" class="php-email-form mt-4"> 
-      <!--Fecha a Agendar-->
-      <div class="col-md-6 form-group clase">
-          <input th:field="*{fechaAgendamiento}" min="2022-09-20" type="date" class="form-control nuevo" name="subject" id="fechaAgendar" placeholder="Fecha a Agendar" required>
-      </div>
-              
-            
         <div class="enviar"><button type="submit" class="boton">Solicitar</button></div>
 
       </form>

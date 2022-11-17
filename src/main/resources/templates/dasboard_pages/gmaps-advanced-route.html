@@ -56,7 +56,7 @@
               </div>
               <div class="dropdown-list-content dropdown-list-message">
                 <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar
-											text-white"> <img alt="image" src="@{/img/users/user-1.png" class="rounded-circle">
+											text-white"> <img alt="image" src="@{/img/users/user-1.png}" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">John
                       Deo</span>
                     <span class="time messege-text">Please check your mail !!</span>
@@ -118,7 +118,7 @@
             </div>
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown"
-              class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" src="@{/img/user.png"
+              class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" src="@{/img/user.png}"
                 class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
               <div class="dropdown-title">Hello Sarah Smith</div>
@@ -142,20 +142,20 @@
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a th:href="@{dasboard}"> <img alt="image" src="@{/img/logo.png}" class="header-logo" /> <span
+            <a th:href="@{/dasboard}"> <img alt="image" src="@{/img/logo.png}" class="header-logo" /> <span
                 class="logo-name">AgroFuturo</span>
             </a>
           </div>
           <ul class="sidebar-menu">
             <li class="dropdown active">
-              <a th:href="@{dasboard.html}" class="nav-link"><i data-feather="monitor"></i><span>Inicio</span></a>
+              <a th:href="@{/dasboard}" class="nav-link"><i data-feather="monitor"></i><span>Inicio</span></a>
             </li>
 
             <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Acciones</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" th:href="@{/dasboard/calendar}">Calendario</a></li>
-                <li><a th:href="@{/dasboard/gmaps-advanced-route}">Mapa</a></li>
+                <li><a class="nav-link" th:href="@{/calendario}">Calendario</a></li>
+                <li><a th:href="@{/mapa}">Mapa</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -306,16 +306,16 @@
     </div>
   </div>
   <!-- General JS Scripts -->
-  <script src="@{/js/app.min.js"></script>
+  <script th:src="@{/js/app.min.js}"></script>
   <!-- JS Libraies -->
   <script src="http://maps.google.com/maps/api/js?key=AIzaSyB55Np3_WsZwUQ9NS7DP-HnneleZLYZDNw&amp;sensor=true"></script>
-  <script src="@{/bundles/gmaps.js"></script>
+  <script th:src="@{/bundles/gmaps.js}"></script>
   <!-- Page Specific JS File -->
-  <script src="@{/js/page/gmaps-advanced-route.js"></script>
+  <script th:src="@{/js/page/gmaps-advanced-route.js}"></script>
   <!-- Template JS File -->
-  <script src="@{/js/scripts.js"></script>
+  <script th:src="@{/js/scripts.js}"></script>
   <!-- Custom JS File -->
-  <script src="@{/js/custom.js"></script>
+  <script th:src="@{/js/custom.js}"></script>
 </body>
 
 
