@@ -98,8 +98,13 @@
     <br>
 
     <!--Asesorias-formulario-->
+    
+
+<!--
+    
     <div id="Asesoria">
       <h1>Solicitar Asesoría</h1>
+<<<<<<< HEAD
       <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
         <div class="row">
           <div class="col-md-6 form-group clase">
@@ -159,6 +164,89 @@
 
       </form>
     </div>
+=======
+      <form th:action="@{/clientes/nuevo}" th:object="${clientes}" method="post">
+        <div class="card-header">
+          <h4>Formuluario Cliente</h4>
+        </div>
+       
+        <input hidden type="text" id="id_Cliente"  th:field="*{id_Cliente}" />
+        
+        
+        <div class="card-body">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input th:field="*{nom_Cliente}" type="text" class="form-control" required maxlength="50" >
+            <div class="invalid-feedback">
+              Por favor diligencié el campo
+            </div>
+          </div>
+
+    
+         <div class="form-group">
+            <label>Apellido</label>
+            <input th:field="*{ape_Cliente}" type="text" class="form-control" required maxlength="50">
+            <div class="invalid-feedback">
+              Por favor diligencié el campo
+            </div>
+          </div>
+
+       
+         <div class="form-group">
+            <label>Direccin</label>
+            <input th:field="*{direccion}" type="text" class="form-control" required="" maxlength="45">
+            <div class="invalid-feedback">
+              Por favor diligencié el campo
+            </div>
+          </div>
+
+   
+         <div class="form-group">
+            <label>E-mail</label>
+            <input th:field="*{correo_Cliente}" type="email" class="form-control" required="">
+            <div class="invalid-feedback">
+              Por favor revise que este bién diligenciado el correo.
+            </div>
+          </div>
+
+     
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input th:field="*{num_Cliente}" type="number" class="form-control" required="6" maxlength="10">
+            <div class="invalid-feedback">
+              Por favor diligencié el campo
+            </div>
+          </div>
+
+   
+        <div class="form-group">
+          <label>Tipo Documento</label><br>
+          <select th:field="*{tipoDocumentoCliente}" class="form-control" required="">
+            <option value="DNI">DNI</option>
+            <option value="C.C">C.C</option>
+            <option value="C.E">C.E</option>
+            <option value="P.A">P.A</option>
+          </select>
+        </div>
+
+       
+         <div class="form-group">
+            <label>No. Documento</label>
+            <input th:field="*{numeroDocumento}" type="number" class="form-control" required="" minlength="10" >
+            <div class="invalid-feedback">
+              Por favor diligencié el campo
+            </div>
+          </div>
+
+
+        </div>
+        <div class="card-footer text-right">
+          <button type="submit" class="btn btn-primary">Registrar</button>
+        </div>
+      </form>
+
+    -->
+>>>>>>> df26966b36453f4335514371cd567a73738c2ff8
 
     <!--Fin formulario asesorias-->
 
