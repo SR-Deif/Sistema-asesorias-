@@ -28,8 +28,11 @@
 			<div class="image-holder">
 				<img th:src="@{img/Login/j.jpg}" alt="">
 			</div>
+
 			<form th:action="@{/registro}" method="post" th:object="${usuario}">
+
 				<img th:src="@{img/logo.png}" class="logo" alt="">
+				
 				<h3>Registrarse</h3>
 				<div th:if=${param.exito}>
 					<div class="alert alert-info">Se ha registrado exitosamente a
