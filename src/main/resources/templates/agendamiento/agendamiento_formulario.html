@@ -105,65 +105,68 @@
         </aside>
       </div>
 
+      <div class="container">
+      <div class="main-content ">
+      <section class="section">
+      <div class="card">
       <!-- Main Content -->
-      <div class="main-content">
-        <section class="section">
-          <div class="section-body">
-            <div class="row">
-              <div class="col-12 col-md-6 col-lg-6">
-                <div class="card">
-                  <form th:action="@{/agendamiento/guardar}" th:object="${agendamiento}" method="post" class="needs-validation" novalidate="">
-                    <div class="card-header">
-                      <h4 th:if="${agendamiento.idAgendamiento == null}">Formuluario Agendamiento</h4>
-                      <h4 th:unless="${agendamiento.idAgendamiento == null}">Editar Agendamiento</h4>
-                    </div>
+        <br>
+        <div>
+          <h4 th:if="${agendamiento.idAgendamiento == null}" class="text-center">Formuluario Agendamiento</h4>
+          <h4 th:unless="${agendamiento.idAgendamiento == null}" class="text-center">Editar Agendamiento</h4>
+        </div>
 
-                    <input type="hidden" th:field="*{idAgendamiento}" th:value="${agendamiento.idAgendamiento}" />
-
-                    <div class="card-body">
-                      <div class="form-group">
-                        <label>Fecha a Agendar</label>
-                        <input th:field="*{fechaAgendamiento}" type="date" class="form-control" required="">
-                        <div class="invalid-feedback">
-                          Por favor diligencie el campo
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label>Fecha a Revisar Agendamiento</label>
-                        <input th:field="*{fechaRevisionAgendamiento}" type="date" class="form-control" required="">
-                        <div class="invalid-feedback">
-                          Por favor diligencie el campo
-                        </div>
-                      </div>
-                      <!-- <div class="form-group">
-                        <label for="">Descripción</label>
-                        <textarea class="form-control nuevo" name="message" rows="5" required maxlength="50"></textarea>
-                      </div> -->
-
-                      			<!--<div class="form-group row">
-	        		    	<label class="col-form-label col-sm-4">Descripción: </label>
-		            		<div class="col-sm-8">
-	      			    	<select th:field="*{asesoria}" class="form-control" required>
-					    	<th:block th:each="solicitud : ${listaSoulicituds}">
-							recorre toda la lista de la usuario que le coloque en el controlador 
-							<option th:text="${solicitud.descripcion}" th:value="${solicitud.idSolicitud}"></option>-->
-							<!-- el texto va ser el nombre pero con el id me guarda el objeto es lo mas importante -->
-
-                    </div>
-                    
-                    
-                    <div class="card-footer text-right">
-                      <button class="btn btn-primary">					
-                        <a style="--clr:#1e9bff" onclick="return confirm('¿Deseas guardar estos datos?');"><span>Registrar</span></a>
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-              </div>
-            </div>
+        
+        <form th:action="@{/agendamiento/guardar}" th:object="${agendamiento}" method="post" class="needs-validation"  style="max-width: 600px; margin: 0 auto;" 
+        novalidate="">
+          <div class="card-header">
+            <input type="hidden" th:field="*{idAgendamiento}" th:value="${agendamiento.idAgendamiento}" />
           </div>
-        </section>
+                        
+          <div class="card-body">
+              <div class="form-group row">
+                  <label class="col-form-label col-sm-4">Fecha a Agendar</label>
+                  <div class="col-sm-8">
+                    <input th:field="*{fechaAgendamiento}" type="date" class="form-control" required="">
+                    <div class="invalid-feedback">
+                      Por favor diligencie el campo
+                    </div>
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label class="col-form-label col-sm-4">Fecha a Revisar Agendamiento</label>
+                  <div class="col-sm-8">
+                    <input th:field="*{fechaRevisionAgendamiento}" type="date" class="form-control" required="">
+                    <div class="invalid-feedback">
+                      Por favor diligencie el campo
+                    </div>
+                  </div>
+              </div>
+              
+                    <!-- <div class="form-group">
+                      <label for="">Descripción</label>
+                      <textarea class="form-control nuevo" name="message" rows="5" required maxlength="50"></textarea>
+                    </div> -->
+
+                          <!--<div class="form-group row">
+                  <label class="col-form-label col-sm-4">Descripción: </label>
+                  <div class="col-sm-8">
+                  <select th:field="*{asesoria}" class="form-control" required>
+              <th:block th:each="solicitud : ${listaSoulicituds}">
+                  recorre toda la lista de la usuario que le coloque en el controlador 
+                <option th:text="${solicitud.descripcion}" th:value="${solicitud.idSolicitud}"></option>-->
+              <!-- el texto va ser el nombre pero con el id me guarda el objeto es lo mas importante -->    
+              <div class="card-footer text-center">
+                <button class="btn btn-primary">					
+                  <a style="--clr:#1e9bff" onclick="return confirm('¿Deseas guardar estos datos?');"><span class="text-center">Registrar</span></a>
+                </button>
+              </div>
+        </form>           
+    </section>
+    </div>
+    </div>
+    </div>
+
         <div class="settingSidebar">
           <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
           </a>

@@ -105,13 +105,16 @@
         </aside>
       </div>
 
-      <!-- Main Content -->
+      <div class="container">
       <div class="main-content">
-        <section class="section">
-          <div class="section-body">
-            <div class="row">
-              <div class="col-12 col-md-6 col-lg-6">
-                <div class="card">
+      <section class="section">
+      <div class="card">
+        <br>
+        <div class="text-center">
+          <h4>Formuluario Cliente</h4>
+        </div>
+              <!-- Main Content -->
+
                   <div id="Asesoria">
                     <!--Alerta Duplicidad-->
                          <!--param =>ruta ?-->
@@ -121,100 +124,115 @@
                         </div>
                     </div>
                     
-                  <form th:action="@{/clientes/nuevo}" th:object="${clientes}" method="post" class="needs-validation" novalidate="">
-                    <div class="card-header">
-                      <h4>Formuluario Cliente</h4>
-                    </div>
+                  <form th:action="@{/clientes/nuevo}" th:object="${clientes}" method="post" class="needs-validation" style="max-width: 600px; margin: 0 auto;"
+                  novalidate="">
+
                     <!--Id-->
                     <input hidden type="text" id="id_Cliente"  th:field="*{id_Cliente}" />
                     
                     <!--Nombre-->
                     <div class="card-body">
-                      <div class="form-group">
-                        <label>Nombre</label>
-                        <input th:field="*{nom_Cliente}" type="text" class="form-control" required maxlength="50" >
-                        <div class="invalid-feedback">
-                          Por favor diligencié el campo
+                      <div class="form-group row">
+                        <label class="col-form-label col-sm-4">Nombre</label>
+                        <div class="col-sm-8">
+                          <input th:field="*{nom_Cliente}" type="text" class="form-control" required maxlength="50" >
+                          <div class="invalid-feedback">
+                            Por favor diligencié el campo
+                          </div>
                         </div>
                       </div>
 
                     <!--Apellido-->
-                     <div class="form-group">
-                        <label>Apellido</label>
-                        <input th:field="*{ape_Cliente}" type="text" class="form-control" required maxlength="50">
-                        <div class="invalid-feedback">
-                          Por favor diligencié el campo
+                     <div class="form-group row">
+                        <label class="col-form-label col-sm-4">Apellido</label>
+                        <div class="col-sm-8">
+                          <input th:field="*{ape_Cliente}" type="text" class="form-control" required maxlength="50">
+                          <div class="invalid-feedback">
+                            Por favor diligencié el campo
+                          </div>
                         </div>
                       </div>
 
                     <!--Dirección-->
-                     <div class="form-group">
-                        <label>Direccin</label>
-                        <input th:field="*{direccion}" type="text" class="form-control" required="" maxlength="45">
-                        <div class="invalid-feedback">
-                          Por favor diligencié el campo
+                     <div class="form-group row">
+                        <label class="col-form-label col-sm-4">Dirección</label>
+                        <div class="col-sm-8">
+                          <input th:field="*{direccion}" type="text" class="form-control" required="" maxlength="45">
+                          <div class="invalid-feedback">
+                            Por favor diligencié el campo
+                          </div>
                         </div>
                       </div>
 
                     <!--Correo-->
-                     <div class="form-group">
-                        <label>E-mail</label>
-                        <input th:field="*{correo_Cliente}" type="email" class="form-control" required="">
-                        <div class="invalid-feedback">
-                          Por favor revise que este bién diligenciado el correo.
+                     <div class="form-group  row">
+                        <label class="col-form-label col-sm-4">E-mail</label>
+                        <div class="col-sm-8">
+                          <input th:field="*{correo_Cliente}" type="email" class="form-control" required="">
+                          <div class="invalid-feedback">
+                            Por favor revise que este bién diligenciado el correo.
+                          </div>
                         </div>
                       </div>
 
                       <!--Teléfono-->
-                      <div class="form-group">
-                        <label>Teléfono</label>
-                        <input th:field="*{num_Cliente}" type="number" class="form-control" required="6" maxlength="10">
-                        <div class="invalid-feedback">
-                          Por favor diligencié el campo
+                      <div class="form-group row">
+                        <label class="col-form-label col-sm-4">Teléfono</label>
+                        <div class="col-sm-8">
+                          <input th:field="*{num_Cliente}" type="number" class="form-control" required="6" maxlength="10">
+                          <div class="invalid-feedback">
+                            Por favor diligencié el campo
+                          </div>
                         </div>
                       </div>
 
                     <!--Tipo documento-->
-                    <div class="form-group">
-                      <label>Tipo Documento</label><br>
-                      <select th:field="*{tipoDocumentoCliente}" class="form-control" required="">
-                        <option value="">DNI</option>
-                        <option value="">C.C</option>
-                        <option value="">C.E</option>
-                        <option value="">P.A</option>
-                      </select>
+                    <div class="form-group row">
+                      <label  class="col-form-label col-sm-4">Tipo Documento</label><br>
+                      <div class="col-sm-8">
+                        <select th:field="*{tipoDocumentoCliente}" class="form-control" required aria-label="select example">
+                          <option value="" selected>--Elegir tipo de Documento--</option>
+                          <option value="">DNI</option>
+                          <option value="">C.C</option>
+                          <option value="">C.E</option>
+                          <option value="">P.A</option>
+                        </select>
+                      </div>
                     </div>
 
                     <!--No. Documento-->
-                     <div class="form-group">
-                        <label>No. Documento</label>
-                        <input th:field="*{numeroDocumento}" type="number" class="form-control" required="" minlength="10" >
-                        <div class="invalid-feedback">
-                          Por favor diligencié el campo
+                     <div class="form-group row">
+                        <label class="col-form-label col-sm-4">No. Documento</label>
+                        <div class="col-sm-8">
+                          <input th:field="*{numeroDocumento}" type="number" class="form-control" required="" minlength="10" >
+                          <div class="invalid-feedback">
+                            Por favor diligencié el campo
+                          </div>
                         </div>
                       </div>
 
 
                     <!--Estado-->
-                     <div class="form-group">
-                        <label>Estado</label><br>
-                        <select class="form-control" required="" >
-                          <option value="">No aplica</option>
-                          <option value="">Activo</option>
-                          <option value="">Inactivo</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="card-footer text-right">
+                     <div class="form-group row">
+                        <label class="col-form-label col-sm-4" >Estado</label><br>
+                        <div class="col-sm-8">
+                          <select class="form-control" required="" >
+                            <option value="">No aplica</option>
+                            <option value="">Activo</option>
+                            <option value="">Inactivo</option>
+                          </select>
+                        </div>
+                     </div>
+                    
+                    <div class="card-footer text-center">
                       <button type="submit" class="btn btn-primary">Registrar</button>
                     </div>
                   </form>
-                </div>
-              </div>
-              </div>
+
             </div>
           </div>
-        </section>
+        </div>
+      </section>
           <div class="settingSidebar">
           <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
           </a>
