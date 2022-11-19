@@ -35,6 +35,10 @@ public class Usuario {
 
 	private String telefonoUsuario;
 
+	private String detalleDireccion;
+
+	private String direccion;
+
 	private String tipoDocUsuario; 
 
 	private String numeroDocUsuario;
@@ -58,6 +62,14 @@ public class Usuario {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Collection<Rol> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Collection<Rol> roles) {
+		this.roles = roles;
 	}
 
 	public String getNombre() {
@@ -92,54 +104,36 @@ public class Usuario {
 		this.password = password;
 	}
 
-	public Collection<Rol> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Collection<Rol> roles) {
-		this.roles = roles;
-	}
-
-	public Usuario(Long id, String nombre, String apellido, String email, String password, String telefonoUsuario,
-			String tipoDocUsuario, String numeroDocUsuario, String tipoUsuario, Boolean estado, Collection<Rol> roles) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.email = email;
-		this.password = password;
-		this.telefonoUsuario = telefonoUsuario;
-		this.tipoDocUsuario = tipoDocUsuario;
-		this.numeroDocUsuario = numeroDocUsuario;
-		this.tipoUsuario = tipoUsuario;
-		this.estado = estado;
-		this.roles = roles;
-	}
-
-	public Usuario(String nombre, String apellido, String email, String password, String telefonoUsuario,
-			String tipoDocUsuario, String numeroDocUsuario, String tipoUsuario, Boolean estado, Collection<Rol> roles) {
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.email = email;
-		this.password = password;
-		this.telefonoUsuario = telefonoUsuario;
-		this.tipoDocUsuario = tipoDocUsuario;
-		this.numeroDocUsuario = numeroDocUsuario;
-		this.tipoUsuario = tipoUsuario;
-		this.estado = estado;
-		this.roles = roles;
-	}
-
-	public Usuario() {
-		
-	}
-
 	public String getTelefonoUsuario() {
 		return telefonoUsuario;
 	}
 
 	public void setTelefonoUsuario(String telefonoUsuario) {
 		this.telefonoUsuario = telefonoUsuario;
+	}
+
+	public String getDetalleDireccion() {
+		return detalleDireccion;
+	}
+
+	public void setDetalleDireccion(String detalleDireccion) {
+		this.detalleDireccion = detalleDireccion;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public String getTipoDocUsuario() {
+		return tipoDocUsuario;
+	}
+
+	public void setTipoDocUsuario(String tipoDocUsuario) {
+		this.tipoDocUsuario = tipoDocUsuario;
 	}
 
 	public String getNumeroDocUsuario() {
@@ -166,13 +160,51 @@ public class Usuario {
 		this.estado = estado;
 	}
 
-	public String getTipoDocUsuario() {
-		return tipoDocUsuario;
-	}
-
-	public void setTipoDocUsuario(String tipoDocUsuario) {
+	public Usuario(Long id, String nombre, String apellido, String email, String password, String telefonoUsuario,
+			String detalleDireccion, String direccion, String tipoDocUsuario, String numeroDocUsuario,
+			String tipoUsuario, Boolean estado, Collection<Rol> roles) {
+		this.id = id;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.email = email;
+		this.password = password;
+		this.telefonoUsuario = telefonoUsuario;
+		this.detalleDireccion = detalleDireccion;
+		this.direccion = direccion;
 		this.tipoDocUsuario = tipoDocUsuario;
+		this.numeroDocUsuario = numeroDocUsuario;
+		this.tipoUsuario = tipoUsuario;
+		this.estado = estado;
+		this.roles = roles;
 	}
 
-	
+	public Usuario(String nombre, String apellido, String email, String password, String telefonoUsuario,
+			String detalleDireccion, String direccion, String tipoDocUsuario, String numeroDocUsuario,
+			String tipoUsuario, Boolean estado, Collection<Rol> roles) {
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.email = email;
+		this.password = password;
+		this.telefonoUsuario = telefonoUsuario;
+		this.detalleDireccion = detalleDireccion;
+		this.direccion = direccion;
+		this.tipoDocUsuario = tipoDocUsuario;
+		this.numeroDocUsuario = numeroDocUsuario;
+		this.tipoUsuario = tipoUsuario;
+		this.estado = estado;
+		this.roles = roles;
+	}
+
+	public Usuario() {
+	}
+
+	public Usuario(String email) {
+		this.email = email;
+	}
+
+	public Usuario(Long id) {
+		this.id = id;
+	}
+
+
 }

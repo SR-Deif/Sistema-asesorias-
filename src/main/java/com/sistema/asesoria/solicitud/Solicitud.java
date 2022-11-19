@@ -11,8 +11,6 @@ import javax.persistence.ManyToOne;
 // import javax.persistence.OneToOne;
 
 import com.sistema.asesoria.usuario.Usuario;//importamos el modelo
-// import com.sistema.asesoria.agendamiento.Agendamiento;
-import com.sistema.asesoria.cliente.Cliente;//importamos el modelo
 
 
 @Entity
@@ -28,10 +26,6 @@ public class Solicitud {
     @JoinColumn(name = "id")//con la columna que se va a unir
     private Usuario usuario;
 
-    @ManyToOne//muchos a uno
-    @JoinColumn(name = "id_Cliente")//con la columna que se va a unir
-    private Cliente cliente;
-
     private Boolean estado=false;
 
     private String descripcion;
@@ -43,12 +37,11 @@ public class Solicitud {
     public Solicitud() {
     }
 
-    public Solicitud(Integer idSolicitud, String fechaCreacion, Usuario usuario, Cliente cliente, Boolean estado,
+    public Solicitud(Integer idSolicitud, String fechaCreacion, Usuario usuario, Boolean estado,
             String descripcion, String tipoSolicitud) {
         this.idSolicitud = idSolicitud;
         this.fechaCreacion = fechaCreacion;
         this.usuario = usuario;
-        this.cliente = cliente;
         this.estado = estado;
         this.descripcion = descripcion;
         this.tipoSolicitud = tipoSolicitud;
@@ -64,10 +57,6 @@ public class Solicitud {
         this.idSolicitud = idSolicitud;
     }
 
-    //relacion cliente
-    public Solicitud(Cliente cliente) {
-        this.cliente = cliente;
-    }
 
     //metodos accesores
     public Integer getIdSolicitud() {
@@ -99,13 +88,6 @@ public class Solicitud {
         this.usuario = usuario;
     }
 
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
 
     public Boolean getEstado() {
         return estado;

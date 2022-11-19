@@ -34,11 +34,13 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 
 	@Override
 	public Usuario guardar(UsuarioRegistroDTO registroDTO) {
-		Usuario usuario = new Usuario(registroDTO.getNombre(), registroDTO.getApellido(), registroDTO.getEmail(),
-		passwordEncoder.encode(registroDTO.getPassword()), registroDTO.getTelefonoUsuario(), registroDTO.getTipoDocUsuario(), registroDTO.getNumeroDocUsuario(),
-				registroDTO.getTipoUsuario(), registroDTO.getEstado(), Arrays.asList(new Rol("ROLE_USER")));
+		Usuario usuario = new Usuario(registroDTO.getNombre(), registroDTO.getApellido(), registroDTO.getEmail(), passwordEncoder.encode(registroDTO.getPassword())
+		, registroDTO.getTelefonoUsuario(), registroDTO.getDetalleDireccion(), registroDTO.getDireccion(), registroDTO.getTipoDocUsuario(), registroDTO.getNumeroDocUsuario(), 
+		registroDTO.getTipoUsuario(), registroDTO.getEstado(), Arrays.asList(new Rol("Rol_User")));
 		return usuarioRepositorio.save(usuario);
 	}
+					//Arrays.asList(new Rol("ROLE_USER")));
+					//passwordEncoder.encode(registroDTO.getPassword())
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.sistema.asesoria.cliente.Cliente;
-import com.sistema.asesoria.cliente.ClienteRepository;
 import com.sistema.asesoria.usuario.Usuario;
 import com.sistema.asesoria.usuario.UsuarioRepository;
 
@@ -24,8 +22,7 @@ public class SolictudController {
   private SolicitudRepository solicitudrepository;
   @Autowired
   private UsuarioRepository usuariorepository;
-  @Autowired
-  private ClienteRepository clienteRepository;
+
 
   // lista
   @GetMapping("/solicituds")
@@ -41,9 +38,7 @@ public class SolictudController {
     // aqui le pasamos una nueva instancia de solicitud para asi poder asignar a los
     // campos en el html
     List<Usuario> listaUsuarios = usuariorepository.findAll();
-    List<Cliente> listaClientes = clienteRepository.findAll();
     model.addAttribute("solicitud", new Solicitud());
-    model.addAttribute("listaClientes", listaClientes);
     model.addAttribute("listaUsuarios", listaUsuarios);
     return "solicitud/solicitud_formulario";
   }
@@ -60,9 +55,6 @@ public class SolictudController {
   public String mostrarFormularioModeficarSolicitud(@PathVariable("idSolicitud") Integer idSolicitud, Model model) {
     Solicitud solicitud = solicitudrepository.findById(idSolicitud).get();
     model.addAttribute("solicitud", solicitud);
-    // cliente
-    List<Cliente> listaClientes = clienteRepository.findAll();
-    model.addAttribute("listaClientes", listaClientes);
     //usuario
     List<Usuario> listaUsuarios = usuariorepository.findAll();
     model.addAttribute("listaClientes", listaUsuarios);
