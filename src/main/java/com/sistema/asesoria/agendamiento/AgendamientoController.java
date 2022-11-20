@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.sistema.asesoria.repositorio.UsuarioRepositorio;
 import com.sistema.asesoria.solicitud.Solicitud;
 import com.sistema.asesoria.solicitud.SolicitudRepository;
-import com.sistema.asesoria.usuario.Usuario;
 
 @Controller
 public class AgendamientoController {
