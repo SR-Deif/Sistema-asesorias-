@@ -97,6 +97,7 @@
                 <li><a class="nav-link" th:href="@{/clientes}">Cliente</a></li>
                 <li><a class="nav-link" th:href="@{/usuarios}">Empleado</a></li>
                 <li><a class="nav-link" th:href="@{/solicituds}">Solicitud</a></li>
+                <li><a class="nav-link" th:href="@{/agendamientoFecha}">Vista Cliente</a></li>
               </ul>
             </li>
           </ul>
@@ -147,7 +148,7 @@
                 </div>
                 <div class="card">
                   <div class="card-header">
-                    <h4>Personal Details</h4>
+                    <h4>Datos Personales</h4>
                   </div>
                   <div class="card-body">
                     <div class="py-4">
@@ -169,11 +170,12 @@
                       </p>
                       <p class="clearfix">
                         <span class="float-left">
-                          Mail
+                          Correo
                         </span>
-                        <span class="float-right text-muted">
-                          test@example.com
-                        </span>
+                        
+                        <span class="float-right text-muted" sec:authentication="principal.username">
+                        
+                        <span></span>
                       </p>
                       <p class="clearfix">
                         <span class="float-left">

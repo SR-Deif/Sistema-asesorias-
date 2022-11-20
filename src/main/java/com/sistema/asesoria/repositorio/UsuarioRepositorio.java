@@ -9,5 +9,4 @@ import com.sistema.asesoria.usuario.Usuario;
 public interface UsuarioRepositorio extends JpaRepository<Usuario, Long>{
 
 	public Usuario findByEmail(String email);
-	
 }

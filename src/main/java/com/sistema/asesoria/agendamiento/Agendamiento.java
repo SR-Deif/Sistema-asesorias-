@@ -20,7 +20,7 @@ public class Agendamiento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idAgendamiento;
-    @NotEmpty(message = "Debes elegir una fecha a Agendar ")
+    //@NotEmpty(message = "Debes elegir una fecha a Agendar ")
     private String fechaAgendamiento;
     @NotEmpty(message = "Debes elegir una fecha para Realizar la Asesoria")
     private String fechaRevisionAgendamiento;
@@ -39,13 +39,9 @@ public class Agendamiento {
         this.idAgendamiento = idAgendamiento;
     }
 
-
-
-    
-
-
     public Agendamiento(int idAgendamiento,
-            @NotEmpty(message = "Debes elegir una fecha a Agendar ") String fechaAgendamiento,
+            //@NotEmpty(message = "Debes elegir una fecha a Agendar ") 
+            String fechaAgendamiento,
             @NotEmpty(message = "Debes elegir una fecha para Realizar la Asesoria") String fechaRevisionAgendamiento,
             Boolean estado, Solicitud solicitud) {
         this.idAgendamiento = idAgendamiento;

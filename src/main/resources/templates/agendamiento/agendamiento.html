@@ -99,6 +99,7 @@
                 <li><a class="nav-link" th:href="@{/clientes}">Cliente</a></li>
                 <li><a class="nav-link" th:href="@{/usuarios}">Empleado</a></li>
                 <li><a class="nav-link" th:href="@{/solicituds}">Solicitud</a></li>
+                <li><a class="nav-link" th:href="@{/agendamientoFecha}">Vista Cliente</a></li>
               </ul>
             </li>
           </ul>
@@ -121,8 +122,11 @@
                         <thead>
                           <tr>
                             <th>ID</th>
-                            <th>Agendamiento de Asesorias</th>
-                            <th>Revisión de Asesorias</th>
+                            <th>Fecha Creación</th>
+                            <th>Fecha Revisión</th>
+                           <!-- <th>Nombre Cliente</th>-->
+                            <th>Descripción</th>
+                            <th>Tipo de Solicitud</th>
                             <th>Estado</th>
                             <th colspan="3">Acciones</th>
                           </tr>
@@ -132,7 +136,9 @@
                             <td th:text="${agendamiento.idAgendamiento}"></td>
                             <td th:text="${agendamiento.fechaAgendamiento}"></td>
                             <td th:text="${agendamiento.fechaRevisionAgendamiento}"></td>
-                            <!--<td th:text="${agendamiento.asesoria.idAsesoria}"></td>-->
+                           <!-- <td th:text="${agendamiento.}"></td>-->
+                            <td th:text="${agendamiento.solicitud.descripcion}"></td>
+                            <td th:text="${agendamiento.solicitud.tipoSolicitud}"></td>
                             <td>
                               <span th:if="${agendamiento.estado==true}">Activo</span>
                               <span th:if="${agendamiento.estado==false}">Inactivo</span>

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.sistema.asesoria.agendamiento.Agendamiento;
+import com.sistema.asesoria.agendamiento.AgendamientoRepository;
 import com.sistema.asesoria.usuario.Usuario;
 import com.sistema.asesoria.usuario.UsuarioRepository;
 
@@ -22,7 +24,8 @@ public class SolictudController {
   private SolicitudRepository solicitudrepository;
   @Autowired
   private UsuarioRepository usuariorepository;
-
+  @Autowired // traemos los repositorios
+  private AgendamientoRepository agendamientorepository;
 
   // lista
   @GetMapping("/solicituds")
@@ -58,7 +61,6 @@ public class SolictudController {
     //usuario
     List<Usuario> listaUsuarios = usuariorepository.findAll();
     model.addAttribute("listaClientes", listaUsuarios);
-
     return "solicitud/solicitud_formulario";
   }
 
@@ -73,10 +75,10 @@ public class SolictudController {
   @GetMapping("/solicitud/estado/{idSolicitud}")
   public String estadoSolicitud(@PathVariable("idSolicitud") Integer idSolicitud, Model modelo) {
     Optional<Solicitud> solicitud = solicitudrepository.findById(idSolicitud);
-    if (solicitud.get().getEstado() == false) {
-      solicitud.get().setEstado(true);
-    } else {
+    if (solicitud.get().getEstado() == true) {
       solicitud.get().setEstado(false);
+    } else {
+      solicitud.get().setEstado(true);
     }
     solicitudrepository.save(solicitud.get());
     return "redirect:/solicituds";

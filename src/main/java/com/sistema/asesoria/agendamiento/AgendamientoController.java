@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.sistema.asesoria.repositorio.UsuarioRepositorio;
 import com.sistema.asesoria.solicitud.Solicitud;
 import com.sistema.asesoria.solicitud.SolicitudRepository;
+import com.sistema.asesoria.usuario.Usuario;
 
 @Controller
 public class AgendamientoController {
@@ -32,14 +34,20 @@ public class AgendamientoController {
     return "agendamiento/agendamiento";// retornar
   }
 
+
+  @GetMapping("/agendamientoFecha") // redireccionar
+  public String listarAgendamientofecha(Model model) {
+    List<Agendamiento> listaAgendamiento = agendamientorepository.findAll();// mostrar todo lista
+    model.addAttribute("listaAgendamiento", listaAgendamiento);
+    return "agendamiento/agendamiento_cliente";// retornar
+  }
+
   // Agregar agendamiento
   @GetMapping("/agendamiento/nuevo")
   public String mostrarFormularioDeNuevaAgendamiento(Model model) {
-    List<Solicitud> listaSolicitud = solicitudrepository.findAll();// poder alistar todas los agendamientos
-    // aqui le pasamos una nueva instancia de solicitud para asi poder asignar a los
-    // campos en el html
+    List<Solicitud> listaSolicitud = solicitudrepository.findAll();
     model.addAttribute("agendamiento", new Agendamiento());
-    model.addAttribute("listaSolicituds", listaSolicitud);// aqui agregamos la lista
+    model.addAttribute("listaSolicituds", listaSolicitud);
     return "agendamiento/agendamiento_formulario";
   }
 
@@ -50,32 +58,34 @@ public class AgendamientoController {
     return "redirect:/agendamiento";
   }
 
+
   // editar agendamiento
   @GetMapping("/agendamiento/editar/{idAgendamiento}")
   public String mostrarFormularioModificarAgendamiento(@PathVariable("idAgendamiento") Integer idAgendamiento,
       Model modelo) {
     Agendamiento agendamiento = agendamientorepository.findById(idAgendamiento).get();
     modelo.addAttribute("agendamiento", agendamiento);
+
     List<Solicitud> listaSolicituds = solicitudrepository.findAll();
     modelo.addAttribute("listaSolicituds", listaSolicituds);
-    return "agendamiento/agendamiento_formulario";
+    return "agendamiento/formulario_cliente";
   }
 
   // Eliminar agendamiento
   @GetMapping("/agendamiento/eliminar/{idAgendamiento}")
   public String eliminarAgendamiento(@PathVariable("idAgendamiento") Integer idAgendamiento, Model modelo) {
     agendamientorepository.deleteById(idAgendamiento);
-    return "redirect:/asesoria";
+    return "redirect:/agendamiento";
   }
 
   // Cambiar estado
   @GetMapping("/agendamiento/estado/{idAgendamiento}")
   public String estadoAgendamiento(@PathVariable("idAgendamiento") Integer idAgendamiento, Model modelo) {
     Optional<Agendamiento> agendamiento = agendamientorepository.findById(idAgendamiento);
-    if (agendamiento.get().getEstado() == false) {
-      agendamiento.get().setEstado(true);
-    } else {
+    if (agendamiento.get().getEstado() == true) {
       agendamiento.get().setEstado(false);
+    } else {
+      agendamiento.get().setEstado(true);
     }
     agendamientorepository.save(agendamiento.get());
     return "redirect:/agendamiento";
