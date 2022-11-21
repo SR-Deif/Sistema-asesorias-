@@ -3,6 +3,7 @@
 
 
 <!-- datatables.html  21 Nov 2019 03:55:21 GMT -->
+
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -51,7 +52,7 @@
               class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" th:src="@{/img/user.png}"
                 class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
-							<div class="dropdown-title"><span sec:authentication="principal.username"></span></div>
+              <div class="dropdown-title"><span sec:authentication="principal.username"></span></div>
               <div class="dropdown-divider"></div>
               <a th:href="@{/logout}" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
                 Cerrar Sesión
@@ -74,14 +75,16 @@
             </li>
 
             <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Acciones</span></a>
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                  data-feather="command"></i><span>Acciones</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" th:href="@{/dasboard_pages/calendar}">Calendario</a></li>
                 <li><a th:href="@{/dasboard_pages/gmaps-advanced-route}">Mapa</a></li>
               </ul>
             </li>
             <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="layout"></i><span>Formularios</span></a>
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                  data-feather="layout"></i><span>Formularios</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" th:href="@{/agendamiento/nuevo}">Agendamiento</a></li>
                 <li><a class="nav-link" th:href="@{/asesoria/nuevo}">Asesoria</a></li>
@@ -107,24 +110,24 @@
       </div>
 
       <div class="container">
-      <div class="main-content ">
-      <section class="section">
-      <div class="card">
-      <!-- Main Content -->
-        <br>
-        <div>
-          <h4 th:if="${agendamiento.idAgendamiento == null}" class="text-center">Formuluario Agendamiento</h4>
-          <h4 th:unless="${agendamiento.idAgendamiento == null}" class="text-center">Editar Agendamiento</h4>
-        </div>
+        <div class="main-content ">
+          <section class="section">
+            <div class="card">
+              <!-- Main Content -->
+              <br>
+              <div>
+                <h4 th:if="${agendamiento.idAgendamiento == null}" class="text-center">Formuluario Agendamiento</h4>
+                <h4 th:unless="${agendamiento.idAgendamiento == null}" class="text-center">Editar Agendamiento</h4>
+              </div>
 
-        
-        <form th:action="@{/agendamiento/guardar}" th:object="${agendamiento}" method="post" class="needs-validation"  style="max-width: 600px; margin: 0 auto;" 
-        novalidate="">
-          <div class="card-header">
-            <input type="hidden" th:field="*{idAgendamiento}" th:value="${agendamiento.idAgendamiento}" />
-          </div>
-                        
-   <!--       <div class="card-body">
+
+              <form th:action="@{/agendamiento/guardar}" th:object="${agendamiento}" method="post"
+                class="needs-validation" style="max-width: 600px; margin: 0 auto;" novalidate="">
+                <div class="card-header">
+                  <input type="hidden" th:field="*{idAgendamiento}" th:value="${agendamiento.idAgendamiento}" />
+                </div>
+
+                <!--       <div class="card-body">
               <div class="form-group row">
                   <label class="col-form-label col-sm-4">Fecha a Agendar</label>
                   <div class="col-sm-8">
@@ -134,16 +137,16 @@
                     </div>
                   </div>
               </div>-->
-              <div class="form-group row">
-                <label class="col-form-label col-sm-4">Fecha Actual</label>
-                <div class="col-sm-8">
-              <input hidden class="form-control" type="text" th:field="*{fechaAgendamiento}"  id="fechaSubCampana"
-							placeholder="" >
-						<input disabled class="form-control" type="text" id="fecha">
-          </div>
-        </div>
-              
-              <div class="form-group row">
+                <div class="form-group row">
+                  <label class="col-form-label col-sm-4">Fecha Actual</label>
+                  <div class="col-sm-8">
+                    <input hidden class="form-control" type="text" th:field="*{fechaAgendamiento}" id="fechaSubCampana"
+                      placeholder="">
+                    <input disabled class="form-control" type="text" id="fecha">
+                  </div>
+                </div>
+
+                <div class="form-group row">
                   <label class="col-form-label col-sm-4">Fecha a Revisar Agendamiento</label>
                   <div class="col-sm-8">
                     <input th:field="*{fechaRevisionAgendamiento}" type="date" class="form-control" required="">
@@ -151,128 +154,130 @@
                       Por favor diligencie el campo
                     </div>
                   </div>
-              </div>
-              <div class="form-group row ">
-                <label class="col-form-label col-sm-4">Tipo de Solicitud:</label><br>
-               <div class="col-sm-8">
-                  <select th:field="*{solicitud.tipoSolicitud}" class="form-control" required="">
-                    <option value=""  selected >Selecciona</option>
-                    <option value="Virtual">Virtual</option>
-                    <option value="Presencial">Presencial</option>
-                  </select>
                 </div>
-              </div>
-                     <div class="form-group row">
-                  <label class="col-form-label col-sm-4">Descripción: </label>
+                <div class="form-group row ">
+                  <label class="col-form-label col-sm-4">Tipo de Solicitud:</label><br>
                   <div class="col-sm-8">
-                <textarea th:field="*{solicitud.descripcion}"  ></textarea>
-                <div class="invalid-feedback">
-                    Por favor diligencie el campo
+                    <select th:field="*{solicitud.tipoSolicitud}" class="form-control" required="">
+                      <option value="" selected>Selecciona</option>
+                      <option value="Virtual">Virtual</option>
+                      <option value="Presencial">Presencial</option>
+                    </select>
                   </div>
                 </div>
-            </div>             
+                <div class="form-group row">
+                  <label class="col-form-label col-sm-4">Descripción: </label>
+                  <div class="col-sm-8">
+                    <textarea th:field="*{solicitud.descripcion}"></textarea>
+                    <div class="invalid-feedback">
+                      Por favor diligencie el campo
+                    </div>
+                  </div>
+                </div>
 
-              <div class="card-footer text-center">
-                <button class="btn btn-primary">					
-                  <a style="--clr:#1e9bff" onclick="return confirm('¿Deseas guardar estos datos?');"><span class="text-center">Registrar</span></a>
-                </button>
-              </div>
-        </form>           
-    </section>
-    </div>
-    </div>
+                <div class="card-footer text-center">
+                  <button class="btn btn-primary">
+                    <a style="--clr:#1e9bff" onclick="return confirm('¿Deseas guardar estos datos?');"><span
+                        class="text-center">Registrar</span></a>
+                  </button>
+                </div>
+              </form>
+          </section>
+        </div>
+      </div>
     </div>
 
-        <div class="settingSidebar">
-          <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
-          </a>
-          <div class="settingSidebar-body ps-container ps-theme-default">
-            <div class=" fade show active">
-              <div class="setting-panel-header">Ajustes
-              </div>
-              <div class="p-15 border-bottom">
-                <h6 class="font-medium m-b-10">Tema</h6>
-                <div class="selectgroup layout-color w-50">
-                  <label class="selectgroup-item">
-                    <input type="radio" name="value" value="1" class="selectgroup-input-radio select-layout" checked>
-                    <span class="selectgroup-button">Claro </span>
-                  </label>
-                  <label class="selectgroup-item">
-                    <input type="radio" name="value" value="2" class="selectgroup-input-radio select-layout">
-                    <span class="selectgroup-button">Oscuro</span>
-                  </label>
-                </div>
-              </div>
-              <div class="p-15 border-bottom">
-                <h6 class="font-medium m-b-10">Tema Barra Lateral</h6>
-                <div class="selectgroup selectgroup-pills sidebar-color">
-                  <label class="selectgroup-item">
-                    <input type="radio" name="icon-input" value="1" class="selectgroup-input select-sidebar">
-                    <span class="selectgroup-button selectgroup-button-icon" data-toggle="tooltip"
-                      data-original-title="Light Sidebar"><i class="fas fa-sun"></i></span>
-                  </label>
-                  <label class="selectgroup-item">
-                    <input type="radio" name="icon-input" value="2" class="selectgroup-input select-sidebar" checked>
-                    <span class="selectgroup-button selectgroup-button-icon" data-toggle="tooltip"
-                      data-original-title="Dark Sidebar"><i class="fas fa-moon"></i></span>
-                  </label>
-                </div>
-              </div>
-              <div class="p-15 border-bottom">
-                <h6 class="font-medium m-b-10">Tema Color</h6>
-                <div class="theme-setting-options">
-                  <ul class="choose-theme list-unstyled mb-0">
-                    <li title="white" class="active">
-                      <div class="white"></div>
-                    </li>
-                    <li title="cyan">
-                      <div class="cyan"></div>
-                    </li>
-                    <li title="black">
-                      <div class="black"></div>
-                    </li>
-                    <li title="purple">
-                      <div class="purple"></div>
-                    </li>
-                    <li title="orange">
-                      <div class="orange"></div>
-                    </li>
-                    <li title="green">
-                      <div class="green"></div>
-                    </li>
-                    <li title="red">
-                      <div class="red"></div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="mt-4 mb-4 p-3 align-center rt-sidebar-last-ele">
-                <a href="#" class="btn btn-icon icon-left btn-primary btn-restore-theme">
-                  <i class="fas fa-undo"></i> Restaurar
-                </a>
-              </div>
+    <div class="settingSidebar">
+      <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
+      </a>
+      <div class="settingSidebar-body ps-container ps-theme-default">
+        <div class=" fade show active">
+          <div class="setting-panel-header">Ajustes
+          </div>
+          <div class="p-15 border-bottom">
+            <h6 class="font-medium m-b-10">Tema</h6>
+            <div class="selectgroup layout-color w-50">
+              <label class="selectgroup-item">
+                <input type="radio" name="value" value="1" class="selectgroup-input-radio select-layout" checked>
+                <span class="selectgroup-button">Claro </span>
+              </label>
+              <label class="selectgroup-item">
+                <input type="radio" name="value" value="2" class="selectgroup-input-radio select-layout">
+                <span class="selectgroup-button">Oscuro</span>
+              </label>
             </div>
+          </div>
+          <div class="p-15 border-bottom">
+            <h6 class="font-medium m-b-10">Tema Barra Lateral</h6>
+            <div class="selectgroup selectgroup-pills sidebar-color">
+              <label class="selectgroup-item">
+                <input type="radio" name="icon-input" value="1" class="selectgroup-input select-sidebar">
+                <span class="selectgroup-button selectgroup-button-icon" data-toggle="tooltip"
+                  data-original-title="Light Sidebar"><i class="fas fa-sun"></i></span>
+              </label>
+              <label class="selectgroup-item">
+                <input type="radio" name="icon-input" value="2" class="selectgroup-input select-sidebar" checked>
+                <span class="selectgroup-button selectgroup-button-icon" data-toggle="tooltip"
+                  data-original-title="Dark Sidebar"><i class="fas fa-moon"></i></span>
+              </label>
+            </div>
+          </div>
+          <div class="p-15 border-bottom">
+            <h6 class="font-medium m-b-10">Tema Color</h6>
+            <div class="theme-setting-options">
+              <ul class="choose-theme list-unstyled mb-0">
+                <li title="white" class="active">
+                  <div class="white"></div>
+                </li>
+                <li title="cyan">
+                  <div class="cyan"></div>
+                </li>
+                <li title="black">
+                  <div class="black"></div>
+                </li>
+                <li title="purple">
+                  <div class="purple"></div>
+                </li>
+                <li title="orange">
+                  <div class="orange"></div>
+                </li>
+                <li title="green">
+                  <div class="green"></div>
+                </li>
+                <li title="red">
+                  <div class="red"></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mt-4 mb-4 p-3 align-center rt-sidebar-last-ele">
+            <a href="#" class="btn btn-icon icon-left btn-primary btn-restore-theme">
+              <i class="fas fa-undo"></i> Restaurar
+            </a>
           </div>
         </div>
       </div>
-     <footer class="main-footer">
-				<div class="footer-left">
-					<img src="../../static/img/logo copy.png" th:src="@{/img/logo copy.png}">
-				</div>
-				<div class="footer-right">
-					<a href="https://www.facebook.com/AgroFuturo2021">
-						<i class="fa-brands fa-facebook"></i>
-					</a>
-					<a href="https://api.whatsapp.com/send?phone=%2B573138988526&data=AWDE5xbsmUjp72OdkGbnfGmnTKUQ1yJxOFqzYAL0K3eg6GR2rYaH7kuLozq_rm_WuKT1UwiK4KYlYjfLCCxA-hacU_41VsBBR-WRc2th9j9o1YifSpYFTB8f_gmieXl8zFm7u3XjGsnElfG91-wTfoTnBrqOn0uqX86SXE-TYTq31aanQQb_oSYOBZKhofSmtX5omk5VoUsfzsgheh1GHSURCd2Jx-tX1rezfgCPM1p5xeksYg-1aKNT89VeFeRAQuxSBjr0UzuTTRhm2jdnzfhgGlRHTvpdr3aPTnDzT3OVXI62Eys-nwOcZ6PRAQqco9Y&source=FB_Page&app=facebook&entry_point=page_cta&fbclid=IwAR2YtdL8ATkMPcpxl0Xx0-e5eLNjxIgSWRrcx5Pr30aAZupryYzhNPahRhw">
-						<i class="fa-brands fa-whatsapp"></i>
-					</a>
-					<a href="mailto:agricolagrofuturo@gmail.com">
-						<i class="fa-solid fa-envelope"></i>
-					</a>
-					<a href="templateshub.net">Templateshub</a></a>
-				</div>
-			</footer>
-    </div> 
+    </div>
+  </div>
+  <footer class="main-footer">
+    <div class="footer-left">
+      <img src="../../static/img/logo copy.png" th:src="@{/img/logo copy.png}">
+    </div>
+    <div class="footer-right">
+      <a href="https://www.facebook.com/AgroFuturo2021">
+        <i class="fa-brands fa-facebook"></i>
+      </a>
+      <a
+        href="https://api.whatsapp.com/send?phone=%2B573138988526&data=AWDE5xbsmUjp72OdkGbnfGmnTKUQ1yJxOFqzYAL0K3eg6GR2rYaH7kuLozq_rm_WuKT1UwiK4KYlYjfLCCxA-hacU_41VsBBR-WRc2th9j9o1YifSpYFTB8f_gmieXl8zFm7u3XjGsnElfG91-wTfoTnBrqOn0uqX86SXE-TYTq31aanQQb_oSYOBZKhofSmtX5omk5VoUsfzsgheh1GHSURCd2Jx-tX1rezfgCPM1p5xeksYg-1aKNT89VeFeRAQuxSBjr0UzuTTRhm2jdnzfhgGlRHTvpdr3aPTnDzT3OVXI62Eys-nwOcZ6PRAQqco9Y&source=FB_Page&app=facebook&entry_point=page_cta&fbclid=IwAR2YtdL8ATkMPcpxl0Xx0-e5eLNjxIgSWRrcx5Pr30aAZupryYzhNPahRhw">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+      <a href="mailto:agricolagrofuturo@gmail.com">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+      <a href="templateshub.net">Templateshub</a></a>
+    </div>
+  </footer>
+  </div>
   </div>
   <!-- General JS Scripts -->
   <script th:src="@{/js/app.min.js}"></script>
@@ -287,30 +292,31 @@
   <!-- Custom JS File -->
   <script th:src="@{/js/custom.js}"></script>
 
-	<script>
-		setFecha();
-		setFechaa();
+  <script>
+    setFecha();
+    setFechaa();
 
-		function setFecha() {
-			var input = document.getElementById("fechaSubCampana");
-			var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
-			var fecha = new Date();
-			input.value = (fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
-			var esto = input.value = (fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
-		} function setFechaa() {
-			var input = document.getElementById("fecha");
-			var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
-			var fecha = new Date();
-			input.value = (fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
-			var esto = input.value = (fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
-		}
-		function limpiar() {
-			document.getElementById("form").reset();
-			setFecha();
-		}
-	</script>
+    function setFecha() {
+      var input = document.getElementById("fechaSubCampana");
+      var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+      var fecha = new Date();
+      input.value = (fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
+      var esto = input.value = (fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
+    } function setFechaa() {
+      var input = document.getElementById("fecha");
+      var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+      var fecha = new Date();
+      input.value = (fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
+      var esto = input.value = (fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
+    }
+    function limpiar() {
+      document.getElementById("form").reset();
+      setFecha();
+    }
+  </script>
 </body>
 
 
 <!-- datatables.html  21 Nov 2019 03:55:25 GMT -->
+
 </html>

@@ -6,6 +6,9 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.sistema.asesoria.solicitud.Solicitud;
 import com.sistema.asesoria.solicitud.SolicitudRepository;
+import com.sistema.asesoria.usuario.Usuario;
+import com.sistema.asesoria.usuario.UsuarioRepository;
 
 @Controller
 public class AgendamientoController {
@@ -23,6 +28,10 @@ public class AgendamientoController {
   // public String es porque me retorna a un archivo html
   @Autowired
   private SolicitudRepository solicitudrepository;
+
+  @Autowired
+  private UsuarioRepository usuarioRepository;
+
 
   // Lista
   @GetMapping("/agendamiento") // redireccionar
@@ -51,7 +60,13 @@ public class AgendamientoController {
 
   // guardar agendamiento
   @PostMapping("/agendamiento/guardar")
-  public String guardarAgendamiento(@Valid Agendamiento agendamiento) {
+  public String guardarAgendamiento(@Valid Agendamiento agendamiento, Authentication auth) {
+    String username = ((UserDetails)auth.getPrincipal()).getUsername();
+    Usuario usuario = usuarioRepository.findByEmail(username);
+    if(agendamiento.getSolicitud()!=null){
+      agendamiento.getSolicitud().setUsuario(usuario);
+    }
+    
     agendamientorepository.save(agendamiento);
     return "redirect:/agendamiento";
   }

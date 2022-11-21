@@ -125,23 +125,24 @@
         </div>
 
         <div class="card-body">           
-          <div class="form-group row">
-            <label class="col-form-label col-sm-4">Fecha de Creación:</label>
-              <div class="col-sm-8">  
-                <input th:field="*{fechaCreacion}" type="date" class="form-control" required="">
-                  <div class="invalid-feedback">
-                    Por favor diligencie el campo
-                  </div>
-              </div>
-          </div>
           <div class="form-group row ">
             <label class="col-form-label col-sm-4">Tipo de Solicitud:</label><br>
            <div class="col-sm-8">
               <select th:field="*{tipoSolicitud}" class="form-control" required="">
                 <option value="">Selecciona</option>
-                <option value="">Virtual</option>
-                <option value="">Presencial</option>
+                <option value="Virtual">Virtual</option>
+                <option value="Presencial">Presencial</option>
               </select>
+            </div>
+            <div>
+              <div style="font-family: monospace; text-align: center; margin: auto;">
+                <input type="text" name="principal.username"/> 
+
+                Usuario: <sec:authentication property="principal.username" />
+              <sec:csrfInput />
+                  
+      </div>
+
             </div>
           </div>
           <div class="form-group row">
@@ -155,32 +156,9 @@
               </div>
             </div>
           </div>
-
-          <div class="form-group row">
-            <label class="col-form-label col-sm-4">Cliente : </label>
-            <div class="col-sm-8">
-              <select th:field="*{cliente}" class="form-control" required>
-                <th:block th:each="clientes : ${listaClientes}">
-                  <!-- recorre toda la lista de la usuario que le coloque en el controlador -->
-                    <option th:text="${clientes.correo_Cliente}" th:value="${clientes.id_Cliente}">
-                    </option>
-                  <!-- el texto va ser el nombre pero con el id me guarda el objeto es lo mas importante -->
-                </th:block>             
-              </select>
-            </div>
-          </div>
               
               
-          <div class="form-group row">
-            <label  class="col-form-label col-sm-4">Estado</label><br>
-            <div class="col-sm-8">
-              <select class="form-control" required="">
-                <option value="">No aplica</option>
-                <option value="">Activo</option>
-                <option value="">Inactivo</option>
-              </select>
-            </div>
-          </div>
+         
               </div>
               <div class="card-footer text-center">
                 <button class="btn btn-primary">				
