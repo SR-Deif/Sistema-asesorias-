@@ -3,6 +3,7 @@
 
 
 <!-- datatables.html  21 Nov 2019 03:55:21 GMT -->
+
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -30,19 +31,7 @@
         <div class="form-inline mr-auto">
           <ul class="navbar-nav mr-3">
             <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg
-									collapse-btn"> <i data-feather="align-justify"></i></a></li>
-            <li><a href="#" class="nav-link nav-link-lg fullscreen-btn">
-                <i data-feather="maximize"></i>
-              </a></li>
-            <li>
-              <form class="form-inline mr-auto">
-                <div class="search-element">
-                  <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="200">
-                  <button class="btn" type="submit">
-                    <i class="fas fa-search"></i>
-                  </button>
-                </div>
-              </form>
+									collapse-btn"> <i data-feather="align-justify"></i></a>
             </li>
           </ul>
         </div>
@@ -51,7 +40,7 @@
               class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" th:src="@{/img/user.png}"
                 class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
-							<div class="dropdown-title"><span sec:authentication="principal.username"></span></div>
+              <div class="dropdown-title"><span sec:authentication="principal.username"></span></div>
               <div class="dropdown-divider"></div>
               <a th:href="@{/logout}" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
                 Cerrar Sesión
@@ -74,14 +63,16 @@
             </li>
 
             <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Acciones</span></a>
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                  data-feather="command"></i><span>Acciones</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" th:href="@{/dasboard_pages/calendar}">Calendario</a></li>
                 <li><a th:href="@{/dasboard_pages/gmaps-advanced-route}">Mapa</a></li>
               </ul>
             </li>
             <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="layout"></i><span>Formularios</span></a>
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                  data-feather="layout"></i><span>Formularios</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" th:href="@{/agendamiento/nuevo}">Agendamiento</a></li>
                 <li><a class="nav-link" th:href="@{/asesoria/nuevo}">Asesoria</a></li>
@@ -126,28 +117,34 @@
                             <th>Estado</th>
                             <th colspan="3">Acciones</th>
                           </tr>
-                            </thead>
+                        </thead>
                         <tbody>
                           <tr th:each="asesoria : ${listaAsesoria}">
                             <td th:text="${asesoria.idAsesoria}"></td>
                             <td th:text="${asesoria.costoAsesoria}"></td>
                             <td th:text="${asesoria.descripcionAsesoria}"></td>
-                            
+
                             <td>
                               <span th:if="${asesoria.estado==true}">Activo</span>
                               <span th:if="${asesoria.estado==false}">Inactivo</span>
                             </td>
-                    
+
                             <!--<td th:text="${asesoria.estadoAsesoria}"></td>-->
                             <!--<td th:text="${artista.estadoUsuario}"></td>-->
                             <td>
-                              <a th:href="@{'/asesoria/editar'+'/'+ ${asesoria.idAsesoria}}"class="btn btn-info">Editar</a> &nbsp; 
-                              <a th:href="@{'/asesoria/eliminar'+ '/' + ${asesoria.idAsesoria}}"class="btn btn-danger">Eliminar</a>
-                              <a th:if="${asesoria.estado==true}" th:href="@{'/asesoria/estado'+ '/' + ${asesoria.idAsesoria}}"class="btn btn-danger">Inactivar</a>
-                              <a th:if="${asesoria.estado==false}" th:href="@{'/asesoria/estado'+ '/' + ${asesoria.idAsesoria}}"class="btn btn-info">Activar</a>
+                              <a th:href="@{'/asesoria/editar'+'/'+ ${asesoria.idAsesoria}}"
+                                class="btn btn-info">Editar</a> &nbsp;
+                              <a th:href="@{'/asesoria/eliminar'+ '/' + ${asesoria.idAsesoria}}"
+                                class="btn btn-danger">Eliminar</a>
+                              <a th:if="${asesoria.estado==true}"
+                                th:href="@{'/asesoria/estado'+ '/' + ${asesoria.idAsesoria}}"
+                                class="btn btn-danger">Inactivar</a>
+                              <a th:if="${asesoria.estado==false}"
+                                th:href="@{'/asesoria/estado'+ '/' + ${asesoria.idAsesoria}}"
+                                class="btn btn-info">Activar</a>
                             </td>
                           </tr>
-                          </tbody>
+                        </tbody>
                       </table>
                     </div>
                   </div>
@@ -229,23 +226,13 @@
         </div>
       </div>
       <footer class="main-footer">
-				<div class="footer-left">
-					<img src="../../static/img/logo copy.png" th:src="@{/img/logo copy.png}">
-				</div>
-				<div class="footer-right">
-					<a href="https://www.facebook.com/AgroFuturo2021">
-						<i class="fa-brands fa-facebook"></i>
-					</a>
-					<a href="https://api.whatsapp.com/send?phone=%2B573138988526&data=AWDE5xbsmUjp72OdkGbnfGmnTKUQ1yJxOFqzYAL0K3eg6GR2rYaH7kuLozq_rm_WuKT1UwiK4KYlYjfLCCxA-hacU_41VsBBR-WRc2th9j9o1YifSpYFTB8f_gmieXl8zFm7u3XjGsnElfG91-wTfoTnBrqOn0uqX86SXE-TYTq31aanQQb_oSYOBZKhofSmtX5omk5VoUsfzsgheh1GHSURCd2Jx-tX1rezfgCPM1p5xeksYg-1aKNT89VeFeRAQuxSBjr0UzuTTRhm2jdnzfhgGlRHTvpdr3aPTnDzT3OVXI62Eys-nwOcZ6PRAQqco9Y&source=FB_Page&app=facebook&entry_point=page_cta&fbclid=IwAR2YtdL8ATkMPcpxl0Xx0-e5eLNjxIgSWRrcx5Pr30aAZupryYzhNPahRhw">
-						<i class="fa-brands fa-whatsapp"></i>
-					</a>
-					<a href="mailto:agricolagrofuturo@gmail.com">
-						<i class="fa-solid fa-envelope"></i>
-					</a>
-					<a href="templateshub.net">Templateshub</a></a>
-				</div>
-			</footer>
-    </div> 
+        <div class="footer-left">
+          <a href="templateshub.net">Templateshub</a></a>
+        </div>
+        <div class="footer-right">
+        </div>
+      </footer>
+    </div>
   </div>
   <!-- General JS Scripts -->
   <script th:src="@{/js/app.min.js}"></script>
@@ -263,4 +250,5 @@
 
 
 <!-- datatables.html  21 Nov 2019 03:55:25 GMT -->
+
 </html>

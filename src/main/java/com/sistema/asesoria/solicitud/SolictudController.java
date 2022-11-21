@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.sistema.asesoria.agendamiento.Agendamiento;
+// import com.sistema.asesoria.agendamiento.Agendamiento;
 import com.sistema.asesoria.agendamiento.AgendamientoRepository;
 import com.sistema.asesoria.usuario.Usuario;
 import com.sistema.asesoria.usuario.UsuarioRepository;
