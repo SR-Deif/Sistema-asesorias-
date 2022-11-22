@@ -7,9 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-// import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-// import javax.validation.constraints.Size;
+
 
 import com.sistema.asesoria.agendamiento.Agendamiento;
 
@@ -20,17 +19,14 @@ public class Asesoria {
     private int idAsesoria;
 
     @NotNull(message = "El precio es obligatorio")
-    // @Size(min =10, max =1000, message ="El precio minimo es 10 y el precio maximo
-    // es 1000")
+
     private String costoAsesoria;
-    // @Size(min = 20, max = 200, message = "La descripcion minimo es 20 y maxima
-    // 200")
 
     private String descripcionAsesoria;
 
     private Boolean estado = false;
-    @OneToOne(cascade = { CascadeType.ALL }) // uno a uno
-    @JoinColumn(name = "idAgendamiento") // con la columna a unir
+    @OneToOne(cascade = { CascadeType.ALL })
+    @JoinColumn(name = "idAgendamiento") 
     private Agendamiento agendamiento;
 
     public Asesoria() {

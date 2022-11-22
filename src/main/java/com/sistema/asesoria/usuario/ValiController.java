@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ValiController {
     
-    @ResponseStatus(code = HttpStatus.BAD_REQUEST)// retorna un 400 que es un bad request
-    @ExceptionHandler(MethodArgumentNotValidException.class)// sobre este metodo entrara todas las exepciones
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidateExceptions(MethodArgumentNotValidException ex){
         Map<String, String> errors = new HashMap<String, String>();
         ex.getBindingResult().getAllErrors().forEach((error) ->{

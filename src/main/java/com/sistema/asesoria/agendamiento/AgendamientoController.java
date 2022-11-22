@@ -7,7 +7,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,9 +22,9 @@ import com.sistema.asesoria.usuario.UsuarioRepository;
 @Controller
 public class AgendamientoController {
 
-  @Autowired // traemos los repositorios
+  @Autowired 
   private AgendamientoRepository agendamientorepository;
-  // public String es porque me retorna a un archivo html
+
   @Autowired
   private SolicitudRepository solicitudrepository;
 
@@ -34,19 +33,19 @@ public class AgendamientoController {
 
 
   // Lista
-  @GetMapping("/agendamiento") // redireccionar
+  @GetMapping("/agendamiento")
   public String listarAgendamiento(Model model) {
-    List<Agendamiento> listaAgendamiento = agendamientorepository.findAll();// mostrar todo lista
+    List<Agendamiento> listaAgendamiento = agendamientorepository.findAll();
     model.addAttribute("listaAgendamiento", listaAgendamiento);
-    return "agendamiento/agendamiento";// retornar
+    return "agendamiento/agendamiento";
   }
 
 
-  @GetMapping("/agendamientoFecha") // redireccionar
+  @GetMapping("/agendamientoFecha") 
   public String listarAgendamientofecha(Model model) {
-    List<Agendamiento> listaAgendamiento = agendamientorepository.findAll();// mostrar todo lista
+    List<Agendamiento> listaAgendamiento = agendamientorepository.findAll();
     model.addAttribute("listaAgendamiento", listaAgendamiento);
-    return "agendamiento/agendamiento_cliente";// retornar
+    return "agendamiento/agendamiento_cliente";
   }
 
   // Agregar agendamiento
@@ -70,7 +69,6 @@ public class AgendamientoController {
     agendamientorepository.save(agendamiento);
     return "redirect:/agendamiento";
   }
-
 
   // editar agendamiento
   @GetMapping("/agendamiento/editar/{idAgendamiento}")
@@ -103,18 +101,4 @@ public class AgendamientoController {
     agendamientorepository.save(agendamiento.get());
     return "redirect:/agendamiento";
   }
-  /*
-   * @PostMapping("/agendamiento/nuevo")
-   * public String mostrarFormularioDeNuevoAgendamiento(@ModelAttribute @Valid
-   * Agendamiento agendamiento, BindingResult bindingResult, RedirectAttributes
-   * redirectAttrs) {
-   * if (bindingResult.hasErrors()) {
-   * return "agendamiento/agendamiento_formulario";
-   * }
-   * agendamientorepository.save(agendamiento);
-   * redirectAttrs
-   * .addFlashAttribute("mensaje", "Agregado correctamente")
-   * .addFlashAttribute("clase", "success");
-   * return "redirect:/agendamiento";
-   */
 }

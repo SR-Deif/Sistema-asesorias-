@@ -18,16 +18,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class AsesoriaController {
     
-    @Autowired//traemos los repositorios
+    @Autowired
     private AsesoriaRepository asesoriarepository;
-      //public String es porque me retorna a un archivo html
 
       //Lista
-      @GetMapping("/asesoria")//redireccionar
+      @GetMapping("/asesoria")
       public String listarAsesoria(Model model){
-        List<Asesoria> listaAsesoria = asesoriarepository.findAll();//mostrar todo lista
+        List<Asesoria> listaAsesoria = asesoriarepository.findAll();
         model.addAttribute("listaAsesoria", listaAsesoria);
-        return "asesoria/asesoria";//retornar
+        return "asesoria/asesoria";
       }
       //Agregar Usuario
       @GetMapping("/asesoria/nuevo")

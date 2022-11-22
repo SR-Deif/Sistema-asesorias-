@@ -22,16 +22,16 @@ import com.sistema.asesoria.repositorio.UsuarioRepositorio;
 @Controller
 public class UsuarioController {
 
-    @Autowired//traemos los repositorios
+    @Autowired
     private UsuarioRepositorio usuariorepository;
-      //public String es porque me retorna a un archivo html
+
 
       //Lista
-      @GetMapping("/usuarios")//redireccionar
+      @GetMapping("/usuarios")
       public String listarUsuarios(Model model){
-        List<Usuario> listaUsuarios = usuariorepository.findAll();//mostrar todo lista
+        List<Usuario> listaUsuarios = usuariorepository.findAll();
         model.addAttribute("listaUsuarios", listaUsuarios);
-        return "usuario/usuarios";//retornar
+        return "usuario/usuarios";
       }
       //Agregar Usuario
       @GetMapping("/usuarios/nuevo")

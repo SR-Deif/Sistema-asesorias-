@@ -1,16 +1,15 @@
 package com.sistema.asesoria.solicitud;
 
 
-// import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-// import javax.persistence.OneToOne;
 
-import com.sistema.asesoria.usuario.Usuario;//importamos el modelo
+import com.sistema.asesoria.usuario.Usuario;
 
 
 @Entity
@@ -22,8 +21,8 @@ public class Solicitud {
 
     private String fechaCreacion;
 
-    @ManyToOne//muchos a uno
-    @JoinColumn(name = "id")//con la columna que se va a unir
+    @ManyToOne
+    @JoinColumn(name = "id")
     private Usuario usuario;
 
     private Boolean estado=false;
@@ -32,8 +31,6 @@ public class Solicitud {
 
     private String tipoSolicitud;
 
-
-    //vacio
     public Solicitud() {
     }
 
@@ -47,18 +44,17 @@ public class Solicitud {
         this.tipoSolicitud = tipoSolicitud;
     }
 
-    //relacion usuario
     public Solicitud(Usuario usuario) {
         this.usuario = usuario;
     }  
 
-    //id
+
     public Solicitud(Integer idSolicitud) {
         this.idSolicitud = idSolicitud;
     }
 
 
-    //metodos accesores
+
     public Integer getIdSolicitud() {
         return idSolicitud;
     }
@@ -105,17 +101,9 @@ public class Solicitud {
         this.descripcion = descripcion;
     }
 
-
-
-
-
     public String getTipoSolicitud() {
         return tipoSolicitud;
     }
-
-
-
-
 
     public void setTipoSolicitud(String tipoSolicitud) {
         this.tipoSolicitud = tipoSolicitud;

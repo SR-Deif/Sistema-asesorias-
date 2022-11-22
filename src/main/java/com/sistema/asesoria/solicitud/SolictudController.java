@@ -3,7 +3,6 @@ package com.sistema.asesoria.solicitud;
 import java.util.List;
 import java.util.Optional;
 
-// import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.sistema.asesoria.agendamiento.Agendamiento;
 import com.sistema.asesoria.agendamiento.AgendamientoRepository;
 import com.sistema.asesoria.usuario.Usuario;
 import com.sistema.asesoria.usuario.UsuarioRepository;
@@ -20,14 +18,14 @@ import com.sistema.asesoria.usuario.UsuarioRepository;
 @Controller
 public class SolictudController {
 
-  @Autowired // traemos los repositorios
+  @Autowired 
   private SolicitudRepository solicitudrepository;
   @Autowired
   private UsuarioRepository usuariorepository;
-  @Autowired // traemos los repositorios
+  @Autowired 
   private AgendamientoRepository agendamientorepository;
 
-  // lista
+
   @GetMapping("/solicituds")
   public String listarSolicituds(Model model) {
     List<Solicitud> listaSolicituds = solicitudrepository.findAll();
@@ -38,8 +36,7 @@ public class SolictudController {
   // formulario agregar
   @GetMapping("/solicituds/nuevo")
   public String mostrarFormularioDeNuevoSolicitud(Model model) {
-    // aqui le pasamos una nueva instancia de solicitud para asi poder asignar a los
-    // campos en el html
+
     List<Usuario> listaUsuarios = usuariorepository.findAll();
     model.addAttribute("solicitud", new Solicitud());
     model.addAttribute("listaUsuarios", listaUsuarios);
