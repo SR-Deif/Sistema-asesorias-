@@ -48,7 +48,6 @@
           <ul>
             <li><a class="nav-link scrollto"th:href="@{/login}">Inicio</a></li>
             <li><a class="nav-link scrollto " href="#hero">Acerca de</a></li>
-            <li><a class="nav-link scrollto" href="#Asesoria">Asesorías</a></li>
             <li><a class="nav-link scrollto" href="#productoss">Productos</a></li>
             <li><a class="nav-link scrollto" href="#contact">Contactenos</a></li>
             <li><a class="getstarted scrollto" th:href="@{/index}">Iniciar Sesión</a></li>
@@ -67,7 +66,7 @@
       <h1>Aportamos soluciones al Campo</h1>
       <h2>Queremos expandir el agro Tolimense, ampliar sus conocimientos y mejorar la productividad
         de las cosechas </h2>
-      <a href="#about" class="btn-asesorar scrollto">Asesoria Personalizada</a>
+      <a th:href="@{/index}" class="btn-asesorar scrollto">Asesoria Personalizada</a>
     </div>
   </section><!-- End Hero -->
 
@@ -92,169 +91,6 @@
       </div>
     </section>
     <!-- End About Section -->
-
-    <br>
-    <br>
-    <br>
-
-    <!--Asesorias-formulario-->
-    
-
-<!--
-    
-    <div id="Asesoria">
-      <h1>Solicitar Asesoría</h1>
-<<<<<<< HEAD
-      <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
-        <div class="row">
-          <div class="col-md-6 form-group clase">
-            <input type="text" name="name" class="form-control nuevo" id="name" placeholder="¿Cuál es tu nombre?"
-              required>
-          </div>
-          <div class="col-md-6 form-group  clase">
-            <input type="text" name="last name" class="form-control nuevo" id="last name"
-              placeholder="¿Cuál es tu apellido?" required>
-          </div>
-          <div class="col-md-6 form-group opciones">
-            <label>
-              Tipo de Documento
-            </label>
-            <select class="elegir">
-              <option value="c.c">C.C</option>
-              <option value="c.e">C.E</option>
-              <option value="otro">Otro</option>
-            </select>
-          </div>
-          <div class="col-md-6 form-group clase">
-            <input type="number" name="numDoc" class="form-control nuevo" id="numDoc" placeholder="N° Documento"
-              required>
-          </div>
-          <div class="col-md-6 form-group mt-3 mt-md-0">
-            <input type="email" class="form-control nuevo" name="email" id="email" placeholder="Agrega tu correo"
-              required>
-          </div>
-          <div class="col-md-6 form-group clase">
-            <input type="number" name="tel" class="form-control nuevo" id="tel" placeholder="N° Telefonico" required>
-          </div>
-
-          <div class="col-md-6 form-group clase">
-            <input type="text" class="form-control nuevo" name="subject" id="subject" placeholder="Dirección" required>
-          </div>
-          <div class="col-md-6 form-group clase">
-            <input type="date" class="form-control nuevo" name="subject" id="subject" placeholder="Fecha a Agendar"
-              required>
-          </div>
-          <div class="col-md-6 form-group opciones">
-            <label>
-              Tipo de Asesoria
-            </label>
-            <select class="elegir">
-              <option value="c.c">Presencial</option>
-              <option value="c.e">Virtual</option>
-              <option value="otro">Telefonica</option>
-            </select>
-          </div>
-
-          <div class="form-group mt-3 clase">
-            <textarea class="form-control nuevo" name="message" rows="5" placeholder="Descripción " required></textarea>
-          </div>
-        </div>
-        <br>
-        <div class="enviar"><button type="submit" class="boton">Solicitar</button></div>
-
-      </form>
-    </div>
-=======
-      <form th:action="@{/clientes/nuevo}" th:object="${clientes}" method="post">
-        <div class="card-header">
-          <h4>Formuluario Cliente</h4>
-        </div>
-       
-        <input hidden type="text" id="id_Cliente"  th:field="*{id_Cliente}" />
-        
-        
-        <div class="card-body">
-          <div class="form-group">
-            <label>Nombre</label>
-            <input th:field="*{nom_Cliente}" type="text" class="form-control" required maxlength="50" >
-            <div class="invalid-feedback">
-              Por favor diligencié el campo
-            </div>
-          </div>
-
-    
-         <div class="form-group">
-            <label>Apellido</label>
-            <input th:field="*{ape_Cliente}" type="text" class="form-control" required maxlength="50">
-            <div class="invalid-feedback">
-              Por favor diligencié el campo
-            </div>
-          </div>
-
-       
-         <div class="form-group">
-            <label>Direccin</label>
-            <input th:field="*{direccion}" type="text" class="form-control" required="" maxlength="45">
-            <div class="invalid-feedback">
-              Por favor diligencié el campo
-            </div>
-          </div>
-
-   
-         <div class="form-group">
-            <label>E-mail</label>
-            <input th:field="*{correo_Cliente}" type="email" class="form-control" required="">
-            <div class="invalid-feedback">
-              Por favor revise que este bién diligenciado el correo.
-            </div>
-          </div>
-
-     
-          <div class="form-group">
-            <label>Teléfono</label>
-            <input th:field="*{num_Cliente}" type="number" class="form-control" required="6" maxlength="10">
-            <div class="invalid-feedback">
-              Por favor diligencié el campo
-            </div>
-          </div>
-
-   
-        <div class="form-group">
-          <label>Tipo Documento</label><br>
-          <select th:field="*{tipoDocumentoCliente}" class="form-control" required="">
-            <option value="DNI">DNI</option>
-            <option value="C.C">C.C</option>
-            <option value="C.E">C.E</option>
-            <option value="P.A">P.A</option>
-          </select>
-        </div>
-
-       
-         <div class="form-group">
-            <label>No. Documento</label>
-            <input th:field="*{numeroDocumento}" type="number" class="form-control" required="" minlength="10" >
-            <div class="invalid-feedback">
-              Por favor diligencié el campo
-            </div>
-          </div>
-
-
-        </div>
-        <div class="card-footer text-right">
-          <button type="submit" class="btn btn-primary">Registrar</button>
-        </div>
-      </form>
-
-    -->
->>>>>>> df26966b36453f4335514371cd567a73738c2ff8
-
-    <!--Fin formulario asesorias-->
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
     <div class="welcome" id="productoss">
       <div class="container">
