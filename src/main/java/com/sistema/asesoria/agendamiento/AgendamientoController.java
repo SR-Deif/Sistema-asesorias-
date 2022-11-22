@@ -7,10 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-<<<<<<< HEAD
-=======
-// import org.springframework.security.core.context.SecurityContextHolder;
->>>>>>> 0a95e596744b4583a08fcd1ad5257fd2675af302
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
