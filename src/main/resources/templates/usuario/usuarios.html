@@ -108,11 +108,14 @@
 														<th>Nombre</th>
 														<th>Apellido</th>
 														<th>Correo</th>
-														<th>Telefono</th>
+														<th>Dirección</th>
+														<th>Det. Dirección</th>
+														<th>Contraseña</th>
+														<th>Teléfono</th>
 														<th>Tipo de Documento</th>
-														<th>Numero del Documento</th>
+														<th>Némero del Documento</th>
 														<th>Estado</th>
-														<th>Acciones</th>
+														<th colspan="3">Acciones</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -121,6 +124,9 @@
 														<td th:text="${usuario.nombre}"></td>
 														<td th:text="${usuario.apellido}"></td>
 														<td th:text="${usuario.email}"></td>
+														<td th:text="${usuario.direccion}"></td>
+														<td th:text="${usuario.detalleDireccion}"></td>
+														<td th:text="${usuario.password}"></td>
 														<td th:text="${usuario.telefonoUsuario}"></td>
 														<td th:text="${usuario.tipoDocUsuario}"></td>
 														<td th:text="${usuario.numeroDocUsuario}"></td>
