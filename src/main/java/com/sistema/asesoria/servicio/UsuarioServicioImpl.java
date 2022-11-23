@@ -57,4 +57,11 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 	public List<Usuario> listarUsuarios() {
 		return usuarioRepositorio.findAll();
 	}
+
+	private GrantedAuthority grantedAuthorities (Usuario usuario){
+		GrantedAuthority authorities = new SimpleGrantedAuthority(usuario.getTipoUsuario().toUpperCase());
+
+		return authorities;
+}
+
 }

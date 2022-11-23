@@ -56,6 +56,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 				"/vendor/**",
 				
 				"/img/**").permitAll()
+				.antMatchers("/registre/**","/login/**").permitAll() // pueden acceder todos
+                .antMatchers("/index").permitAll() // pueden acceder todos
+                .antMatchers("/agendamientoFecha/**", "/agendamiento/editar/{idAgendamiento}/**").hasAnyRole("USER", "ADMIN") //ruta que protegera usuarios
+                .antMatchers("/asesoria/nuevo/**", "/asesoria/**", "/asesoria/editar/{idAsesoria}/**", "/asesoria/eliminar/{idAsesoria}/**", "/solicituds/**").hasAnyRole("ADMIN", "ING") // ruta protegida de clientes
+                .antMatchers("/agendamiento/nuevo/**", "/agendamiento/**","/usuarios/nuevo/**", "/usuarios/**", "/usuarios/editar/{idUsuario}/**" ).hasAnyRole("ADMIN")
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
