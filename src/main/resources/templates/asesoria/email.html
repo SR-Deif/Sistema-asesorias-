@@ -7,7 +7,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Formulario Agendamiento</title>
+  <title>Formulario Asesoría</title>
   <!-- General CSS Files -->
   <link rel="stylesheet" th:href="@{/css/app.min.css}">
   <link rel="stylesheet" th:href="@{/bundles/datatables/datatables.min.css}">
@@ -17,8 +17,8 @@
   <link rel="stylesheet" th:href="@{/css/components.css}">
   <!-- Custom style CSS -->
   <link rel="stylesheet" th:href="@{/css/custom.css}">
-  <link rel="stylesheet" th:href="@{/css/footer.css}">
   <link rel='shortcut icon' type='image/x-icon' th:href='@{/img/logo.png}' />
+  <link rel="stylesheet" th:href="@{/css/footer.css}">
   <script th:src="@{https://kit.fontawesome.com/392a27d13c.js}" crossorigin="anonymous"></script>
 </head>
 
@@ -79,54 +79,100 @@
                 <li><a class="nav-link" th:href="@{/asesoria}">Asesoria</a></li>
                 <li><a class="nav-link" th:href="@{/usuarios}">Empleado</a></li>
                 <li><a class="nav-link" th:href="@{/solicituds}">Solicitud</a></li>
-                <li><a class="nav-link" th:href="@{/agendamientoFecha}">Vista Cliente</a></li>
               </ul>
             </li>
           </ul>
         </aside>
       </div>
 
+      <!-- Main Content -->
       <div class="container">
-        <div class="main-content ">
+        <div class="main-content">
           <section class="section">
             <div class="card">
-              <!-- Main Content -->
               <br>
               <div>
-                <h4 th:if="${agendamiento.idAgendamiento == null}" class="text-center">Formulario Agendamiento</h4>
-                <h4 th:unless="${agendamiento.idAgendamiento == null}" class="text-center">Elegir Fechas de Agendamiento</h4>
+                <h4 th:if="${asesoria.idAsesoria == null}" class="text-center">Formuluario Asesoria</h4>
+                <h4 th:unless="${asesoria.idAsesoria == null}" class="text-center">Editar Asesoria</h4>
               </div>
 
+              <form action="https://formsubmit.co/bff9c88bbbbe88c61fd184c88af00bd4" th:object="${asesoria}" method="post" class="needs-validation"
+                novalidate="">
+                <div class="card-body">
 
-              <form th:action="@{/agendamiento/guardar}" th:object="${agendamiento}" method="post"
-                class="needs-validation" style="max-width: 600px; margin: 0 auto;" novalidate="">
-                <div class="card-header">
-                  <input type="hidden" th:field="*{idAgendamiento}" th:value="${agendamiento.idAgendamiento}" />
-                </div>
-
-                <div class="form-group row">
-                  <label class="col-form-label col-sm-4">Fecha a Revisar Agendamiento</label>
-                  <div class="col-sm-8">
-                    <input th:field="*{fechaRevisionAgendamiento}" type="date" class="form-control" required="">
-                    <div class="invalid-feedback">
-                      Por favor diligencie el campo
+                  <div class="form-group row">
+                    <label class="col-form-label col-sm-4">Fecha a Revisar Agendamiento</label>
+                    <div class="col-sm-8">
+                      <input th:field="*{agendamiento.fechaRevisionAgendamiento}" type="date" name="name" class="form-control" required="">
+                      <div class="invalid-feedback">
+                        Por favor diligencie el campo
+                      </div>
                     </div>
                   </div>
-                </div>
-                
 
+                  <div class="form-group row">
+                    <label class="col-form-label col-sm-4">Correo del Cliente</label>
+                    <div class="col-sm-8">
+                        <td th:text="${asesoria.agendamiento.solicitud.usuario.email}"></td>
+                        <div class="invalid-feedback">
+                            Por favor diligencie el campo
+                          </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-form-label col-sm-4">Confirmar Correo del Cliente</label>
+                    <div class="col-sm-8">
+                        <input type="email" name="email"  class="form-control" required>
+                        <div class="invalid-feedback">
+                            Por favor diligencie el campo
+                          </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-form-label col-sm-4">Mansaje para el Cliente: </label>
+                    <div class="col-sm-8">
+                      <textarea  class="form-control" type="text" name="name" value="table" ></textarea>
+                      <div class="invalid-feedback">
+                        Por favor diligencie el campo
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row ">
+                    <label class="col-form-label col-sm-4">Tipo de Solicitud:</label><br>
+                    <div class="col-sm-8">
+                      <select th:field="*{agendamiento.solicitud.tipoSolicitud}" name="name" class="form-control" required="">
+                        <option value="" selected>Selecciona</option>
+                        <option value="Virtual">Virtual</option>
+                        <option value="Presencial">Presencial</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-form-label col-sm-4">Asignar Costo</label>
+                    <div class="col-sm-8">
+                      <input th:field="*{costoAsesoria}" type="text" class="form-control" required="" min="5"
+                        maxlength="15">
+                      <div class="invalid-feedback">
+                        Por favor diligencie el campo
+                      </div>
+                    </div>
+                  </div>
+                  
                 <div class="card-footer text-center">
                   <button class="btn btn-primary">
-                    <a style="--clr:#1e9bff" onclick="return confirm('¿Deseas guardar estos datos?');"><span
-                        class="text-center">Registrar</span></a>
+                    <a style="--clr:#1e9bff"
+                      onclick="return confirm('¿Deseas guardar estos datos?');"><span>Enviar</span></a>
                   </button>
                 </div>
+                <input type="hidden" name="_next" value="http://localhost:8080/login">
               </form>
           </section>
         </div>
       </div>
     </div>
-
     <div class="settingSidebar">
       <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
       </a>
@@ -206,7 +252,7 @@
     <div class="footer-right">
     </div>
   </footer>
-</div>
+  </div>
   </div>
   <!-- General JS Scripts -->
   <script th:src="@{/js/app.min.js}"></script>

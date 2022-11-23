@@ -11,7 +11,7 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.lang.NonNull;
 
-
+import com.sistema.asesoria.asesoria.Asesoria;
 import com.sistema.asesoria.solicitud.Solicitud;
 
 @Entity
@@ -30,6 +30,10 @@ public class Agendamiento {
     @JoinColumn(name = "idSolicitud") 
     private Solicitud solicitud;
 
+    @OneToOne(cascade = { CascadeType.ALL })
+    @JoinColumn(name = "idAsesoria") 
+    private Asesoria asesoria;
+
     public Agendamiento() {
     }
 
@@ -37,15 +41,16 @@ public class Agendamiento {
         this.idAgendamiento = idAgendamiento;
     }
 
-    public Agendamiento(int idAgendamiento,
-        String fechaAgendamiento,
-        @NotEmpty(message = "Debes elegir una fecha para Realizar la Asesoria") String fechaRevisionAgendamiento,
-        Boolean estado, Solicitud solicitud) {
+
+    public Agendamiento(int idAgendamiento, String fechaAgendamiento,
+            @NotEmpty(message = "Debes elegir una fecha para Realizar la Asesoria") String fechaRevisionAgendamiento,
+            Boolean estado, Solicitud solicitud, Asesoria asesoria) {
         this.idAgendamiento = idAgendamiento;
         this.fechaAgendamiento = fechaAgendamiento;
         this.fechaRevisionAgendamiento = fechaRevisionAgendamiento;
         this.estado = estado;
         this.solicitud = solicitud;
+        this.asesoria = asesoria;
     }
 
     public int getIdAgendamiento() {
@@ -88,4 +93,13 @@ public class Agendamiento {
         this.solicitud = solicitud;
     }
 
+    public Asesoria getAsesoria() {
+        return asesoria;
+    }
+
+    public void setAsesoria(Asesoria asesoria) {
+        this.asesoria = asesoria;
+    }
+
+    
 }

@@ -5,7 +5,9 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +17,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sistema.asesoria.agendamiento.Agendamiento;
+import com.sistema.asesoria.agendamiento.AgendamientoRepository;
+import com.sistema.asesoria.solicitud.Solicitud;
+import com.sistema.asesoria.usuario.Usuario;
+import com.sistema.asesoria.usuario.UsuarioRepository;
+
 @Controller
 public class AsesoriaController {
     
     @Autowired
     private AsesoriaRepository asesoriarepository;
+
+    @Autowired
+    private AgendamientoRepository agendamientorepository;
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
 
       //Lista
       @GetMapping("/asesoria")
@@ -28,6 +42,15 @@ public class AsesoriaController {
         model.addAttribute("listaAsesoria", listaAsesoria);
         return "asesoria/asesoria";
       }
+
+      //Lista
+      @GetMapping("/asesoriaagro")
+      public String listarAsesoriagro(Model model){
+      List<Asesoria> listaAsesoria = asesoriarepository.findAll();
+      model.addAttribute("listaAsesoria", listaAsesoria);
+        return "asesoria/asesoria_agro";
+      }
+
       //Agregar Usuario
       @GetMapping("/asesoria/nuevo")
       public String mostrarFormularioDeNuevaAsesoria(Model model){
@@ -37,7 +60,7 @@ public class AsesoriaController {
 
       //guardar usuario
       @PostMapping("/asesoria/guardar")
-      public String guardarAsesoria(@Valid Asesoria asesoria){
+      public String guardarAsesoria(@Valid Asesoria asesoria, Authentication auth){
         asesoriarepository.save(asesoria);
         return "redirect:/asesoria";
       }
@@ -46,8 +69,11 @@ public class AsesoriaController {
       public String mostrarFormularioModificarAsesoria(@PathVariable("idAsesoria")Integer idAsesoria,Model modelo){
         Asesoria asesoria = asesoriarepository.findById(idAsesoria).get();
         modelo.addAttribute("asesoria", asesoria);
+
         return "asesoria/asesoria_formulario";
       }
+
+
       //Eliminar usuario
       @GetMapping("/asesoria/eliminar/{idAsesoria}")
       public String eliminarAsesoria(@PathVariable("idAsesoria")Integer idAsesoria,Model modelo){
@@ -55,7 +81,6 @@ public class AsesoriaController {
         return "redirect:/asesoria";
       }
 
-       
       @PostMapping("/asesoria/nuevo")
       public String mostrarFormularioDeNuevoAsesoria(@ModelAttribute @Valid Asesoria asesoria, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
           if (bindingResult.hasErrors()) {
@@ -80,5 +105,17 @@ public class AsesoriaController {
         asesoriarepository.save(asesoria.get());
         return "redirect:/asesoria";
       }
+      
 
+            //email
+            @GetMapping("/asesoria/email/{idAsesoria}")
+            public String mostrarFormularioemail(@PathVariable("idAsesoria")Integer idAsesoria,Model modelo){
+              Asesoria asesoria = asesoriarepository.findById(idAsesoria).get();
+              modelo.addAttribute("asesoria", asesoria);
+      
+              List<Agendamiento> listaAgendamiento = agendamientorepository.findAll();
+              modelo.addAttribute("listaAgendamiento", listaAgendamiento);
+      
+              return "asesoria/email";
+            }
  }

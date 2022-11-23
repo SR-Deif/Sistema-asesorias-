@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 
-<!-- profile.html  21 Nov 2019 03:49:30 GMT -->
+<!-- datatables.html  21 Nov 2019 03:55:21 GMT -->
+
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Menú</title>
+  <title>Tabla Asesoría</title>
   <!-- General CSS Files -->
   <link rel="stylesheet" th:href="@{/css/app.min.css}">
-  <link rel="stylesheet" th:href="@{/bundles/bootstrap-social/bootstrap-social.css}">
-  <link rel="stylesheet" th:href="@{/bundles/summernote/summernote-bs4.css}">
+  <link rel="stylesheet" th:href="@{/bundles/datatables/datatables.min.css}">
+  <link rel="stylesheet" th:href="@{/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css}">
   <!-- Template CSS -->
   <link rel="stylesheet" th:href="@{/css/style.css}">
   <link rel="stylesheet" th:href="@{/css/components.css}">
   <!-- Custom style CSS -->
   <link rel="stylesheet" th:href="@{/css/custom.css}">
   <link rel='shortcut icon' type='image/x-icon' th:href='@{/img/logo.png}' />
+  <link rel="stylesheet" th:href="@{/css/footer.css}">
+  <script th:src="@{https://kit.fontawesome.com/392a27d13c.js}" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -37,7 +40,7 @@
               class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" th:src="@{/img/user.png}"
                 class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
-							<div class="dropdown-title"><span sec:authentication="principal.username"></span></div>
+              <div class="dropdown-title"><span sec:authentication="principal.username"></span></div>
               <div class="dropdown-divider"></div>
               <a th:href="@{/logout}" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
                 Cerrar Sesión
@@ -60,10 +63,20 @@
             </li>
 
             <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="layout"></i><span>Formularios</span></a>
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                  data-feather="command"></i><span>Acciones</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" th:href="@{/dasboard_pages/calendar}">Calendario</a></li>
+                <li><a th:href="@{/dasboard_pages/gmaps-advanced-route}">Mapa</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                  data-feather="layout"></i><span>Formularios</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" th:href="@{/agendamiento/nuevo}">Agendamiento</a></li>
                 <li><a class="nav-link" th:href="@{/asesoria/nuevo}">Asesoria</a></li>
+                <li><a class="nav-link" th:href="@{/clientes/nuevo}">Cliente</a></li>
                 <li><a class="nav-link" th:href="@{/usuarios/nuevo}">Empleado</a></li>
                 <li><a class="nav-link" th:href="@{/solicituds/nuevo}">Solicitud</a></li>
               </ul>
@@ -71,60 +84,82 @@
             <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Tablas</span></a>
               <ul class="dropdown-menu">
+                <li><a class="nav-link" href="datatables.html">Principal</a></li>
                 <li><a class="nav-link" th:href="@{/agendamiento}">Agendamiento</a></li>
                 <li><a class="nav-link" th:href="@{/asesoria}">Asesoria</a></li>
                 <li><a class="nav-link" th:href="@{/asesoriaagro}">Asesoria costo</a></li>
+                <li><a class="nav-link" th:href="@{/clientes}">Cliente</a></li>
                 <li><a class="nav-link" th:href="@{/usuarios}">Empleado</a></li>
                 <li><a class="nav-link" th:href="@{/solicituds}">Solicitud</a></li>
-                <li><a class="nav-link" th:href="@{/agendamientoFecha}">Vista Cliente</a></li>
               </ul>
             </li>
           </ul>
         </aside>
       </div>
 
-      <!-- Main Content -->
+      <!--Main Content -->
       <div class="main-content">
         <section class="section">
           <div class="section-body">
-                <div class="card author-box">
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Lista de Asesoría</h4>
+                  </div>
                   <div class="card-body">
-                    <div class="author-box-center">
-                      <img alt="image" th:src="@{/img/users/user-1.png}" class="rounded-circle author-box-picture">
-                      <div class="clearfix"></div>
-                      <div class="author-box-name">
-                        <div><span sec:authentication="principal.username"></span></div>
-                      </div>
-                      <div class="author-box-job">Web Developer</div>
-                    </div>
-                    <div class="text-center">
-                      <div class="author-box-description">
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur voluptatum alias molestias
-                          minus quod dignissimos.
-                        </p>
-                      </div>
-                      <div class="mb-2 mt-3">
-                        <div class="text-small font-weight-bold">Follow Hasan On</div>
-                      </div>
-                      <a href="#" class="btn btn-social-icon mr-1 btn-facebook">
-                        <i class="fab fa-facebook-f"></i>
-                      </a>
-                      <a href="#" class="btn btn-social-icon mr-1 btn-twitter">
-                        <i class="fab fa-twitter"></i>
-                      </a>
-                      <a href="#" class="btn btn-social-icon mr-1 btn-github">
-                        <i class="fab fa-github"></i>
-                      </a>
-                      <a href="#" class="btn btn-social-icon mr-1 btn-instagram">
-                        <i class="fab fa-instagram"></i>
-                      </a>
-                      <div class="w-100 d-sm-none"></div>
+                    <div class="table-responsive">
+                      <table class="table table-striped" id="table-1">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Nombre del cliente</th>
+                            <th>Fecha Revisión</th>
+                            <th>Descripción del Problema</th>
+                            <th>Tipo de Solicitud</th>
+                            <th>costo</th>
+                            <th colspan="3">Acciones</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr th:if="${listaAsesoria.size()>0}" th:each="asesoria : ${listaAsesoria}">
+                          <!-- <th:block th:if="${asesoria.agendamiento!==null}">-->
+                            <td th:text="${asesoria.idAsesoria}"></td>
+                            <td
+                            th:text="${asesoria.agendamiento.solicitud.usuario.nombre}+' '+${asesoria.agendamiento.solicitud.usuario.apellido}">
+                          </td>
+                            <td th:text="${asesoria.agendamiento.fechaRevisionAgendamiento}"></td>
+                            <td th:text="${asesoria.agendamiento.solicitud.descripcion}"></td>
+                            <td th:text="${asesoria.agendamiento.solicitud.tipoSolicitud}"></td>
+                            <td th:text="${asesoria.costoAsesoria}"></td>
+                            <!--<td>
+                              <span th:if="${asesoria.estado==true}">Activo</span>
+                              <span th:if="${asesoria.estado==false}">Inactivo</span>
+                            </td>-->
+                            <td>
+                              <a th:href="@{'/asesoria/editar'+'/'+ ${asesoria.idAsesoria}}"
+                                class="btn btn-info">Agregar costo</a> &nbsp;
+                                <a th:href="@{'/asesoria/email'+'/'+ ${asesoria.idAsesoria}}"
+                                class="btn btn-info">Enviar Correo</a>
+                              <!--<a th:if="${asesoria.estado==true}"
+                                th:href="@{'/asesoria/estado'+ '/' + ${asesoria.idAsesoria}}"
+                                class="btn btn-danger">Inactivar</a>
+                              <a th:if="${asesoria.estado==false}"
+                                th:href="@{'/asesoria/estado'+ '/' + ${asesoria.idAsesoria}}"
+                                class="btn btn-info">Activar</a>-->
+                            </td>
+                          </th:block>
+                          </tr>
+                          
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
               </div>
-            </section>
+            </div>
+          </div>
+        </section>
         <div class="settingSidebar">
           <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
           </a>
@@ -204,13 +239,16 @@
         <div class="footer-right">
         </div>
       </footer>
-    </div> 
+    </div>
   </div>
   <!-- General JS Scripts -->
   <script th:src="@{/js/app.min.js}"></script>
   <!-- JS Libraies -->
-  <script th:src="@{/bundles/summernote/summernote-bs4.js}"></script>
+  <script th:src="@{/bundles/datatables/datatables.min.js}"></script>
+  <script th:src="@{/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js}"></script>
+  <script th:src="@{/bundles/jquery-ui/jquery-ui.min.js}"></script>
   <!-- Page Specific JS File -->
+  <script th:src="@{/js/page/datatables.js}"></script>
   <!-- Template JS File -->
   <script th:src="@{/js/scripts.js}"></script>
   <!-- Custom JS File -->
@@ -218,5 +256,6 @@
 </body>
 
 
-<!-- profile.html  21 Nov 2019 03:49:32 GMT -->
+<!-- datatables.html  21 Nov 2019 03:55:25 GMT -->
+
 </html>

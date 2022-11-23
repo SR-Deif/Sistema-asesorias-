@@ -87,6 +87,7 @@
                 <li><a class="nav-link" href="datatables.html">Principal</a></li>
                 <li><a class="nav-link" th:href="@{/agendamiento}">Agendamiento</a></li>
                 <li><a class="nav-link" th:href="@{/asesoria}">Asesoria</a></li>
+
                 <li><a class="nav-link" th:href="@{/clientes}">Cliente</a></li>
                 <li><a class="nav-link" th:href="@{/usuarios}">Empleado</a></li>
                 <li><a class="nav-link" th:href="@{/solicituds}">Solicitud</a></li>
@@ -112,30 +113,21 @@
                         <thead>
                           <tr>
                             <th>ID</th>
+                            <th>Fecha Revisión</th>
+                            <th>Descripción del Problema</th>
+                            <th>Tipo de Solicitud</th>
                             <th>costo</th>
-                            <th>descripcion</th>
-                            <th>Estado</th>
                             <th colspan="3">Acciones</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr th:each="asesoria : ${listaAsesoria}">
+                          <tr th:if="${listaAsesoria.size()>0}" th:each="asesoria : ${listaAsesoria}">
                             <td th:text="${asesoria.idAsesoria}"></td>
+                            
                             <td th:text="${asesoria.costoAsesoria}"></td>
-                            <td th:text="${asesoria.descripcionAsesoria}"></td>
-
-                            <td>
-                              <span th:if="${asesoria.estado==true}">Activo</span>
-                              <span th:if="${asesoria.estado==false}">Inactivo</span>
-                            </td>
-
-                            <!--<td th:text="${asesoria.estadoAsesoria}"></td>-->
-                            <!--<td th:text="${artista.estadoUsuario}"></td>-->
                             <td>
                               <a th:href="@{'/asesoria/editar'+'/'+ ${asesoria.idAsesoria}}"
-                                class="btn btn-info">Editar</a> &nbsp;
-                              <a th:href="@{'/asesoria/eliminar'+ '/' + ${asesoria.idAsesoria}}"
-                                class="btn btn-danger">Eliminar</a>
+                                class="btn btn-info">Generar Costo Solicitud</a> &nbsp;
                               <a th:if="${asesoria.estado==true}"
                                 th:href="@{'/asesoria/estado'+ '/' + ${asesoria.idAsesoria}}"
                                 class="btn btn-danger">Inactivar</a>
@@ -143,7 +135,9 @@
                                 th:href="@{'/asesoria/estado'+ '/' + ${asesoria.idAsesoria}}"
                                 class="btn btn-info">Activar</a>
                             </td>
+                          </th:block>
                           </tr>
+                          
                         </tbody>
                       </table>
                     </div>

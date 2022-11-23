@@ -101,7 +101,6 @@
                         <thead>
                           <tr>
                             <th>Id</th>
-                            <th>Fecha</th>
                             <th>Descripción</th>
                             <th>Tipo de Solicitud</th>
                             <th>Estado</th>
@@ -111,7 +110,6 @@
                         <tbody>
                           <tr th:each="solicitud : ${listaSolicituds}">
                             <td th:text="${solicitud.idSolicitud}"></td>
-                            <td th:text="${solicitud.fechaCreacion}"></td>
                             <td th:text="${solicitud.descripcion}"></td>
                             <td th:text="${solicitud.tipoSolicitud}"></td>
                             <td>

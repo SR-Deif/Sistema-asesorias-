@@ -19,8 +19,6 @@ public class Solicitud {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idSolicitud;
 
-    private String fechaCreacion;
-
     @ManyToOne
     @JoinColumn(name = "id")
     private Usuario usuario;
@@ -34,15 +32,16 @@ public class Solicitud {
     public Solicitud() {
     }
 
-    public Solicitud(Integer idSolicitud, String fechaCreacion, Usuario usuario, Boolean estado,
+    public Solicitud(Integer idSolicitud, Usuario usuario, Boolean estado,
             String descripcion, String tipoSolicitud) {
         this.idSolicitud = idSolicitud;
-        this.fechaCreacion = fechaCreacion;
         this.usuario = usuario;
         this.estado = estado;
         this.descripcion = descripcion;
         this.tipoSolicitud = tipoSolicitud;
     }
+
+    
 
     public Solicitud(Usuario usuario) {
         this.usuario = usuario;
@@ -62,16 +61,6 @@ public class Solicitud {
 
     public void setIdSolicitud(Integer idSolicitud) {
         this.idSolicitud = idSolicitud;
-    }
-
-
-    public String getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-
-    public void setFechaCreacion(String fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
     }
 
 

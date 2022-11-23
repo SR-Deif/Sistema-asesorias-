@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.sistema.asesoria.asesoria.Asesoria;
+import com.sistema.asesoria.asesoria.AsesoriaRepository;
 import com.sistema.asesoria.solicitud.Solicitud;
 import com.sistema.asesoria.solicitud.SolicitudRepository;
 import com.sistema.asesoria.usuario.Usuario;
@@ -31,6 +33,9 @@ public class AgendamientoController {
 
   @Autowired
   private UsuarioRepository usuarioRepository;
+
+  @Autowired
+  private AsesoriaRepository asesoriarepository;
 
 
   // Lista
@@ -55,6 +60,10 @@ public class AgendamientoController {
     List<Solicitud> listaSolicitud = solicitudrepository.findAll();
     model.addAttribute("agendamiento", new Agendamiento());
     model.addAttribute("listaSolicituds", listaSolicitud);
+
+    List<Asesoria> listaAsesoria = asesoriarepository.findAll();
+    model.addAttribute("listaAsesoria", listaAsesoria);
+
     return "agendamiento/agendamiento_formulario";
   }
 
@@ -80,8 +89,28 @@ public class AgendamientoController {
 
     List<Solicitud> listaSolicituds = solicitudrepository.findAll();
     modelo.addAttribute("listaSolicituds", listaSolicituds);
+
+    List<Asesoria> listaAsesoria = asesoriarepository.findAll();
+    modelo.addAttribute("listaAsesoria", listaAsesoria);
+
     return "agendamiento/formulario_cliente";
   }
+
+    // editar agendamiento
+    @GetMapping("/agendamiento/costo/{idAgendamiento}")
+    public String mostrarFormularioModificarAgendamientocosto(@PathVariable("idAgendamiento") Integer idAgendamiento,
+        Model modelo) {
+      Agendamiento agendamiento = agendamientorepository.findById(idAgendamiento).get();
+      modelo.addAttribute("agendamiento", agendamiento);
+  
+      List<Solicitud> listaSolicituds = solicitudrepository.findAll();
+      modelo.addAttribute("listaSolicituds", listaSolicituds);
+  
+      List<Asesoria> listaAsesoria = asesoriarepository.findAll();
+      modelo.addAttribute("listaAsesoria", listaAsesoria);
+  
+      return "agendamiento/asesoria_formulario";
+    }
 
   // Eliminar agendamiento
   @GetMapping("/agendamiento/eliminar/{idAgendamiento}")
