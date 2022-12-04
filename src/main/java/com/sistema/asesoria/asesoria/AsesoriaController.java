@@ -7,7 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
+// import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +19,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sistema.asesoria.agendamiento.Agendamiento;
 import com.sistema.asesoria.agendamiento.AgendamientoRepository;
-import com.sistema.asesoria.solicitud.Solicitud;
-import com.sistema.asesoria.usuario.Usuario;
+// import com.sistema.asesoria.solicitud.Solicitud;
+// import com.sistema.asesoria.usuario.Usuario;
 import com.sistema.asesoria.usuario.UsuarioRepository;
 
 @Controller

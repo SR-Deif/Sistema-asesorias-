@@ -46,10 +46,10 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 		if (usuario == null) {
 			throw new UsernameNotFoundException("Usuario o Contraseña inválidos");
 		}
-		return new User(usuario.getEmail(), usuario.getPassword(), mapearAutoridadesRoles(usuario.getRoles()));
+		return new User(usuario.getEmail(), usuario.getPassword(), getAuthorities(usuario.getRoles()));
 	}
 
-	private Collection<? extends GrantedAuthority> mapearAutoridadesRoles(Collection<Rol> roles) {
+	private Collection<GrantedAuthority> getAuthorities(Collection<Rol> roles) {
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getNombre())).collect(Collectors.toList());
 	}
 
@@ -58,10 +58,5 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 		return usuarioRepositorio.findAll();
 	}
 
-	private GrantedAuthority grantedAuthorities (Usuario usuario){
-		GrantedAuthority authorities = new SimpleGrantedAuthority(usuario.getTipoUsuario().toUpperCase());
-
-		return authorities;
-}
 
 }

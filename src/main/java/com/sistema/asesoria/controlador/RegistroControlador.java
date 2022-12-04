@@ -29,13 +29,4 @@ public class RegistroControlador {
 		return "dasboard";
 	}
 
-	@GetMapping("/calendario")
-	public String calendario(){
-		return "/dasboard_pages/calendar";
-	}
-
-	@GetMapping("/mapa")
-	public String mapa(){
-		return "/dasboard_pages/gmaps-advanced-route";
-	}
 }

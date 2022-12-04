@@ -35,7 +35,6 @@ public class Usuario {
 
 	private String telefonoUsuario;
 
-	private String detalleDireccion;
 
 	private String direccion;
 
@@ -112,13 +111,7 @@ public class Usuario {
 		this.telefonoUsuario = telefonoUsuario;
 	}
 
-	public String getDetalleDireccion() {
-		return detalleDireccion;
-	}
 
-	public void setDetalleDireccion(String detalleDireccion) {
-		this.detalleDireccion = detalleDireccion;
-	}
 
 	public String getDireccion() {
 		return direccion;
@@ -169,7 +162,6 @@ public class Usuario {
 		this.email = email;
 		this.password = password;
 		this.telefonoUsuario = telefonoUsuario;
-		this.detalleDireccion = detalleDireccion;
 		this.direccion = direccion;
 		this.tipoDocUsuario = tipoDocUsuario;
 		this.numeroDocUsuario = numeroDocUsuario;
@@ -186,7 +178,6 @@ public class Usuario {
 		this.email = email;
 		this.password = password;
 		this.telefonoUsuario = telefonoUsuario;
-		this.detalleDireccion = detalleDireccion;
 		this.direccion = direccion;
 		this.tipoDocUsuario = tipoDocUsuario;
 		this.numeroDocUsuario = numeroDocUsuario;
