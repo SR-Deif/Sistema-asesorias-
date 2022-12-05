@@ -63,21 +63,27 @@
             </li>
 
             <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                  data-feather="layout"></i><span>Formularios</span></a>
+              <a sec:authorize="hasAnyRole('ADMIN')" class="menu-toggle nav-link has-dropdown"><i data-feather="layout"></i><span>Formularios</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" th:href="@{/agendamiento/nuevo}">Agendamiento</a></li>
-                <li><a class="nav-link" th:href="@{/usuarios/nuevo}">Empleado</a></li>
-              </ul>
+                <li><a sec:authorize="hasAnyRole('ADMIN')"class="nav-link" th:href="@{/agendamiento/nuevo}">Agendamiento</a></li>
+                <li ><a sec:authorize="hasAnyRole('ADMIN')"class="nav-link" th:href="@{/usuarios/nuevo}">Usuarios</a></li>
+               </ul>
             </li>
             <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Tablas</span></a>
+              <a sec:authorize="hasAnyRole('ADMIN', 'ING')" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Tablas</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" th:href="@{/agendamiento}">Agendamiento</a></li>
-                <li><a class="nav-link" th:href="@{/usuarios}">Empleado</a></li>
-                <li><a class="nav-link" th:href="@{/agendamientoFecha}">Vista Cliente</a></li>
-                <li><a class="nav-link" th:href="@{/agendamientoconfirmar}">Reporte Cliente</a></li>
+                <li ><a sec:authorize="hasAnyRole('ADMIN', 'ING')"class="nav-link" th:href="@{/agendamiento}">Agendamiento</a></li>
+                <li ><a sec:authorize="hasAnyRole('ADMIN')"class="nav-link" th:href="@{/usuarios}">Usuarios</a></li>
+                <li ><a sec:authorize="hasAnyRole('ADMIN')"class="nav-link" th:href="@{/agendamientoFecha}">Fechas Disponibles</a></li>
+                <li ><a sec:authorize="hasAnyRole('ADMIN', 'ING')" class="nav-link" th:href="@{/agendamientoconfirmar}">Asesoria</a></li>
               </ul>
+            </li>
+            <!--Vista Cliente-->
+            <li class="dropdown">
+              <a sec:authorize="hasAnyRole('CLIENTE')" class="nav-link" th:href="@{/agendamientoconfirmar}"><i data-feather="grid"></i><span>Asesorías</span></a>
+              </li>
+            <li class="dropdown">
+              <a sec:authorize="hasAnyRole('CLIENTE')" class="nav-link" th:href="@{/agendamientoFecha}"><i data-feather="grid"></i><span>Fechas Disponibles</span></a>
             </li>
           </ul>
         </aside>

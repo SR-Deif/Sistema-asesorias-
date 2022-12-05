@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 // import com.sistema.asesoria.agendamiento.Agendamiento;
 
-import com.sistema.asesoria.agendamiento.AgendamientoRepository;
+// import com.sistema.asesoria.agendamiento.AgendamientoRepository;
 import com.sistema.asesoria.usuario.Usuario;
-import com.sistema.asesoria.usuario.UsuarioRepository;
+import com.sistema.asesoria.usuario.UsuarioRepositorio;
 
 @Controller
 public class SolictudController {
@@ -24,9 +24,9 @@ public class SolictudController {
   @Autowired 
   private SolicitudRepository solicitudrepository;
   @Autowired
-  private UsuarioRepository usuariorepository;
-  @Autowired 
-  private AgendamientoRepository agendamientorepository;
+  private UsuarioRepositorio usuariorepository;
+  // @Autowired 
+  // private AgendamientoRepository agendamientorepository;
 
 
   @GetMapping("/solicituds")

@@ -21,7 +21,6 @@ import com.sistema.asesoria.agendamiento.Agendamiento;
 import com.sistema.asesoria.agendamiento.AgendamientoRepository;
 // import com.sistema.asesoria.solicitud.Solicitud;
 // import com.sistema.asesoria.usuario.Usuario;
-import com.sistema.asesoria.usuario.UsuarioRepository;
 
 @Controller
 public class AsesoriaController {
@@ -31,8 +30,8 @@ public class AsesoriaController {
 
     @Autowired
     private AgendamientoRepository agendamientorepository;
-    @Autowired
-    private UsuarioRepository usuarioRepository;
+    // @Autowired
+    // private UsuarioRepositorio usuarioRepository;
 
 
       //Lista

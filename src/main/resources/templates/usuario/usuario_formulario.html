@@ -71,19 +71,27 @@
             </li>
 
             <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                  data-feather="layout"></i><span>Formularios</span></a>
+              <a sec:authorize="hasAnyRole('ADMIN')" class="menu-toggle nav-link has-dropdown"><i data-feather="layout"></i><span>Formularios</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" th:href="@{/agendamiento/nuevo}">Agendamiento</a></li>
-                <li><a class="nav-link" th:href="@{/usuarios/nuevo}">Empleado</a></li>
-              </ul>
+                <li><a sec:authorize="hasAnyRole('ADMIN')"class="nav-link" th:href="@{/agendamiento/nuevo}">Agendamiento</a></li>
+                <li ><a sec:authorize="hasAnyRole('ADMIN')"class="nav-link" th:href="@{/usuarios/nuevo}">Usuarios</a></li>
+               </ul>
             </li>
             <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Tablas</span></a>
+              <a sec:authorize="hasAnyRole('ADMIN', 'ING')" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Tablas</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" th:href="@{/agendamiento}">Agendamiento</a></li>
-                <li><a class="nav-link" th:href="@{/usuarios}">Empleado</a></li>
+                <li ><a sec:authorize="hasAnyRole('ADMIN', 'ING')"class="nav-link" th:href="@{/agendamiento}">Agendamiento</a></li>
+                <li ><a sec:authorize="hasAnyRole('ADMIN')"class="nav-link" th:href="@{/usuarios}">Usuarios</a></li>
+                <li ><a sec:authorize="hasAnyRole('ADMIN')"class="nav-link" th:href="@{/agendamientoFecha}">Fechas Disponibles</a></li>
+                <li ><a sec:authorize="hasAnyRole('ADMIN', 'ING')" class="nav-link" th:href="@{/agendamientoconfirmar}">Asesoria</a></li>
               </ul>
+            </li>
+            <!--Vista Cliente-->
+            <li class="dropdown">
+              <a sec:authorize="hasAnyRole('CLIENTE')" class="nav-link" th:href="@{/agendamientoconfirmar}"><i data-feather="grid"></i><span>Asesorías</span></a>
+              </li>
+            <li class="dropdown">
+              <a sec:authorize="hasAnyRole('CLIENTE')" class="nav-link" th:href="@{/agendamientoFecha}"><i data-feather="grid"></i><span>Fechas Disponibles</span></a>
             </li>
           </ul>
         </aside>
@@ -99,7 +107,7 @@
                 <!--si esto es igual a solicitud si lo voy agregar me saldra este titulo-->
                 <h4 th:if="${usuario.id == null}" class="text-center">Registro Usuarios</h4>
                 <!--lo contrario de registrar -->
-                <h4 th:unless="${usuario.id == null}" class="text-center">Editar Empleados</h4>
+                <h4 th:unless="${usuario.id == null}" class="text-center">Editar Usuario</h4>
               </div>
 
               <form th:action="@{/usuarios/guardar}" th:object="${usuario}" method="post" class="needs-validation"
@@ -217,21 +225,20 @@
                     <div class="invalid-feedback">
                       Este Campo es Obligatorio!
                     </div>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-form-label col-sm-4">Tipo Usuario
-                  </label>
-                  <div class="col-sm-8">
-                    <select name="select" th:field="*{tipoUsuario}" class="form-control" required
-                      aria-label="select example">
-                      <option value="" selected>--Elegir tipo de Usuario--</option>
-                      <option value="Administrador">Administrador</option>
-                      <option value="Ingeniero">Ingeniero</option>
-                      <option value="Cliente">Cliente</option>
-                    </select>
-                    <div class="invalid-feedback">Elegir el Tipo de Usuario</div>
-                  </div>
+                  </div>  
+                    <div class="form-group row">
+                      <label class="col-form-label col-sm-4">Rol
+                      </label>
+                      <div class="col-sm-8">
+                        <input type="text" th:field="*{rol}" class="form-control"/>
+                        <div class="valid-feedback">
+                          Todo Bien!
+                        </div>
+                        <div class="invalid-feedback">
+                          Este Campo es Obligatorio!
+                        </div>
+                      </div>
+  
                 </div>
                 <div class="card-footer text-center">
                   <button type="submit" class="btn btn-primary"

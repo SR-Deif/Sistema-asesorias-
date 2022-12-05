@@ -26,7 +26,7 @@ import com.sistema.asesoria.asesoria.AsesoriaRepository;
 import com.sistema.asesoria.solicitud.Solicitud;
 import com.sistema.asesoria.solicitud.SolicitudRepository;
 import com.sistema.asesoria.usuario.Usuario;
-import com.sistema.asesoria.usuario.UsuarioRepository;
+import com.sistema.asesoria.usuario.UsuarioRepositorio;
 import com.sistema.asesoria.util.reportes.AgendamientoExporterPDF;
 
 @Controller
@@ -39,27 +39,27 @@ public class AgendamientoController {
   private SolicitudRepository solicitudrepository;
 
   @Autowired
-  private UsuarioRepository usuarioRepository;
+  private UsuarioRepositorio usuarioRepository;
 
   @Autowired
   private AsesoriaRepository asesoriarepository;
 
   // Lista
-  @GetMapping("/agendamiento")
+  @GetMapping("/agendamiento") //ADMIN e ING
   public String listarAgendamiento(Model model) {
     List<Agendamiento> listaAgendamiento = agendamientorepository.findAll();
     model.addAttribute("listaAgendamiento", listaAgendamiento);
     return "agendamiento/agendamiento";
   }
 
-  @GetMapping("/agendamientoFecha")
+  @GetMapping("/agendamientoFecha") //ADMIN y CLIENTE
   public String listarAgendamientofecha(Model model) {
     List<Agendamiento> listaAgendamiento = agendamientorepository.findAll();
     model.addAttribute("listaAgendamiento", listaAgendamiento);
     return "agendamiento/agendamiento_cliente";
   }
 
-  @GetMapping("/agendamientoconfirmar")
+  @GetMapping("/agendamientoconfirmar") //ADMIN, ING y CLIENTE
   public String listarAgendamientoconfirmar(Model model, Authentication auth) {
     List<Agendamiento> listaAgendamiento = agendamientorepository.findAll();
     String username = ((UserDetails) auth.getPrincipal()).getUsername();
@@ -69,7 +69,7 @@ public class AgendamientoController {
   }
 
   // Agregar agendamiento
-  @GetMapping("/agendamiento/nuevo")
+  @GetMapping("/agendamiento/nuevo") //ADMIN
   public String mostrarFormularioDeNuevaAgendamiento(Model model) {
     List<Solicitud> listaSolicitud = solicitudrepository.findAll();
     model.addAttribute("agendamiento", new Agendamiento());
@@ -82,7 +82,7 @@ public class AgendamientoController {
   }
 
   // guardar agendamiento
-  @PostMapping("/agendamiento/guardar")
+  @PostMapping("/agendamiento/guardar") //ADMIN
   public String guardarAgendamiento(@Valid Agendamiento agendamiento, Authentication auth) {
     String username = ((UserDetails) auth.getPrincipal()).getUsername();
     Usuario usuario = usuarioRepository.findByEmail(username);
@@ -90,11 +90,11 @@ public class AgendamientoController {
       agendamiento.getSolicitud().setUsuario(usuario);
     }
     agendamientorepository.save(agendamiento);
-    return "redirect:/agendamiento";
+    return "redirect:/agendamientoFecha";
   }
   
   // guardar agendamiento asesoria
-  @PostMapping("/agendamiento/guardar/asesoria")
+  @PostMapping("/agendamiento/guardar/asesoria") //ADMIN
   public String guardarAgendamientoAsesoria(@Valid Agendamiento agendamiento,  Authentication auth) {
     Agendamiento buscarAgendamiento = agendamientorepository.findById(agendamiento.getIdAgendamiento()).get();
     Usuario usuario = usuarioRepository.findByEmail(buscarAgendamiento.getSolicitud().getUsuario().getEmail());
@@ -107,7 +107,7 @@ public class AgendamientoController {
   }
 
   // editar agendamiento
-  @GetMapping("/agendamiento/editar/{idAgendamiento}")
+  @GetMapping("/agendamiento/editar/{idAgendamiento}") //CLIENTE y ADMIN
   public String mostrarFormularioModificarAgendamiento(@PathVariable("idAgendamiento") Integer idAgendamiento,
       Model modelo) {
     Agendamiento agendamiento = agendamientorepository.findById(idAgendamiento).get();
@@ -123,7 +123,7 @@ public class AgendamientoController {
   }
 
   // editar agendamiento
-  @GetMapping("/agendamiento/costo/{idAgendamiento}")
+  @GetMapping("/agendamiento/costo/{idAgendamiento}") //ING y ADMIN
   public String mostrarFormularioModificarAgendamientocosto(@PathVariable("idAgendamiento") Integer idAgendamiento,
       Model modelo) {
     Agendamiento agendamiento = agendamientorepository.findById(idAgendamiento).get();
@@ -139,14 +139,14 @@ public class AgendamientoController {
   }
 
   // Eliminar agendamiento
-  @GetMapping("/agendamiento/eliminar/{idAgendamiento}")
+  @GetMapping("/agendamiento/eliminar/{idAgendamiento}") //ADMIN
   public String eliminarAgendamiento(@PathVariable("idAgendamiento") Integer idAgendamiento, Model modelo) {
     agendamientorepository.deleteById(idAgendamiento);
     return "redirect:/agendamiento";
   }
 
   // Cambiar estado
-  @GetMapping("/agendamiento/estado/{idAgendamiento}")
+  @GetMapping("/agendamiento/estado/{idAgendamiento}") //ADMIN e ING
   public String estadoAgendamiento(@PathVariable("idAgendamiento") Integer idAgendamiento, Model modelo) {
     Optional<Agendamiento> agendamiento = agendamientorepository.findById(idAgendamiento);
     if (agendamiento.get().getEstado() == true) {
@@ -159,7 +159,7 @@ public class AgendamientoController {
   }
 
   // Cambiar estado Pendiente
-  @GetMapping("/agendamiento/estado/{idAgendamiento}/{estado}")
+  @GetMapping("/agendamiento/estado/{idAgendamiento}/{estado}") //ADMIN e ING
   public String estadoAgendamientoPendiente(@PathVariable("idAgendamiento") Integer idAgendamiento, @PathVariable("estado") Boolean estado, Model modelo) {
     Optional<Agendamiento> agendamiento = agendamientorepository.findById(idAgendamiento);
       agendamiento.get().setEstado(estado);
@@ -167,7 +167,7 @@ public class AgendamientoController {
     return "redirect:/agendamiento";
   }
 
-  @GetMapping("/exportarPDF")
+  @GetMapping("/exportarPDF") //ADMIN, ING y CLIENTE
   public void exportarListadoDeEmpleadosEnPDF(HttpServletResponse response) throws DocumentException, IOException {
     response.setContentType("application/pdf");
 

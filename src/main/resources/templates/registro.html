@@ -21,7 +21,7 @@
 
 </head>
 
-<body th:src=" @{'/fonts/poppins/Poppins-Regular.ttf'}">
+<body th:src=" @{'/fonts/poppins/Poppins-Regular.ttf'}" >
 
 	<div class="wrapper" style="background-image: url('img/Login/a.jpg');">
 		<div class="inner">
@@ -29,35 +29,39 @@
 				<img th:src="@{img/Login/j.jpg}" alt="">
 			</div>
 
-			<form th:action="@{/registro}" method="post" th:object="${usuario}">
+			<form th:action="@{/registro}" method="post" >
 
 				<img th:src="@{img/logo.png}" class="logo" alt="">
-
+				
 				<h3>Registrarse</h3>
 				<div th:if=${param.exito}>
 					<div class="alert alert-info">Se ha registrado exitosamente a
 						la aplicación</div>
-				</div>
+				</div> 
+
+				<!--Nombre y Apellido-->
 				<div class="form-group">
-					<input type="text" id="nombre" th:field="*{nombre}" placeholder="Nombre" class="fom"
-						autofocus="autofocus" required>
-					<div class="valid-feedback">
-						Todo Bien!
-					</div>
-					<div class="invalid-feedback">
-						Este Campo es Obligatorio!
-					</div>
-					<input type="text" id="apellido" th:field="*{apellido}" placeholder="Apellido" class="fom" required
-						autofocus="autofocus">
-					<div class="valid-feedback">
-						Todo Bien!
-					</div>
-					<div class="invalid-feedback">
-						Este Campo es Obligatorio!
-					</div>
+					<input type="text" id="nombre" name="nombre" th:value="*{nombre}" placeholder="Nombre" class="fom">
+
+					<input type="text" id="apellido" name="apellido" th:value="*{apellido}" placeholder="Apellido" class="fom">
 				</div>
+
+				<!--Email-->
 				<div class="form-wrapper">
-					<select name="select" th:field="*{tipoDocUsuario}" id="" class="form-control" required>
+					<input type="email" id="email" placeholder="Ejemplo@dominio.com" class="form-control" name="email" th:value="*{email}">
+					<i class="fa-sharp fa-solid fa-envelope"></i>
+				</div>
+
+				<!--Contraseña-->
+				<div class="form-wrapper">
+					<input type="password" placeholder="Contraseña" id="password" class="form-control"
+						 name="password" th:value="*{password}">
+					<i class="fa-sharp fa-solid fa-lock"></i>
+				</div>
+
+				<!--Tipo Documento-->
+				<div class="form-wrapper">
+					<select name="tipoDocUsuario" th:value="*{tipoDocUsuario}" class="form-control" required>
 						<option value="" disabled selected>Tipo documento</option>
 						<option value="CC">C.C</option>
 						<option value="DNI">DNI</option>
@@ -66,61 +70,28 @@
 					<div class="invalid-feedback">Elegir el Tipo de Documento</div>
 					<i class="fa-sharp fa-solid fa-caret-down" style="font-size: 17px"></i>
 				</div>
+
+				<!--Número Documento-->
 				<div class="form-wrapper">
 					<input type="number" id="numeroDocUsuario" placeholder="Documento" class="form-control"
-						th:field="*{numeroDocUsuario}" required autofocus="autofocus" maxlength="10"
-						oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+						name="numeroDocUsuario" th:value="*{numeroDocUsuario}">
 					<i class="fa-sharp fa-solid fa-user"></i>
-					<div class="valid-feedback">
-						Todo Bien!
-					</div>
-					<div class="invalid-feedback">
-						Este Campo es Obligatorio!
-					</div>
 				</div>
 
+				<!--Número telefonico-->
 				<div class="form-wrapper">
-					<input type="number" id="telefonoUsuario" placeholder="Telefono" th:field="*{telefonoUsuario}"
+					<input type="number" id="telefonoUsuario" placeholder="Telefono" name="telefonoUsuario" th:value="*{telefonoUsuario}"
 						class="form-control" required>
 					<i class="fa-sharp fa-solid fa-phone"></i>
-					<div class="valid-feedback">
-						Todo Bien!
-					</div>
-					<div class="invalid-feedback">
-						Este Campo es Obligatorio!
-					</div>
 				</div>
 
-
+				<!--Direccion-->
 				<div class="form-wrapper">
-					<input onkeyup="check()" type="email" id="email" placeholder="Ejemplo@dominio.com"
-						class="form-control" th:field="*{email}" required autofocus="autofocus">
-					<small class="form-text text-danger" th:if="${#fields.hasErrors('email')}"
-						th:errors="*{email}"></small>
-					<i class="fa-sharp fa-solid fa-envelope"></i>
-					<div class="valid-feedback">
-						Todo Bien!
-					</div>
-					<div class="invalid-feedback">
-						Este Campo es Obligatorio!
-					</div>
+					<input type="text" id="direccion" placeholder="Dirección" name="direccion" th:value="*{direccion}"
+						class="form-control" required>
+					<i class="fa-sharp fa-solid fa-phone"></i>
 				</div>
 
-				<!--<div class="form-wrapper">
-					<select name="select" th:field="*{tipoUsuario}" id="" class="form-control" required>
-						<option value="" selected>--Elegir tipo de Usuario--</option>
-						<option value="Administrador">Administrador</option>
-						<option value="Ingeniero">Ingeniero</option>
-					</select>
-					<div class="invalid-feedback">Elegir el Tipo de Usuario</div>
-					<i class="fa-sharp fa-solid fa-caret-down" style="font-size: 17px"></i>
-				</div>-->
-
-				<div class="form-wrapper">
-					<input type="password" placeholder="Contraseña" id="password" class="form-control"
-						th:field="*{password}" required autofocus="autofocus">
-					<i class="fa-sharp fa-solid fa-lock"></i>
-				</div>
 
 				<a style="--clr:#1e9bff" onclick="return confirm('Deseas guardar estos datos!');">
 					<button type="submit" class="botoncito">Guardar
@@ -128,67 +99,16 @@
 					</button>
 
 					<div class="span">
-						<span>Si estas registrado <a th:href="@{/index}">inicia sesión aqui</a></span>
+					    <span>Si estas registrado <a th:href="@{/login}">inicia sesión aqui</a></span>
 					</div>
 			</form>
 		</div>
 	</div>
 	</div>
 
-	<script>
-		(() => {
-			'use strict'
-
-
-			const forms = document.querySelectorAll('.needs-validation')
-			Array.from(forms).forEach(form => {
-				form.addEventListener('submit', event => {
-					if (!form.checkValidity()) {
-						event.preventDefault()
-						event.stopPropagation()
-					}
-
-					form.classList.add('was-validated')
-				}, false)
-			})
-		})()
-
-		const email = document.querySelector("#email");
-		const icon1 = document.querySelector(".icon1");
-		const icon2 = document.querySelector(".icon2");
-		const error = document.querySelector(".text-error");
-		const btn = document.querySelector("button");
-
-		let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-		function check() {
-			if (email.value.match(regExp)) {
-				email.style.boderColor = "#27ae60";
-				email.style.background = "#eafaf1";
-				icon1.style.display = "none";
-				icon2.style.display = "block";
-				error.style.display = "none";
-				btn.style.display = "block";
-			} else {
-				email.style.boderColor = "#e74c3c";
-				email.style.background = "#fceae9";
-				icon1.style.display = "block";
-				icon2.style.display = "none";
-				btn.style.display = "none";
-				error.style.display = "block";
-			}
-
-			if (email.value == "") {
-				email.style.boderColor = "#lightgrey";
-				email.style.background = "#fff";
-				icon1.style.display = "none";
-				icon2.style.display = "none";
-				btn.style.display = "none";
-				error.style.display = "none";
-			}
-		}
-
 	</script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 		crossorigin="anonymous"></script>
 </body>
