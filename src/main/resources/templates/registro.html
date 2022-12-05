@@ -21,7 +21,7 @@
 
 </head>
 
-<body th:src=" @{'/fonts/poppins/Poppins-Regular.ttf'}" >
+<body th:src=" @{'/fonts/poppins/Poppins-Regular.ttf'}">
 
 	<div class="wrapper" style="background-image: url('img/Login/a.jpg');">
 		<div class="inner">
@@ -32,7 +32,7 @@
 			<form th:action="@{/registro}" method="post" th:object="${usuario}">
 
 				<img th:src="@{img/logo.png}" class="logo" alt="">
-				
+
 				<h3>Registrarse</h3>
 				<div th:if=${param.exito}>
 					<div class="alert alert-info">Se ha registrado exitosamente a
@@ -57,7 +57,7 @@
 					</div>
 				</div>
 				<div class="form-wrapper">
-					<select name="select" th:field="*{tipoDocUsuario}" id=""  class="form-control" required>
+					<select name="select" th:field="*{tipoDocUsuario}" id="" class="form-control" required>
 						<option value="" disabled selected>Tipo documento</option>
 						<option value="CC">C.C</option>
 						<option value="DNI">DNI</option>
@@ -95,6 +95,8 @@
 				<div class="form-wrapper">
 					<input onkeyup="check()" type="email" id="email" placeholder="Ejemplo@dominio.com"
 						class="form-control" th:field="*{email}" required autofocus="autofocus">
+					<small class="form-text text-danger" th:if="${#fields.hasErrors('email')}"
+						th:errors="*{email}"></small>
 					<i class="fa-sharp fa-solid fa-envelope"></i>
 					<div class="valid-feedback">
 						Todo Bien!
@@ -126,8 +128,8 @@
 					</button>
 
 					<div class="span">
-					<span>Si estas registrado <a th:href="@{/index}">inicia sesión aqui</a></span>
-						</div>
+						<span>Si estas registrado <a th:href="@{/index}">inicia sesión aqui</a></span>
+					</div>
 			</form>
 		</div>
 	</div>
@@ -186,8 +188,7 @@
 		}
 
 	</script>
-		<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 		crossorigin="anonymous"></script>
 </body>

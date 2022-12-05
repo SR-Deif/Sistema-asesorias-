@@ -14,6 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "usuarios", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
@@ -29,6 +31,8 @@ public class Usuario {
 	@Column(name = "apellido")
 	private String apellido;
 
+	@NotEmpty
+	@Email
 	private String email;
 
 	private String password;
@@ -39,21 +43,16 @@ public class Usuario {
 
 	private String direccion;
 
-	private String tipoDocUsuario; 
+	private String tipoDocUsuario;
 
 	private String numeroDocUsuario;
 
-    private String tipoUsuario;
+	private String tipoUsuario;
 
-    private Boolean estado = true;
-    
-	
-	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-	@JoinTable(
-			name = "usuarios_roles",
-			joinColumns = @JoinColumn(name = "usuario_id",referencedColumnName = "id"),
-			inverseJoinColumns = @JoinColumn(name = "rol_id",referencedColumnName = "id")
-			)
+	private Boolean estado = true;
+
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "rol_id", referencedColumnName = "id"))
 	private Collection<Rol> roles;
 
 	public Long getId() {
@@ -86,14 +85,6 @@ public class Usuario {
 
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getPassword() {
@@ -160,10 +151,9 @@ public class Usuario {
 		this.estado = estado;
 	}
 
-	public Usuario(Long id, String nombre, String apellido, String email, String password, String telefonoUsuario,
-			String detalleDireccion, String direccion, String tipoDocUsuario, String numeroDocUsuario,
-			String tipoUsuario, Boolean estado, Collection<Rol> roles) {
-		this.id = id;
+	public Usuario(String nombre, String apellido, @NotEmpty @Email String email, String password,
+			String telefonoUsuario, String detalleDireccion, String direccion, String tipoDocUsuario,
+			String numeroDocUsuario, String tipoUsuario, Boolean estado, Collection<Rol> roles) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.email = email;
@@ -178,9 +168,10 @@ public class Usuario {
 		this.roles = roles;
 	}
 
-	public Usuario(String nombre, String apellido, String email, String password, String telefonoUsuario,
-			String detalleDireccion, String direccion, String tipoDocUsuario, String numeroDocUsuario,
-			String tipoUsuario, Boolean estado, Collection<Rol> roles) {
+	public Usuario(Long id, String nombre, String apellido, @NotEmpty @Email String email, String password,
+			String telefonoUsuario, String detalleDireccion, String direccion, String tipoDocUsuario,
+			String numeroDocUsuario, String tipoUsuario, Boolean estado, Collection<Rol> roles) {
+		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.email = email;
@@ -206,5 +197,12 @@ public class Usuario {
 		this.id = id;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 }

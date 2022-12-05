@@ -1,8 +1,14 @@
 package com.sistema.asesoria.agendamiento;
 
+import java.io.IOException;
+import java.net.http.HttpResponse;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.text.DateFormat;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +21,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.lowagie.text.DocumentException;
 import com.sistema.asesoria.asesoria.Asesoria;
 import com.sistema.asesoria.asesoria.AsesoriaRepository;
 import com.sistema.asesoria.solicitud.Solicitud;
 import com.sistema.asesoria.solicitud.SolicitudRepository;
 import com.sistema.asesoria.usuario.Usuario;
 import com.sistema.asesoria.usuario.UsuarioRepository;
+import com.sistema.asesoria.util.reportes.AgendamientoExporterPDF;
 
 @Controller
 public class AgendamientoController {
@@ -131,4 +139,24 @@ public class AgendamientoController {
     agendamientorepository.save(agendamiento.get());
     return "redirect:/agendamiento";
   }
+
+@GetMapping("/exportarPDF")
+  public void exportarListadoDeEmpleadosEnPDF(HttpServletResponse response) throws DocumentException, IOException{
+    response.setContentType("application/pdf");
+
+    DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+    String fechaActual = dateFormatter.format(new Date());
+
+    String cabecera = "Content-Disposition";
+		String valor = "attachment; filename=Agendamiento_" + fechaActual + ".pdf";
+
+    response.setHeader(cabecera, valor);
+
+    List<Agendamiento> listaAgendamiento = agendamientorepository.findAll();
+
+    AgendamientoExporterPDF exporter = new AgendamientoExporterPDF(listaAgendamiento);
+    exporter.exportar(response);
+
+  }
+
 }

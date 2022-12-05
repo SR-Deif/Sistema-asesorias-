@@ -96,6 +96,7 @@
                 <div class="card">
                   <div class="card-header">
                     <h4>Listado de Fechas Agendadas</h4>
+                    
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
@@ -139,8 +140,7 @@
                               </td>-->
                               <td><a th:href="@{'/agendamiento/costo'+'/'+ ${agendamiento.idAgendamiento}}"
                                    class="btn btn-primary">Agrear Costo</a>&nbsp;
-                                  <a th:href="@{'/agendamiento/costo'+'/'+ ${agendamiento.idAgendamiento}}"
-                                  class="btn btn-primary">Enviar Correo</a> 
+                                   <a th:href="@{/exportarPDF}" class="btn btn-primary">PDF</a> 
                                <!-- <a th:href="@{'/agendamiento/eliminar'+ '/' + ${agendamiento.idAgendamiento}}"
                                   class="btn btn-danger">Eliminar</a>
                                 <a th:if="${agendamiento.estado==true}"

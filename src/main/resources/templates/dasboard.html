@@ -62,20 +62,20 @@
             <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="layout"></i><span>Formularios</span></a>
               <ul class="dropdown-menu">
-                <li sec:authorize="hasAnyAuthority('admin')"><a class="nav-link" th:href="@{/agendamiento/nuevo}">Agendamiento</a></li>
-                <li sec:authorize="hasAnyAuthority('admin', 'ing')"><a class="nav-link" th:href="@{/asesoria/nuevo}">Asesoria</a></li>
-                <li sec:authorize="hasAnyAuthority('admin')"><a class="nav-link" th:href="@{/usuarios/nuevo}">Empleado</a></li>
-                <li sec:authorize="hasAnyAuthority('admin', 'user')"><a class="nav-link" th:href="@{/solicituds/nuevo}">Solicitud</a></li>
+                <li><a class="nav-link" th:href="@{/agendamiento/nuevo}">Agendamiento</a></li>
+                <li><a class="nav-link" th:href="@{/asesoria/nuevo}">Asesoria</a></li>
+                <li><a class="nav-link" th:href="@{/usuarios/nuevo}">Empleado</a></li>
+                <li><a class="nav-link" th:href="@{/solicituds/nuevo}">Solicitud</a></li>
                </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Tablas</span></a>
               <ul class="dropdown-menu">
-                <li sec:authorize="hasAnyAuthority('admin')"><a class="nav-link" th:href="@{/agendamiento}">Agendamiento</a></li>
-                <li sec:authorize="hasAnyAuthority('admin','ing')"><a class="nav-link" th:href="@{/asesoria}">Asesoria</a></li>
+                <li ><a class="nav-link" th:href="@{/agendamiento}">Agendamiento</a></li>
+                <li ><a class="nav-link" th:href="@{/asesoria}">Asesoria</a></li>
                 <li><a class="nav-link" th:href="@{/asesoriaagro}">Asesoria costo</a></li>
-                <li sec:authorize="hasAnyAuthority('admin')"><a class="nav-link" th:href="@{/usuarios}">Empleado</a></li>
-                <li sec:authorize="hasAnyAuthority('admin','user')"><a class="nav-link" th:href="@{/solicituds}">Solicitud</a></li>
+                <li ><a class="nav-link" th:href="@{/usuarios}">Empleado</a></li>
+                <li ><a class="nav-link" th:href="@{/solicituds}">Solicitud</a></li>
                 <li><a class="nav-link" th:href="@{/agendamientoFecha}">Vista Cliente</a></li>
               </ul>
             </li>
