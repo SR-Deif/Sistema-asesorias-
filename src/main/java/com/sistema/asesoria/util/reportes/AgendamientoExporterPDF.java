@@ -45,8 +45,8 @@ public class AgendamientoExporterPDF {
         celda.setPhrase(new Phrase("fechaRevisionAgendamiento", fuente));
         tabla.addCell(celda);
 
-        celda.setPhrase(new Phrase("Costo", fuente));
-        tabla.addCell(celda);
+        //celda.setPhrase(new Phrase("Costo", fuente));
+        //tabla.addCell(celda);
     }
 
     private void datosTabla(PdfPTable tabla) {
@@ -79,7 +79,7 @@ public class AgendamientoExporterPDF {
         PdfPTable tabla = new PdfPTable(3);
         tabla.setWidthPercentage(100);
         tabla.setSpacingBefore(15);
-        tabla.setWidths(new float[] { 1f, 2f, 2f });
+        tabla.setWidths(new float[] { 1f, 1f, 1f });
         tabla.setWidthPercentage(110);
 
         cabeceraTabla(tabla);

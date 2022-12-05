@@ -23,7 +23,7 @@ public class Solicitud {
     @JoinColumn(name = "id")
     private Usuario usuario;
 
-    private Boolean estado=false;
+    private Boolean estado=null;
 
     private String descripcion;
 

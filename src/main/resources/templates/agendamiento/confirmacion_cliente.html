@@ -76,7 +76,6 @@
                 <li><a class="nav-link" th:href="@{/agendamiento}">Agendamiento</a></li>
                 <li><a class="nav-link" th:href="@{/usuarios}">Empleado</a></li>
                 <li><a class="nav-link" th:href="@{/agendamientoFecha}">Vista Cliente</a></li>
-                <li><a class="nav-link" th:href="@{/agendamientoconfirmar}">Reporte Cliente</a></li>
               </ul>
             </li>
           </ul>
@@ -112,7 +111,7 @@
                             <th>Descripción</th>
                             <th>Tipo de Solicitud</th>
                             <th>Costo</th>
-                            <!--<th>Estado</th>-->
+                            <th>Estado</th>
                             <th colspan="3">Acciones</th>
                           </tr>
                         </thead>
@@ -120,50 +119,32 @@
                         <tbody>
                           <tr th:if="${listaAgendamiento.size()>0}" th:each="agendamiento : ${listaAgendamiento}">
                             <th:block th:if="${agendamiento.solicitud!=null}">
-                              <td th:text="${agendamiento.idAgendamiento}"></td>
-                              <td
-                                th:text="${agendamiento.solicitud.usuario.nombre}+' '+${agendamiento.solicitud.usuario.apellido}">
-                              </td>
-                              <td th:text="${agendamiento.solicitud.usuario.email}"></td>
-                              <td th:text="${agendamiento.fechaAgendamiento}"></td>
-                              <td th:text="${agendamiento.fechaRevisionAgendamiento}"></td>
-                              <td th:text="${agendamiento.solicitud.descripcion}"></td>
-                              <td th:text="${agendamiento.solicitud.tipoSolicitud}"></td>
-                              <td>
-                                <span th:if="${agendamiento.asesoria.costoAsesoria==''}" class="badge badge-info">Sin costo</span>
-                                <p th:text="${agendamiento.asesoria.costoAsesoria}"></p>
-                              </td>
-                              <td>
-                                <a th:href="@{'/agendamiento/costo'+'/'+ ${agendamiento.idAgendamiento}}"
-                                  class="btn btn-primary">Agrear Costo</a>&nbsp;
-                                <a th:href="@{/exportarPDF}" class="btn btn-primary">PDF</a>
-                              </td>
-
-                              <td>
-                                <span class="badge badge-primary" th:if="${agendamiento.estado==true}">Aceptada</span>
-                                <span class="badge badge-danger" th:if="${agendamiento.estado==false}">Rechazada</span>
-                                <span class="badge badge-warning" th:if="${agendamiento.estado==null}">Pendiente</span>
-                              </td>
-
-                              <td>
-                                <a th:if="${agendamiento.estado==true}"
-                                  th:href="@{'/agendamiento/estado'+ '/' + ${agendamiento.idAgendamiento}}"
-                                  class="btn btn-danger"><i data-feather="x"></i>Rechazar</a>
-
-                                <a th:if="${agendamiento.estado==false}"
-                                  th:href="@{'/agendamiento/estado'+ '/' + ${agendamiento.idAgendamiento}}"
-                                  class="btn btn-info"><i data-feather="check"></i>Aceptar</a>
-                                
-                                  <div th:if="${agendamiento.estado==null}" class="btn-group" role="group" aria-label="Basic example">
-                                    <a type="button"
-                                  th:href="@{'/agendamiento/estado'+ '/' + ${agendamiento.idAgendamiento}+'/'+'false'}"
-                                  class="btn btn-danger"><i data-feather="x"></i></a>
-                                  <a type="button"
-                                  th:href="@{'/agendamiento/estado'+ '/' + ${agendamiento.idAgendamiento}+'/'+'true'}"
-                                  class="btn btn-info"><i data-feather="check"></i></a>
-                                  </div>
-
-                              </td>
+                              <th:block th:if="${agendamiento.solicitud.usuario.email}==${usuario}">
+                                <td th:text="${agendamiento.idAgendamiento}"></td>
+                                <td
+                                  th:text="${agendamiento.solicitud.usuario.nombre}+' '+${agendamiento.solicitud.usuario.apellido}">
+                                </td>
+                                <td th:text="${agendamiento.solicitud.usuario.email}"></td>
+                                <td th:text="${agendamiento.fechaAgendamiento}"></td>
+                                <td th:text="${agendamiento.fechaRevisionAgendamiento}"></td>
+                                <td th:text="${agendamiento.solicitud.descripcion}"></td>
+                                <td th:text="${agendamiento.solicitud.tipoSolicitud}"></td>
+                                <td>
+                                  <span th:if="${agendamiento.asesoria.costoAsesoria==''}" class="badge badge-info">Sin
+                                    costo</span>
+                                  <p th:text="${agendamiento.asesoria.costoAsesoria}"></p>
+                                </td>
+                                <td>
+                                  <span class="badge badge-primary" th:if="${agendamiento.estado==true}">Aceptada</span>
+                                  <span class="badge badge-danger"
+                                    th:if="${agendamiento.estado==false}">Rechazada</span>
+                                  <span class="badge badge-warning"
+                                    th:if="${agendamiento.estado==null}">Pendiente</span>
+                                </td>
+                                <td>
+                                  <a th:href="@{/exportarPDF}" class="btn btn-primary">PDF</a>
+                                </td>
+                              </th:block>
                             </th:block>
                           </tr>
                         </tbody>

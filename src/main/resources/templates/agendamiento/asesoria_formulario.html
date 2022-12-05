@@ -67,18 +67,14 @@
                   data-feather="layout"></i><span>Formularios</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" th:href="@{/agendamiento/nuevo}">Agendamiento</a></li>
-                <li><a class="nav-link" th:href="@{/asesoria/nuevo}">Asesoria</a></li>
                 <li><a class="nav-link" th:href="@{/usuarios/nuevo}">Empleado</a></li>
-                <li><a class="nav-link" th:href="@{/solicituds/nuevo}">Solicitud</a></li>
               </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Tablas</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" th:href="@{/agendamiento}">Agendamiento</a></li>
-                <li><a class="nav-link" th:href="@{/asesoria}">Asesoria</a></li>
                 <li><a class="nav-link" th:href="@{/usuarios}">Empleado</a></li>
-                <li><a class="nav-link" th:href="@{/solicituds}">Solicitud</a></li>
                 <li><a class="nav-link" th:href="@{/agendamientoFecha}">Vista Cliente</a></li>
               </ul>
             </li>
@@ -98,7 +94,7 @@
               </div>
 
 
-              <form th:action="@{/agendamiento/guardar}" th:object="${agendamiento}" method="post"
+              <form th:action="@{/agendamiento/guardar/asesoria}" th:object="${agendamiento}" method="post"
                 class="needs-validation" style="max-width: 600px; margin: 0 auto;" novalidate="">
                 <div class="card-header">
                   <input type="hidden" th:field="*{idAgendamiento}" th:value="${agendamiento.idAgendamiento}" />

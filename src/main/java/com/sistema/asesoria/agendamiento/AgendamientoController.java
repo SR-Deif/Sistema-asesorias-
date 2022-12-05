@@ -1,7 +1,6 @@
 package com.sistema.asesoria.agendamiento;
 
 import java.io.IOException;
-import java.net.http.HttpResponse;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -33,7 +32,7 @@ import com.sistema.asesoria.util.reportes.AgendamientoExporterPDF;
 @Controller
 public class AgendamientoController {
 
-  @Autowired 
+  @Autowired
   private AgendamientoRepository agendamientorepository;
 
   @Autowired
@@ -45,7 +44,6 @@ public class AgendamientoController {
   @Autowired
   private AsesoriaRepository asesoriarepository;
 
-
   // Lista
   @GetMapping("/agendamiento")
   public String listarAgendamiento(Model model) {
@@ -54,12 +52,20 @@ public class AgendamientoController {
     return "agendamiento/agendamiento";
   }
 
-
-  @GetMapping("/agendamientoFecha") 
+  @GetMapping("/agendamientoFecha")
   public String listarAgendamientofecha(Model model) {
     List<Agendamiento> listaAgendamiento = agendamientorepository.findAll();
     model.addAttribute("listaAgendamiento", listaAgendamiento);
     return "agendamiento/agendamiento_cliente";
+  }
+
+  @GetMapping("/agendamientoconfirmar")
+  public String listarAgendamientoconfirmar(Model model, Authentication auth) {
+    List<Agendamiento> listaAgendamiento = agendamientorepository.findAll();
+    String username = ((UserDetails) auth.getPrincipal()).getUsername();
+    model.addAttribute("usuario", username);
+    model.addAttribute("listaAgendamiento", listaAgendamiento);
+    return "agendamiento/confirmacion_cliente";
   }
 
   // Agregar agendamiento
@@ -78,12 +84,24 @@ public class AgendamientoController {
   // guardar agendamiento
   @PostMapping("/agendamiento/guardar")
   public String guardarAgendamiento(@Valid Agendamiento agendamiento, Authentication auth) {
-    String username = ((UserDetails)auth.getPrincipal()).getUsername();
+    String username = ((UserDetails) auth.getPrincipal()).getUsername();
     Usuario usuario = usuarioRepository.findByEmail(username);
-    if(agendamiento.getSolicitud()!=null){
+    if (agendamiento.getSolicitud() != null) {
       agendamiento.getSolicitud().setUsuario(usuario);
     }
-    
+    agendamientorepository.save(agendamiento);
+    return "redirect:/agendamiento";
+  }
+  
+  // guardar agendamiento asesoria
+  @PostMapping("/agendamiento/guardar/asesoria")
+  public String guardarAgendamientoAsesoria(@Valid Agendamiento agendamiento,  Authentication auth) {
+    Agendamiento buscarAgendamiento = agendamientorepository.findById(agendamiento.getIdAgendamiento()).get();
+    Usuario usuario = usuarioRepository.findByEmail(buscarAgendamiento.getSolicitud().getUsuario().getEmail());
+    if (agendamiento.getSolicitud() != null) {
+      agendamiento.getSolicitud().setUsuario(usuario);
+    }
+    agendamiento.setEstado(true);
     agendamientorepository.save(agendamiento);
     return "redirect:/agendamiento";
   }
@@ -104,21 +122,21 @@ public class AgendamientoController {
     return "agendamiento/formulario_cliente";
   }
 
-    // editar agendamiento
-    @GetMapping("/agendamiento/costo/{idAgendamiento}")
-    public String mostrarFormularioModificarAgendamientocosto(@PathVariable("idAgendamiento") Integer idAgendamiento,
-        Model modelo) {
-      Agendamiento agendamiento = agendamientorepository.findById(idAgendamiento).get();
-      modelo.addAttribute("agendamiento", agendamiento);
-  
-      List<Solicitud> listaSolicituds = solicitudrepository.findAll();
-      modelo.addAttribute("listaSolicituds", listaSolicituds);
-  
-      List<Asesoria> listaAsesoria = asesoriarepository.findAll();
-      modelo.addAttribute("listaAsesoria", listaAsesoria);
-  
-      return "agendamiento/asesoria_formulario";
-    }
+  // editar agendamiento
+  @GetMapping("/agendamiento/costo/{idAgendamiento}")
+  public String mostrarFormularioModificarAgendamientocosto(@PathVariable("idAgendamiento") Integer idAgendamiento,
+      Model modelo) {
+    Agendamiento agendamiento = agendamientorepository.findById(idAgendamiento).get();
+    modelo.addAttribute("agendamiento", agendamiento);
+
+    List<Solicitud> listaSolicituds = solicitudrepository.findAll();
+    modelo.addAttribute("listaSolicituds", listaSolicituds);
+
+    List<Asesoria> listaAsesoria = asesoriarepository.findAll();
+    modelo.addAttribute("listaAsesoria", listaAsesoria);
+
+    return "agendamiento/asesoria_formulario";
+  }
 
   // Eliminar agendamiento
   @GetMapping("/agendamiento/eliminar/{idAgendamiento}")
@@ -140,15 +158,24 @@ public class AgendamientoController {
     return "redirect:/agendamiento";
   }
 
-@GetMapping("/exportarPDF")
-  public void exportarListadoDeEmpleadosEnPDF(HttpServletResponse response) throws DocumentException, IOException{
+  // Cambiar estado Pendiente
+  @GetMapping("/agendamiento/estado/{idAgendamiento}/{estado}")
+  public String estadoAgendamientoPendiente(@PathVariable("idAgendamiento") Integer idAgendamiento, @PathVariable("estado") Boolean estado, Model modelo) {
+    Optional<Agendamiento> agendamiento = agendamientorepository.findById(idAgendamiento);
+      agendamiento.get().setEstado(estado);
+    agendamientorepository.save(agendamiento.get());
+    return "redirect:/agendamiento";
+  }
+
+  @GetMapping("/exportarPDF")
+  public void exportarListadoDeEmpleadosEnPDF(HttpServletResponse response) throws DocumentException, IOException {
     response.setContentType("application/pdf");
 
     DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
     String fechaActual = dateFormatter.format(new Date());
 
     String cabecera = "Content-Disposition";
-		String valor = "attachment; filename=Agendamiento_" + fechaActual + ".pdf";
+    String valor = "attachment; filename=Agendamiento_" + fechaActual + ".pdf";
 
     response.setHeader(cabecera, valor);
 

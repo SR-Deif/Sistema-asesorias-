@@ -9,8 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
 
-import org.springframework.lang.NonNull;
-
 import com.sistema.asesoria.asesoria.Asesoria;
 import com.sistema.asesoria.solicitud.Solicitud;
 
@@ -23,8 +21,7 @@ public class Agendamiento {
     private String fechaAgendamiento;
     @NotEmpty(message = "Debes elegir una fecha para Realizar la Asesoria")
     private String fechaRevisionAgendamiento;
-    @NonNull
-    private Boolean estado = false;
+    private Boolean estado = null;
 
     @OneToOne(cascade = {CascadeType.ALL}) 
     @JoinColumn(name = "idSolicitud") 
